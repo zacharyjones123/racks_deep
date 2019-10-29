@@ -1,4 +1,4 @@
-from data.Tires import Tires
+from data.WheelPros.Tires.Tires import Tires
 
 
 class TireTools:

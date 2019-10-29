@@ -1,15 +1,26 @@
+#!/usr/bin/env python
+"""
+excel_tools.py: All of the tools needed to read price sheets
+"""
 import pandas as pd
 import pyprind
-from data.Wheels import Wheels
-from data.Tires import Tires
-from data.WheelVariants import WheelVariants
-from data.TireVariants import TireVariants
+from data.WheelPros.Wheels.WheelVariants import WheelVariants
+from data.WheelPros.Tires.TireVariants import TireVariants
 
 
 class ExcelTools:
 
     @staticmethod
     def find_tire_brand(tire_description):
+        """
+        Method used to pull tags out of title
+        :param tire_description:
+        :return: returns the tag for the brand
+        """
+        # TODO: Need to test the method
+        # TODO: Make method more more versatile
+        # TODO: Need to make more methods to find tags
+
         tire_dict = {'MOTOCLAW': 'MOTOCLAW',
                      'MOTOBOSS': 'MOTOBOSS',
                      'MOTOFORCE': 'MOTOFORCE',
@@ -26,9 +37,17 @@ class ExcelTools:
         return "No Brand"
 
     @staticmethod
-    def read_map_pricing():
+    def read_map_pricing(spread_sheet_name):
+        """
+        Read in the map pricing
+        :param spread_sheet_name: name of the sheet
+        :return: returns map price dictionary
+        """
+        # TODO: Need to test the method
+        # TODO: Make method more more versatile
+
         print("Reading Map Pricing")
-        df = pd.read_excel(r'sheets/exp_10-21-2019_mapPricing.xlsx')
+        df = pd.read_excel(spread_sheet_name)
         total = 1
         all_total = 1
         map_price_dict = {}
@@ -42,6 +61,14 @@ class ExcelTools:
 
     @staticmethod
     def read_product_technical_data_usd(spread_sheet_name):
+        """
+        Read in Wheel Proos - Read Product Technical Data USD
+        :param spread_sheet_name: name of the sheet
+        :return: List of Tire objects
+        """
+        # TODO: Need to test the method
+        # TODO: Make method more more versatile
+
         print("Reading Product Technical Data USD")
         df = pd.read_excel(spread_sheet_name)
         wheels = []
@@ -69,19 +96,14 @@ class ExcelTools:
         return wheels
 
     @staticmethod
-    def read_accessories_data(spread_sheet_name):
-        print('Reading Accessory Data')
-        df = pd.read_excel(spread_sheet_name)
-        accessories = []
-
-        total = 1
-        all_total = 1
-        bar = pyprind.ProgBar(len(df.index), monitor=True)
-        for i in df.index:
-            accessory = None
-
-    @staticmethod
     def read_tire_data_usd(spread_sheet_name):
+        """
+        Reads in tire data and returns Tire objects
+        :param spread_sheet_name: name of the sheet to read in
+        :return: Tire objects
+        """
+        # TODO: Need to test the method
+        # TODO: Make method more more versatile
         print('Reading Tire Data USB')
         df = pd.read_excel(spread_sheet_name)
         tires = []
@@ -90,7 +112,6 @@ class ExcelTools:
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            #print(i)
             tire = None
             if df['MAP'][i] != 0:
                 tire = TireVariants(str(df['PartNo'][i]),
@@ -102,7 +123,6 @@ class ExcelTools:
                              str(df['Weight'][i]),
                              str(df['MAP'][i]))
             if not tire is None:
-                #print(tire)
                 tire.set_comparison_var(ExcelTools.find_tire_brand(tire.get_tire_description()))
                 tires.append(tire)
             total += 1
@@ -112,34 +132,67 @@ class ExcelTools:
 
     @staticmethod
     def compare_tire_data_usd(older_tires, newer_tires, map_only=True):
+        """
+        This method is mean't to compare 2 sets of Tire objects, and edits the existing tires to combine the
+        older_tires and newer_tires
+        :param older_tires: Tires before addition
+        :param newer_tires: Tires after
+        addition
+        :param map_only: If you only want to change the map price
+        :return: Returns upc, which is a
+        dictionary with everything that needs to happen {{'delete'}:[], {'add'}:[], {'edit'}:[]}
+        """
+        # TODO: Need to edit this method and start using it, it is currently only map_price
+
+        print("Compare Tire Data USD")
+        print("Map Price Only: ", map_only)
         # Just need to go through and compare them and make sure
         # nothing needs to be changed on the website
 
         # This will be basic, just check that map is correct
+        # upcs that needs to be changed
         upc_to_change = {}
-        to_delete = []# list of upcs
+        # Tires to delete
+        to_delete = []
+        # Tires to add
         to_add = []
+        # Tires to edit
         to_edit = []
         # We need to check for a few things
+        # --------------------------------------
         # 1) Do any need to be deleted
         for i in older_tires:
+            # if the new tire does not exist yet
             if not i in newer_tires:
+                # delete it from older tires
                 to_delete.append(i)
+        # mark the tire to delete
         upc_to_change['delete'] = to_delete
-
+        # --------------------------------------
         # 2) Do any need to be added
         for i in newer_tires:
+            # if the new tire wasn't there before
             if not i in older_tires:
+                # add it into the tires
                 to_add.append(newer_tires[i])
+        # mark the tire to add
         upc_to_change['add'] = to_add
+        # --------------------------------------
         # 3) Do any need to be altered
+        # Go through Newer tires
         for i in newer_tires:
+            # Go through Older tires
             if i in older_tires:
+                # Check if we only want to change the map price
                 if map_only:
+                    # Compare the prices, and see if they need to be changed
                     if newer_tires[i].compare_map_prices(older_tires[i]):
+                        # Mark it to edit
                         to_edit.append({'older': older_tires[i], 'newer': newer_tires[i]})
                 else:
+                    # Compare the entire product to see if anything needs to be changed
                     if newer_tires[i] != older_tires[i]:
+                        # Mark it to edit
                         to_edit.append({'older': older_tires[i], 'newer': newer_tires[i]})
         # Now we have all of the cases where changes need to be made
         # Otherwise, leave everything the same

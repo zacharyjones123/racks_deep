@@ -1,5 +1,5 @@
-from data.WheelVariants import WheelVariants
-from data.Wheels import Wheels
+from data.WheelPros.Wheels.WheelVariants import WheelVariants
+from data.WheelPros.Wheels.Wheels import Wheels
 import pandas as pd
 import pyprind
 import pickle

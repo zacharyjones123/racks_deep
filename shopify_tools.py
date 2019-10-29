@@ -1,13 +1,18 @@
+#!/usr/bin/env python
+"""
+shopify_tools: All of the tools dealing with the Shopify
+API
+"""
 import pyactiveresource
 import shopify
 from cred.cred import SHOP_URL
 import pyprind
-from urllib.error import HTTPError, URLError
+from urllib.error import HTTPError
 import time
-
-from data.TireTools import TireTools
-from data.WheelTools import WheelTools
+from data.WheelPros.Tires.TireTools import TireTools
+from data.WheelPros.Wheels.WheelTools import WheelTools
 from excel_tools import ExcelTools
+
 # Wheel Tools - Local Storage for Wheel Pros Wheels
 wheelTools = WheelTools()
 # Tire Tools - Local Storage for Wheel Pros Tires

@@ -1,9 +1,21 @@
+"""
+control_center.py: Where everything from the project will
+be ran
+"""
+
 import progressbar
 import time
 from tqdm import tqdm
 from shopify_tools import ShopifyTools
 
+#TODO: Need to add more wrappers
+
 def delete_all_wheel_pros_wheels():
+    """
+    Function wrapper over the ShopifyAPI
+    :return: Nothing
+    """
+    # Call to ShopifyTools
     ShopifyTools.delete_all_wheels()
 
 

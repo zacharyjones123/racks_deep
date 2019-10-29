@@ -1,4 +1,4 @@
-from data.Product import Products
+from data.WheelPros.Product import Products
 
 
 class Tires(Products):
