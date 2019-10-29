@@ -41,34 +41,6 @@ class ExcelTools:
         return map_price_dict
 
     @staticmethod
-    def read_product_techincal_data_usd_example():
-        print("Reading Product Technical Data USD")
-        df = pd.read_excel(r'sheets/examples/producttechdatausd_example.xlsx')
-        wheels = []
-        wheel = None
-        total = 1
-        all_total = 1
-        bar = pyprind.ProgBar(len(df.index), monitor=True)
-        for i in df.index:
-            if df['MapPrice'][i] != 0:
-                wheel = Wheels(str(df['styledescription'][i]),
-                               str(df['partnumber'][i]),
-                               str(df['partnumberdescription'][i]),
-                               str(df['size'][i]),
-                               str(df['finish'][i]),
-                               str(df['MapPrice'][i]),
-                               str(df['offset'][i]),
-                               str(int(df['upc'][i])),
-                               str(df['Shipping Weight'][i]),
-                               str(df['wheelimage'][i]))
-            if not wheel is None:
-                wheels.append(wheel)
-            total += 1
-            all_total += 1
-            bar.update()
-        return wheels
-
-    @staticmethod
     def read_product_technical_data_usd(spread_sheet_name):
         print("Reading Product Technical Data USD")
         df = pd.read_excel(spread_sheet_name)

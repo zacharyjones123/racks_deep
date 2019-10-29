@@ -1,28 +1,23 @@
 import progressbar
 import time
 from tqdm import tqdm
+from shopify_tools import ShopifyTools
 
-
-def check_all_map_prices():
-    pass
-
-
-def check_all_information():
-    pass
-
-
+def delete_all_wheel_pros_wheels():
+    ShopifyTools.delete_all_wheels()
 
 
 if __name__ == '__main__':
+    #ShopifyTools.delete_all_wheels()
     print("Control Center Started!")
-    print("Running checks to make sure information is correct:")
-    print("1) Make sure all M.A.P. prices are correct")
-    for i in tqdm(range(10)):
-        time.sleep(3)
-    print("2) Make sure all details on products are correct")
-    print("3) Print out results of Control panel")
-    print("4) Would you like to see changes in data from different distributors?")
-    print("4a) Wheel Pros")
-    print("4b) Highlifter")
-    print("4c) etc")
-    print("Thank you!")
+    print("-----------------------------------------")
+    print("Loading Information From Local System")
+    print("Loading Information From Shopify")
+    print("Complete!")
+    print("What would you like to do today?")
+    print("1) Update Spreadsheets")
+    print("   a) Wheel Pros")
+    print("      - Wheels")
+    print("      - Tires")
+    print("      - Kits")
+    print("Updating Wheels")

@@ -1,14 +1,16 @@
+import pyactiveresource
 import shopify
 from cred.cred import SHOP_URL
 import pyprind
-from urllib.error import HTTPError
+from urllib.error import HTTPError, URLError
 import time
 
 from data.TireTools import TireTools
 from data.WheelTools import WheelTools
 from excel_tools import ExcelTools
-
+# Wheel Tools - Local Storage for Wheel Pros Wheels
 wheelTools = WheelTools()
+# Tire Tools - Local Storage for Wheel Pros Tires
 tireTools = TireTools()
 
 
@@ -16,6 +18,11 @@ class ShopifyTools:
 
     @staticmethod
     def start_shopify_api():
+        """
+        Method used to start the Shopify API and use methods
+        :return: shop variable to call
+        """
+        # TODO: Need to add exceptions here in case it doesn't work
         shopify.ShopifyResource.set_site(SHOP_URL)
         return shopify.Shop.current
 
@@ -39,7 +46,6 @@ class ShopifyTools:
             # something went wrong, see new_product.errors.full_messages() for example
             update_product.errors.full_messages()
 
-    # Products - run 40 secs average
     @staticmethod
     def get_all_product_ids(resource, **kwargs):
         """
@@ -49,6 +55,8 @@ class ShopifyTools:
         :param kwargs: Other options to filter
         :return: a list of all resources
         """
+        # TODO: Need to test this method
+
         print("Getting All Product Ids:")
         resource_count = resource.count(**kwargs)
         resources = []
@@ -63,15 +71,27 @@ class ShopifyTools:
 
     @staticmethod
     def product_ids_to_products(resources):
+        """
+        Helper method to to get all the product ids from the resources
+        :param resources: all resources from Shopify
+        :return: Dictionary, key is product_id, value is resource
+        """
+        # TODO: Need to test this method
         product_dict = {}
         for r in resources:
             product_dict[r.id] = r
         return product_dict
 
-    # urllib.error.HTTPError: HTTP Error 500: Internal Server Error
-    # TimeoutError: [WinError 10060] A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond
     @staticmethod
     def add_new_wheel(wheel_variant):
+        """
+        Method that adds a new Wheel ProsWheel to Shopify
+        :param wheel_variant: Wheel to add
+        :return: Returns nothing
+        """
+        # TODO: Need to find a way to stream line this
+        # TODO: Comment out the method
+
         # 2 cases
         # 1) Is a variant
         if wheelTools.has_variants(wheel_variant):
@@ -147,6 +167,13 @@ class ShopifyTools:
 
     @staticmethod
     def add_new_wheels(wheels):
+        """
+        Method used to add Wheel Pros Wheels
+        :param wheels: wheels added
+        :return: Nothing
+        """
+        # TODO: Need to test this method
+
         bar = pyprind.ProgBar(len(wheels), monitor=True, update_interval=.1)
         total_added = 1
         for i in range(len(wheels)):
@@ -155,48 +182,40 @@ class ShopifyTools:
                 # print("adding: ", w.get_style_description())
                 ShopifyTools.add_new_wheel(w)
                 bar.update(item_id=str(total_added))
-                total_added +=1
+                total_added += 1
+            #This worked!!! I don't know what happened, but it worked!
+            # The error was caught, and then it continued. It happened
+            # at 5221
+
+            except pyactiveresource.connection.Error:
+                print("Internet is out, restarting server in 5 secodns")
+                i -= 1
+                time.sleep(10)
             except TimeoutError:
                 total_added -= 1
+                i -= 1
                 print("Timeout error has occured, restarting server in 5 seconds")
                 time.sleep(10)
             except HTTPError:
                 total_added -= 1
+                i -= 1
                 print("HTTP error has occured, restarting server in 5 seconds")
                 time.sleep(10)
 
+        print(bar)
 
-    @staticmethod
-    def add_new_tires(tires):
-        bar = pyprind.ProgBar(len(tires), monitor=True, update_interval=.1)
-        total_added = 1
-        for t in tires:
-            ShopifyTools.add_new_tire(t)
-            bar.update(item_id=str(total_added))
-            total_added += 1
-    @staticmethod
-    def find_tire_brand(tire_description):
-        tire_dict = {'MOTOCLAW': 'MOTOCLAW',
-                     'MOTOBOSS': 'MOTOBOSS',
-                     'MOTOFORCE': 'MOTOFORCE',
-                     'MOTOHAMMER': 'MOTOHAMMER',
-                     'EFX MOTOHAVOK': 'EFX MOTOHAVOK',
-                     'MOTOMAX': 'MOTOMAX',
-                     'MOTOVATOR': 'MOTOVATOR',
-                     'MOTOVATOR R/T': 'MOTOVATOR R/T',
-                     'SLINGER': 'SLINGER',
-                     'MOTOMTC': 'MOTOMTC'}
-        for t in tire_dict:
-            if t in tire_description:
-                return tire_dict[t]
-        return "No Brand"
-
-    # urllib.error.HTTPError: HTTP Error 500: Internal Server Error
     @staticmethod
     def add_new_tire(tire_variant):
+        """
+        Method that adds a new Wheel Pros Tire to Shopify
+        :param tire_variant: Tire to add:
+        :return: Returns nothing
+        """
+        # TODO: Need to find a way to stream line this
+        # TODO: Comment out the method
+
         # 2 cases
         # 1) Is a variant
-        #print(tire_variant.get_comparison_var())
         if tireTools.has_variants(tire_variant):
             product_id = tireTools.find_product_id(tire_variant)
             new_tire_product = shopify.Product.find(product_id)
@@ -264,39 +283,176 @@ class ShopifyTools:
                 # something went wrong, see new_product.errors.full_messages() for example
                 new_tire_product.errors.full_messages()
 
+    @staticmethod
+    def add_new_tires(tires):
+        """
+        Method used to add Wheel Pros Tires
+        :param tires: Tires to be added
+        :return: Nothing
+        """
+        # TODO: Need to test this method
+
+        bar = pyprind.ProgBar(len(tires), monitor=True, update_interval=.1)
+        total_added = 1
+        for t in range(len(tires)):
+            try:
+                ShopifyTools.add_new_tire(tires[t])
+                bar.update(item_id=str(total_added))
+                total_added += 1
+            except pyactiveresource.connection.Error:
+                print("Internet is out, restarting server in 5 secodns")
+                total_added -= 1
+                t -= 1
+                time.sleep(10)
+            except TimeoutError:
+                total_added -= 1
+                t -= 1
+                print("Timeout error has occured, restarting server in 5 seconds")
+                time.sleep(10)
+            except HTTPError:
+                total_added -= 1
+                t -= 1
+                print("HTTP error has occured, restarting server in 5 seconds")
+                time.sleep(10)
 
     @staticmethod
-    def delete_products(products):
-        # DONE
-        # 00:02:05 - TIRES
-        # HTTP 404 error - not found
-        # HTTP 429 error - too many request - Just need to pause and let the bucket leak (Leaky Bucket Algorithm)
-        # Shopify PLus
-        # Bucket Size: 80
-        # Leak Rate:   4/second
-        print("Deleting Products:")
-        bar = pyprind.ProgBar(len(products), monitor=True, update_interval=.1)
-        print("Started")
-        print(len(products))
+    def find_tire_brand(tire_description):
+        """
+        Method used as a smart way to add tags
+        :param tire_description: The title of the tire to be shown
+        :return: Returns the brand
+        """
+        # TODO: Need to test this method
+        tire_dict = {'MOTOCLAW': 'MOTOCLAW',
+                     'MOTOBOSS': 'MOTOBOSS',
+                     'MOTOFORCE': 'MOTOFORCE',
+                     'MOTOHAMMER': 'MOTOHAMMER',
+                     'EFX MOTOHAVOK': 'EFX MOTOHAVOK',
+                     'MOTOMAX': 'MOTOMAX',
+                     'MOTOVATOR': 'MOTOVATOR',
+                     'MOTOVATOR R/T': 'MOTOVATOR R/T',
+                     'SLINGER': 'SLINGER',
+                     'MOTOMTC': 'MOTOMTC'}
+        for t in tire_dict:
+            if t in tire_description:
+                return tire_dict[t]
+        return "No Brand"
+
+    @staticmethod
+    def get_all_wheel_pros_wheel_products_product_ids():
+        """
+        Method to return all wheel product ids
+        :return: wheel product ids
+        """
+        # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+
+        #Method that will get all Shopify.Product from shopify
+        product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+        # List to return
+        wheel_products = []
+        # Go through all Shopify.Product from shopify
+        for p in product_dict:
+            # Check if the information is correct for Wheel Pros, Wheels
+            if product_dict[p].vendor == "Wheel Pros" and product_dict[p].product_type == "Wheels":
+                # Add the product id to the list
+                wheel_products.append(p)
+        # Return the wheel product ids
+        return wheel_products
+
+    @staticmethod
+    def get_all_wheel_variants_skus_from_shopify():
+        """
+        Method to return all wheel variants skus from shopify
+        :return: wheel variants skus from shopify
+        """
+        # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+
+        # Method that will get all Shopify.Product from shopify
+        product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+        # List to return
+        wheel_variants_skus = []
+        # Go through all Shopify.Product from shopify
+        for p in product_dict:
+            # Check if the information is correct for Wheel Pros, Wheels
+            if product_dict[p].vendor == "Wheel Pros" and product_dict[p].product_type == "Wheels":
+                # go through the variants
+                for v in product_dict[p].variants:
+                    # Add the sku (or upc) for all the variants
+                    wheel_variants_skus.append(v.sku)
+        # Return all of the wheel variant's skus from shopify
+        return wheel_variants_skus
+
+    @staticmethod
+    def get_all_wheel_variants_in_shopify():
+        """
+        Method is used to get all of the wheel variants in shopify, so then it can
+        be compared to the local versions.
+        :return: Returns all wheel variants (List of WheelVariants)
+        """
+
+        #TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+
+        # Helper method to get the skus so the products can be found
+        wheel_variants_skus = ShopifyTools.get_all_wheel_variants_skus_from_shopify()
+        # List to be returned
+        wheel_variants_in_shopify = []
+        # Loop through the wheel variants in currently in local
+        for wv in wheelTools.get_wheel_variants_list():
+            # Check if the upc local is the same as the shopify version
+            if wv.get_upc() in wheel_variants_skus:
+                # Add it into the list
+                wheel_variants_in_shopify.append(wv)
+        #Return the wheel variants in shopify
+        return wheel_variants_in_shopify
+
+    @staticmethod
+    def delete_all_wheels():
+        """
+        This method is used to delete all Wheel Pros - Wheels
+        :return: This method does not return anything
+        """
+        print("Deleting All Wheel Pro Wheels")
+        # Helper method to get all of the product ids needed
+        wheel_products = ShopifyTools.get_all_wheel_pros_wheel_products_product_ids()
+        # Bar Graph start
+        bar = pyprind.ProgBar(len(wheel_products), monitor=True, update_interval=.1)
+        # Keeps track of total deleted
         total_deleted = 0
-        for p in products:
-            # Get the specific product
-            id_for_product = wheelTools.find_id(p)
-            if id_for_product is not None:
-                # print(id_for_product)
-                deletes_product = shopify.Product.find(id_for_product)
-                # Remove the product
+        # Go through all wheel product ids found
+        for p in wheel_products:
+            # Try to delete, ,know that it might not exist
+            #TODO: May need to add in more exceptions
+            try:
+                # Shopify API - to get the product using the Product ID
+                deletes_product = shopify.Product.find(p)
+                # Delete the product
                 deletes_product.destroy()
-                wheelTools.delete_wheel(id_for_product)
+                # Delete the product from the local database
+                wheelTools.delete_wheel(p)
+                # Add 1 knowing that the delete worked
                 total_deleted += 1
+            except KeyError:
+                # Exception if it doesn't exist
+                print(p, " was not found!")
             bar.update(item_id=str(total_deleted))
+        # Print out the statistics of the method
         print(bar)
+        #TODO: Add a way to check if the method successfully deleted
 
 
 shop = ShopifyTools.start_shopify_api()
+wheelTools.load_wheel_variants_from_file()
+print(ShopifyTools.get_all_wheel_variants_in_shopify())
 
 # Makes a dictionary of product_ids to the actual resource
 # great for checking if the certain Product makes the resource
-ShopifyTools.add_new_wheels(ExcelTools.read_product_technical_data_usd(r'sheets/exp_10-21-2019_producttechdatausd.xlsx'))
-#ShopifyTools.add_new_tires(ExcelTools.read_tire_data_usd(r'sheets/exp_10-21-2019_tireData.xlsx'))
+wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/examples/producttechdatausd_example.xlsx')
+ShopifyTools.add_new_wheels(wheels_info)
+wheelTools.set_wheel_variants_list(wheels_info)
+# wheelTools.save_wheel_variants_to_file()
+# wheelTools.save_wheels_to_file()
+# wheelTools.load_wheels_from_file()
 
+print(ShopifyTools.get_all_wheel_variants_in_shopify())
+# ShopifyTools.add_new_tires(ExcelTools.read_tire_data_usd(r'sheets/exp_10-21-2019_tireData.xlsx'))
+# ShopifyTools.delete_all_wheels()
