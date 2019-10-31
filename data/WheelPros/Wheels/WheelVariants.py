@@ -74,25 +74,7 @@ class WheelVariants:
             return 1
 
     def __str__(self):
-        return """%s,
-               %s,
-               %s,
-               %s,
-               %s,
-               %s,
-               %s,
-               %s,
-               %s,
-               %s,""" % (self.get_style_description(),
-                         self.get_part_number(),
-                         self.get_part_num_description(),
-                         self.get_size(),
-                         self.get_finish(),
-                         self.get_map_price(),
-                         self.get_offset(),
-                         self.get_upc(),
-                         self.get_ship_weight(),
-                         self.get_wheel_image())
+        return """%s,""" % (self.get_style_description())
 
     def __repr__(self):
         return "Wheel Repr"

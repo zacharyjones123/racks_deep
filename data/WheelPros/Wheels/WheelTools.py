@@ -38,16 +38,6 @@ class WheelTools:
         self.wheel_variants_list = wheel_variants_list
         # self.build_wheels()
 
-    def load_wheels_from_file(self):
-        with open('sheets/save_files/wheels.pkl', 'rb') as input:
-            new_wheel = pickle.load(input)
-            self.wheels[new_wheel.get_product_id()] = new_wheel
-
-    def save_wheels_to_file(self):
-        with open('sheets/save_files/wheels.pkl', 'wb') as output:
-            for w in self.wheels:
-                pickle.dump(self.wheels[w], output, pickle.HIGHEST_PROTOCOL)
-
     def save_wheel_variants_to_file(self):
         print("Saving Save File")
         self.build_wheel_variants_list()
@@ -114,10 +104,10 @@ class WheelTools:
 
     def set_wheel_variants_list(self, wheel_variants_list):
         self.wheel_variants_list = wheel_variants_list
-        print(wheel_variants_list)
 
     def get_wheel_variants_list(self):
         return self.wheel_variants_list
+
     # Done
     def get_wheels(self):
         return self.wheels
