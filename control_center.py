@@ -8,7 +8,8 @@ import time
 from tqdm import tqdm
 from shopify_tools import ShopifyTools
 
-#TODO: Need to add more wrappers
+# TODO: Need to add more wrappers
+
 
 def delete_all_wheel_pros_wheels():
     """

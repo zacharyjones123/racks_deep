@@ -12,11 +12,14 @@ import time
 from data.WheelPros.Tires.TireTools import TireTools
 from data.WheelPros.Wheels.WheelTools import WheelTools
 from excel_tools import ExcelTools
+from data.WheelPros.Kits.KitTools import KitTools
 
 # Wheel Tools - Local Storage for Wheel Pros Wheels
 wheelTools = WheelTools()
 # Tire Tools - Local Storage for Wheel Pros Tires
 tireTools = TireTools()
+# Kit Tools - Local Storage for Wheel Pros Kits
+kitTools = KitTools()
 
 
 class ShopifyTools:
@@ -468,6 +471,46 @@ class ShopifyTools:
                 wheel_variants_in_shopify.append(wv)
         #Return the wheel variants in shopify
         return wheel_variants_in_shopify
+
+    @staticmethod
+    def get_new_kit(kit_variant):
+        # TODO: Make add_new_kit() method
+        pass
+
+    @staticmethod
+    def add_new_kits(kits):
+        # TODO: Make add_new_kits() method
+        # TODO: Need to test this method
+
+        bar = pyprind.ProgBar(len(kits), monitor=True, update_interval=.1)
+        total_added = 1
+        for i in range(len(kits)):
+            try:
+                w = kits[i]
+                # print("adding: ", w.get_style_description())
+                ShopifyTools.add_new_wheel(w)
+                bar.update(item_id=str(total_added))
+                total_added += 1
+            #This worked!!! I don't know what happened, but it worked!
+            # The error was caught, and then it continued. It happened
+            # at 5221
+
+            except pyactiveresource.connection.Error:
+                print("Internet is out, restarting server in 5 secodns")
+                i -= 1
+                time.sleep(10)
+            except TimeoutError:
+                total_added -= 1
+                i -= 1
+                print("Timeout error has occured, restarting server in 5 seconds")
+                time.sleep(10)
+            except HTTPError:
+                total_added -= 1
+                i -= 1
+                print("HTTP error has occured, restarting server in 5 seconds")
+                time.sleep(10)
+
+        print(bar)
 
     @staticmethod
     def delete_all_wheels():
