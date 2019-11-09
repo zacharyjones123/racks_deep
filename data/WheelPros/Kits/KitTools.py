@@ -5,6 +5,17 @@ import pyprind
 import pickle
 
 
+def load_vehicles(spreadsheet_name):
+    """
+    Load Vehicles method to get all of the possible vehicles
+    and fittings
+    :param spreadsheet_name: name of the spreadsheet
+    :return: Vehicles array
+    """
+    # TODO: Need to make this method for all of the wheel pros and what they fit to
+    return "Hello"
+
+
 class KitTools:
     def __init__(self):
         """
@@ -17,6 +28,7 @@ class KitTools:
         """
         self.kits = {}
         self.kit_variants_list = []
+        self.vehicles = load_vehicles("spreadsheet_name")
 
     def load_kit_variants_from_file(self):
         print("Loading Save File")
