@@ -1,5 +1,7 @@
 class WheelVariants:
-    def __init__(self, style_description, part_number, part_num_description, size, finish, map_price, offset, upc, ship_weight, wheel_image):
+    def __init__(self, style_description, part_number, part_num_description,
+                 size, finish, map_price, offset, upc,
+                 ship_weight, wheel_image):
         self.style_description = style_description
         self.part_number = part_number
         self.part_num_description = part_num_description
@@ -10,7 +12,6 @@ class WheelVariants:
         self.upc = upc
         self.ship_weight = ship_weight
         self.wheel_image = wheel_image
-
 
     def get_style_description(self):
         return self.style_description

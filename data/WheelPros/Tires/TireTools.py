@@ -29,9 +29,9 @@ class TireTools:
 
     def has_variants(self, tire_variant):
         for product_id in self.tires:
-            #print("--------------")
-            #print(tire_variant.get_comparison_var())
-            #print(self.tires[product_id].get_comparison_var())
+            # print("--------------")
+            # print(tire_variant.get_comparison_var())
+            # print(self.tires[product_id].get_comparison_var())
             if tire_variant.get_comparison_var() == self.tires[product_id].get_comparison_var():
                 return True
         return False

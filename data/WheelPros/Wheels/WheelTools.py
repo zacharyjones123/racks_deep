@@ -2,7 +2,6 @@ from data.WheelPros.Wheels.WheelVariants import WheelVariants
 from data.WheelPros.Wheels.Wheels import Wheels
 import pandas as pd
 import pyprind
-import pickle
 
 
 class WheelTools:
@@ -23,15 +22,15 @@ class WheelTools:
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
             wheel_variant = WheelVariants(str(df['styledescription'][i]),
-                                  str(df['partnumber'][i]),
-                                  str(df['partnumberdescription'][i]),
-                                  str(df['size'][i]),
-                                  str(df['finish'][i]),
-                                  str(df['MapPrice'][i]),
-                                  str(df['offset'][i]),
-                                  str(int(df['upc'][i])),
-                                  str(df['Shipping Weight'][i]),
-                                  str(df['wheelimage'][i]))
+                                          str(df['partnumber'][i]),
+                                          str(df['partnumberdescription'][i]),
+                                          str(df['size'][i]),
+                                          str(df['finish'][i]),
+                                          str(df['MapPrice'][i]),
+                                          str(df['offset'][i]),
+                                          str(int(df['upc'][i])),
+                                          str(df['Shipping Weight'][i]),
+                                          str(df['wheelimage'][i]))
             wheel_variants_list.append(wheel_variant)
             bar.update(item_id=all_total)
             all_total += 1
@@ -44,15 +43,15 @@ class WheelTools:
         bar = pyprind.ProgBar(len(self.wheel_variants_list), monitor=True)
         all_total = 1
         df_temp = {'styledescription': [],
-                      'partnumber': [],
-                      'partnumberdescription': [],
-                      'size': [],
-                      'finish': [],
-                      'MapPrice': [],
-                      'offset': [],
-                      'upc': [],
-                      'Shipping Weight': [],
-                      'wheelimage': []}
+                   'partnumber': [],
+                   'partnumberdescription': [],
+                   'size': [],
+                   'finish': [],
+                   'MapPrice': [],
+                   'offset': [],
+                   'upc': [],
+                   'Shipping Weight': [],
+                   'wheelimage': []}
 
         for w in self.wheel_variants_list:
             df_temp['styledescription'].append(w.get_style_description())

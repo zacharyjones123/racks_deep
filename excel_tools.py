@@ -79,16 +79,16 @@ class ExcelTools:
         for i in df.index:
             if df['MapPrice'][i] != 0:
                 wheel = WheelVariants(str(df['styledescription'][i]),
-                               str(df['partnumber'][i]),
-                               str(df['partnumberdescription'][i]),
-                               str(df['size'][i]),
-                               str(df['finish'][i]),
-                               str(df['MapPrice'][i]),
-                               str(df['offset'][i]),
-                               str(int(df['upc'][i])),
-                               str(df['Shipping Weight'][i]),
-                               str(df['wheelimage'][i]))
-            if not wheel is None:
+                                      str(df['partnumber'][i]),
+                                      str(df['partnumberdescription'][i]),
+                                      str(df['size'][i]),
+                                      str(df['finish'][i]),
+                                      str(df['MapPrice'][i]),
+                                      str(df['offset'][i]),
+                                      str(int(df['upc'][i])),
+                                      str(df['Shipping Weight'][i]),
+                                      str(df['wheelimage'][i]))
+            if wheel is not None:
                 wheels.append(wheel)
             total += 1
             all_total += 1
@@ -115,14 +115,14 @@ class ExcelTools:
             tire = None
             if df['MAP'][i] != 0:
                 tire = TireVariants(str(df['PartNo'][i]),
-                             str(df['TireSize'][i]),
-                             str(df['TireDescription'][i]),
-                             str(df['TireSizeDescription'][i]),
-                             str(int(df['UPC'][i])),
-                             str(df['PictureCd'][i]),
-                             str(df['Weight'][i]),
-                             str(df['MAP'][i]))
-            if not tire is None:
+                                    str(df['TireSize'][i]),
+                                    str(df['TireDescription'][i]),
+                                    str(df['TireSizeDescription'][i]),
+                                    str(int(df['UPC'][i])),
+                                    str(df['PictureCd'][i]),
+                                    str(df['Weight'][i]),
+                                    str(df['MAP'][i]))
+            if tire is not None:
                 tire.set_comparison_var(ExcelTools.find_tire_brand(tire.get_tire_description()))
                 tires.append(tire)
             total += 1
@@ -168,7 +168,7 @@ class ExcelTools:
         # 1) Do any need to be deleted
         for i in older_tires:
             # if the new tire does not exist yet
-            if not i in newer_tires:
+            if i not in newer_tires:
                 # delete it from older tires
                 to_delete.append(i)
         # mark the tire to delete
@@ -177,7 +177,7 @@ class ExcelTools:
         # 2) Do any need to be added
         for i in newer_tires:
             # if the new tire wasn't there before
-            if not i in older_tires:
+            if i not in older_tires:
                 # add it into the tires
                 to_add.append(newer_tires[i])
         # mark the tire to add

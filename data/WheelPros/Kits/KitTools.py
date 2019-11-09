@@ -1,8 +1,7 @@
-from data.WheelPros.Wheels.WheelVariants import WheelVariants
-from data.WheelPros.Wheels.Wheels import Wheels
 import pandas as pd
 import pyprind
-import pickle
+
+from data.WheelPros.Kits.Kits import Kits
 
 
 def load_vehicles(spreadsheet_name):
@@ -13,6 +12,7 @@ def load_vehicles(spreadsheet_name):
     :return: Vehicles array
     """
     # TODO: Need to make this method for all of the wheel pros and what they fit to
+    print(spreadsheet_name)
     return "Hello"
 
 
@@ -38,7 +38,8 @@ class KitTools:
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
             # TODO: Need to figure this out, the conversion
-            #kit_variant = KitVariants()
+            # kit_variant = KitVariants()
+            print(i)
             kit_variants_list.append(kit_variant)
             bar.update(item_id=all_total)
             all_total += 1
@@ -49,7 +50,7 @@ class KitTools:
         self.build.kit_variants_list()
         bar = pyprind.ProgBar(len(self.kit_variants_list), monitor=True)
         all_total = 1
-        #df_temp = ?
+        # df_temp = ?
         # TODO: From here down we need to figure out the save format
 
     def build_kits_variants_list(self):

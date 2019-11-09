@@ -5,7 +5,7 @@ API
 """
 import pyactiveresource
 import shopify
-from cred.cred import SHOP_URL
+# from cred.cred import SHOP_URL
 import pyprind
 from urllib.error import HTTPError
 import time
@@ -31,8 +31,9 @@ class ShopifyTools:
         :return: shop variable to call
         """
         # TODO: Need to add exceptions here in case it doesn't work
-        shopify.ShopifyResource.set_site(SHOP_URL)
-        return shopify.Shop.current
+        # shopify.ShopifyResource.set_site(SHOP_URL)
+        # return shopify.Shop.current
+        return None
 
     @staticmethod
     def update_product_map_price(product, new_map_price):
@@ -48,8 +49,6 @@ class ShopifyTools:
             update_product.variants = [variant]
 
         update_product.save()
-        success = update_product.save()  # returns false if the record is invalid
-        # or
         if update_product.errors:
             # something went wrong, see new_product.errors.full_messages() for example
             update_product.errors.full_messages()
@@ -64,7 +63,7 @@ class ShopifyTools:
         :return: a list of all resources
         """
         # TODO: Need to test this method
-        while(True):
+        while True:
             try:
                 print("Getting All Product Ids:")
                 resource_count = resource.count(**kwargs)
@@ -72,7 +71,7 @@ class ShopifyTools:
                 if resource_count > 0:
                     bar = pyprind.ProgBar(len(range(1, ((resource_count - 1) // 250) + 2)), monitor=True)
                     for page in range(1, ((resource_count - 1) // 250) + 2):
-                        #time.sleep(0.25)
+                        # time.sleep(0.25)
                         kwargs.update({"limit": 250, "page": page})
                         resources.extend(resource.find(**kwargs))
                         bar.update()
@@ -86,7 +85,6 @@ class ShopifyTools:
             except HTTPError:
                 print("HTTP error has occured, restarting server in 5 seconds")
                 time.sleep(10)
-
 
     @staticmethod
     def product_ids_to_products(resources):
@@ -130,7 +128,7 @@ class ShopifyTools:
                                        'weight': float(wheel_variant.get_ship_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
-            #print(new_wheel_product)
+            # print(new_wheel_product)
             new_wheel_product.variants.append(variant)
             # print("Variants: ", new_wheel_product.variants)
             new_wheel_product.save()
@@ -145,7 +143,8 @@ class ShopifyTools:
             new_wheel_product.product_type = "Wheels"
             new_wheel_product.body_html = """<b>%s</b>
                                     <p>%s</p>
-                                    """ % (wheel_variant.get_style_description(), wheel_variant.get_part_num_description())
+                                    """ % (wheel_variant.get_style_description(),
+                                           wheel_variant.get_part_num_description())
             variant = shopify.Variant({'price': float(wheel_variant.get_map_price()),
                                        'option1': wheel_variant.get_size(),
                                        'option2': wheel_variant.get_offset(),
@@ -167,7 +166,11 @@ class ShopifyTools:
                         %s,
                         %s,
                         %s,
-                        %s""" % (wheel_variant.get_part_number(), wheel_variant.get_size(), wheel_variant.get_finish(), wheel_variant.get_offset(), wheel_variant.get_upc())
+                        %s""" % (wheel_variant.get_part_number(),
+                                 wheel_variant.get_size(),
+                                 wheel_variant.get_finish(),
+                                 wheel_variant.get_offset(),
+                                 wheel_variant.get_upc())
 
             image = shopify.Image()
             file_name = "%s" % (wheel_variant.get_wheel_image())
@@ -177,9 +180,8 @@ class ShopifyTools:
 
             wheelTools.add_wheel(new_wheel_product.id, wheel_variant)
 
-            #print("PRODUCT ID: ", new_wheel_product.id)
-            success = new_wheel_product.save()  # returns false if the record is invalid
-            # or
+            # print("PRODUCT ID: ", new_wheel_product.id)
+            new_wheel_product.save()  # returns false if the record is invalid
             if new_wheel_product.errors:
                 # something went wrong, see new_product.errors.full_messages() for example
                 print(new_wheel_product.errors.full_messages())
@@ -202,7 +204,7 @@ class ShopifyTools:
                 ShopifyTools.add_new_wheel(w)
                 bar.update(item_id=str(total_added))
                 total_added += 1
-            #This worked!!! I don't know what happened, but it worked!
+            # This worked!!! I don't know what happened, but it worked!
             # The error was caught, and then it continued. It happened
             # at 5221
 
@@ -228,6 +230,7 @@ class ShopifyTools:
         """
         Method used to add Wheel Pros Wheels
         :param wheels: wheels added
+        :param total_wheels: total wheels to be added
         :return: Nothing
         """
         # TODO: Need to test this method
@@ -246,15 +249,15 @@ class ShopifyTools:
                     ShopifyTools.add_new_wheel(w)
                     bar_graph_string = "Section: " + str(sections_done)
                     bar_graph_string += " - Index: " + str(total_added)
-                    bar.update(item_id=(bar_graph_string))
+                    bar.update(item_id=bar_graph_string)
                     total_added += 1
-                    total_in_section_done +=1
+                    total_in_section_done += 1
                     # This worked!!! I don't know what happened, but it worked!
                     # The error was caught, and then it continued. It happened
                     # at 5221
 
                 except pyactiveresource.connection.Error:
-                    print("Internet is out, restarting server in 5 secodns")
+                    print("Internet is out, restarting server in 5 seconds")
                     j -= 1
                     time.sleep(10)
                 except TimeoutError:
@@ -267,7 +270,7 @@ class ShopifyTools:
                     j -= 1
                     print("HTTP error has occured, restarting server in 5 seconds")
                     time.sleep(10)
-            sections_done +=1
+            sections_done += 1
 
         print(bar)
 
@@ -344,8 +347,7 @@ class ShopifyTools:
             new_tire_product.save()
 
             tireTools.add_tire(new_tire_product.id, tire_variant)
-            success = new_tire_product.save()  # returns false if the record is invalid
-            # or
+            new_tire_product.save()  # returns false if the record is invalid
             if new_tire_product.errors:
                 # something went wrong, see new_product.errors.full_messages() for example
                 new_tire_product.errors.full_messages()
@@ -413,7 +415,7 @@ class ShopifyTools:
         """
         # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
 
-        #Method that will get all Shopify.Product from shopify
+        # Method that will get all Shopify.Product from shopify
         product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
         # List to return
         wheel_products = []
@@ -457,7 +459,7 @@ class ShopifyTools:
         :return: Returns all wheel variants (List of WheelVariants)
         """
 
-        #TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+        # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
 
         # Helper method to get the skus so the products can be found
         wheel_variants_skus = ShopifyTools.get_all_wheel_variants_skus_from_shopify()
@@ -469,7 +471,7 @@ class ShopifyTools:
             if wv.get_upc() in wheel_variants_skus:
                 # Add it into the list
                 wheel_variants_in_shopify.append(wv)
-        #Return the wheel variants in shopify
+        # Return the wheel variants in shopify
         return wheel_variants_in_shopify
 
     @staticmethod
@@ -491,7 +493,7 @@ class ShopifyTools:
                 ShopifyTools.add_new_wheel(w)
                 bar.update(item_id=str(total_added))
                 total_added += 1
-            #This worked!!! I don't know what happened, but it worked!
+            # This worked!!! I don't know what happened, but it worked!
             # The error was caught, and then it continued. It happened
             # at 5221
 
@@ -557,6 +559,9 @@ class ShopifyTools:
         """
         # TODO: Need to simplify this method, it has 3 for loops
 
+        # Method that will get all Shopify.Product from shopify
+        product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+
         # Build the wheels in WheelTools
         # Go through all products on shopify
         for p in product_dict:
@@ -568,6 +573,7 @@ class ShopifyTools:
                     if v.sku == w.get_upc():
                         # Add it to wheels
                         wheelTools.add_wheel(p, w)
+
     @staticmethod
     def chunks(l, n):
         """
@@ -582,35 +588,37 @@ class ShopifyTools:
         for i in range(0, len(l), n):
             yield l[i:i + n]
 
-shop = ShopifyTools.start_shopify_api()
-wheelTools.load_wheel_variants_from_file()
-wheelTools.set_wheel_variants_list(ExcelTools.read_product_technical_data_usd("sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx"))
+
+# shop = ShopifyTools.start_shopify_api()
+# wheelTools.load_wheel_variants_from_file()
+# spread_sheet_name = "sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx"
+# wheelTools.set_wheel_variants_list(ExcelTools.read_product_technical_data_usd(spread_sheet_name))
 
 # This is all of the products, so we can
-#product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+# product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
 # Turn this into Wheels, and add them to WheelTools
 
 # This is used to build the wheels for WheelTools
-#ShopifyTools.build_wheels()
+# ShopifyTools.build_wheels()
 
 
-#all_wheel_variants = ShopifyTools.get_all_wheel_variants_in_shopify()
+# all_wheel_variants = ShopifyTools.get_all_wheel_variants_in_shopify()
 
 # wheelTools.load_wheel_variants_from_file()
-#wheel_pro_wheels_list = ShopifyTools.get_all_wheel_variants_in_shopify()
-#for w in wheel_pro_wheels_list:
+# wheel_pro_wheels_list = ShopifyTools.get_all_wheel_variants_in_shopify()
+# for w in wheel_pro_wheels_list:
 #    print(w)
 #
 # # Makes a dictionary of product_ids to the actual resource
 # # great for checking if the certain Product makes the resource
-#wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx')
-#Need to split this up into 100 chunks
-#wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
-#ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
+# wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx')
+# Need to split this up into 100 chunks
+# wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
+# ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
 # wheelTools.set_wheel_variants_list(wheels_info)
 # # wheelTools.save_wheel_variants_to_file()
 # # wheelTools.save_wheels_to_file()
 #
 # print(ShopifyTools.get_all_wheel_variants_in_shopify())
 # ShopifyTools.add_new_tires(ExcelTools.read_tire_data_usd(r'sheets/exp_10-21-2019_tireData.xlsx'))
-#ShopifyTools.delete_all_wheels()
+# ShopifyTools.delete_all_wheels()
