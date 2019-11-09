@@ -79,9 +79,6 @@ class WheelTools:
         # Close the Pandas Excel writer and output the Excel file.
         writer.save()
 
-    def build_wheels_list(self):
-        pass
-
     def build_wheel_variants_list(self):
         self.wheel_variants_list = []
         for w in self.wheels:
