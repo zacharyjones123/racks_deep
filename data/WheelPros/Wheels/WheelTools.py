@@ -1,3 +1,5 @@
+from xlrd import XLRDError
+
 from data.WheelPros.Wheels.WheelVariants import WheelVariants
 from data.WheelPros.Wheels.Wheels import Wheels
 import pandas as pd
@@ -16,30 +18,38 @@ class WheelTools:
 
     def load_wheel_variants_from_file(self):
         print("Loading Save File")
-        df = pd.read_excel(r'sheets/save_files/save_file.xlsx')
-        wheel_variants_list = []
-        all_total = 1
-        bar = pyprind.ProgBar(len(df.index), monitor=True)
-        for i in df.index:
-            wheel_variant = WheelVariants(str(df['styledescription'][i]),
-                                          str(df['partnumber'][i]),
-                                          str(df['partnumberdescription'][i]),
-                                          str(df['size'][i]),
-                                          str(df['finish'][i]),
-                                          str(df['MapPrice'][i]),
-                                          str(df['offset'][i]),
-                                          str(int(df['upc'][i])),
-                                          str(df['Shipping Weight'][i]),
-                                          str(df['wheelimage'][i]))
-            wheel_variants_list.append(wheel_variant)
-            bar.update(item_id=all_total)
-            all_total += 1
-        self.wheel_variants_list = wheel_variants_list
-        # self.build_wheels()
+        try:
+            df = pd.read_excel(r'sheets/save_files/save_file.xlsx')
+            wheel_variants_list = []
+            all_total = 1
+            bar = pyprind.ProgBar(len(df.index), monitor=True)
+            for i in df.index:
+                wheel_variant = WheelVariants(str(df['styledescription'][i]),
+                                              str(df['partnumber'][i]),
+                                              str(df['partnumberdescription'][i]),
+                                              str(df['size'][i]),
+                                              str(df['finish'][i]),
+                                              str(df['MapPrice'][i]),
+                                              str(df['offset'][i]),
+                                              str(int(df['upc'][i])),
+                                              str(df['Shipping Weight'][i]),
+                                              str(df['wheelimage'][i]),
+                                              str(df['Bolt Pattern Metric'][i]),
+                                              str(df['Bolt Pattern US'][i]),
+                                              str(df['W.D. USD']))
+                wheel_variants_list.append(wheel_variant)
+                bar.update(item_id=all_total)
+                all_total += 1
+            self.wheel_variants_list = wheel_variants_list
+            # self.build_wheels()
+        except XLRDError:
+            print("Save file is empty or does not exist, try again")
 
     def save_wheel_variants_to_file(self):
         print("Saving Save File")
-        self.build_wheel_variants_list()
+        # TODO: Need to fix this
+        # self.build_wheel_variants_list()
+        print(self.wheel_variants_list)
         bar = pyprind.ProgBar(len(self.wheel_variants_list), monitor=True)
         all_total = 1
         df_temp = {'styledescription': [],
@@ -51,7 +61,11 @@ class WheelTools:
                    'offset': [],
                    'upc': [],
                    'Shipping Weight': [],
-                   'wheelimage': []}
+                   'wheelimage': [],
+                   'Bolt Pattern Metric': [],
+                   'Bolt Pattern US':[],
+                   'W.D. USD':[]
+                   }
 
         for w in self.wheel_variants_list:
             df_temp['styledescription'].append(w.get_style_description())
@@ -64,6 +78,9 @@ class WheelTools:
             df_temp['upc'].append(w.get_upc())
             df_temp['Shipping Weight'].append(w.get_ship_weight())
             df_temp['wheelimage'].append(w.get_wheel_image())
+            df_temp['Bolt Pattern Metric'].append(w.get_bolt_pattern_metric())
+            df_temp['Bolt Pattern US'].append(w.get_bolt_pattern_us())
+            df_temp['W.D. USD'].append(w.get_msrp_price())
             bar.update(item_id=all_total)
             all_total += 1
 
@@ -96,7 +113,17 @@ class WheelTools:
 
     # Done
     def delete_wheel(self, product_id):
+        print(self.wheels)
+        # Save a copy of the wheel
+        wheel_copy = self.wheels[product_id]
         del self.wheels[product_id]
+
+        # Also need to delete wheel_variants also
+        new_wheel_variants_list = []
+        for w in self.wheel_variants_list:
+            if w.get_style_description() == wheel_copy.get_style_description():
+                new_wheel_variants_list += w
+        self.wheel_variants_list = new_wheel_variants_list
 
     def set_wheel_variants_list(self, wheel_variants_list):
         self.wheel_variants_list = wheel_variants_list

@@ -77,7 +77,10 @@ class ExcelTools:
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            if df['MapPrice'][i] != 0:
+            if df['W.D. USD'][i] != 0:
+                upc_temp = ""
+                if str(df['upc'][i]) != "nan":
+                    upc_temp = str(int(df['upc'][i]))
                 wheel = WheelVariants(str(df['styledescription'][i]),
                                       str(df['partnumber'][i]),
                                       str(df['partnumberdescription'][i]),
@@ -85,9 +88,12 @@ class ExcelTools:
                                       str(df['finish'][i]),
                                       str(df['MapPrice'][i]),
                                       str(df['offset'][i]),
-                                      str(int(df['upc'][i])),
+                                      upc_temp,
                                       str(df['Shipping Weight'][i]),
-                                      str(df['wheelimage'][i]))
+                                      str(df['wheelimage'][i]),
+                                      str(df['Bolt Pattern Metric'][i]),
+                                      str(df['Bolt Pattern US'][i]),
+                                      str(df['W.D. USD'][i]))
             if wheel is not None:
                 wheels.append(wheel)
             total += 1

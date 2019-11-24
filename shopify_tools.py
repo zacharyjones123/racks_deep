@@ -5,7 +5,7 @@ API
 """
 import pyactiveresource
 import shopify
-# from cred.cred import SHOP_URL
+from cred.cred import SHOP_URL
 import pyprind
 from urllib.error import HTTPError
 import time
@@ -31,8 +31,8 @@ class ShopifyTools:
         :return: shop variable to call
         """
         # TODO: Need to add exceptions here in case it doesn't work
-        # shopify.ShopifyResource.set_site(SHOP_URL)
-        # return shopify.Shop.current
+        shopify.ShopifyResource.set_site(SHOP_URL)
+        return shopify.Shop.current
         return None
 
     @staticmethod
@@ -109,12 +109,20 @@ class ShopifyTools:
         # TODO: Need to find a way to stream line this
         # TODO: Comment out the method
 
+        # Need to find wheel price
+        wheel_price1 = 0
+        if wheel_variant.get_msrp_price() != 0:
+            wheel_price1 = float(wheel_variant.get_msrp_price())
+        elif wheel_variant.get_map_price() != 0:
+            wheel_price1 = float(wheel_variant.get_map_price())
+        else:
+            wheel_price1 = 0
         # 2 cases
         # 1) Is a variant
         if wheelTools.has_variants(wheel_variant):
             product_id = wheelTools.find_product_id(wheel_variant)
             new_wheel_product = shopify.Product.find(product_id)
-            variant = shopify.Variant({'price': float(wheel_variant.get_map_price()),
+            variant = shopify.Variant({'price': wheel_price1,
                                        'option1': wheel_variant.get_size(),
                                        'option2': wheel_variant.get_offset(),
                                        'quantity': 1,
@@ -128,6 +136,16 @@ class ShopifyTools:
                                        'weight': float(wheel_variant.get_ship_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
+            """
+            size_metafield = shopify.Metafield.create({
+                'namespace':,
+                'key':'wheel_size',
+                'value':wheel_variant.get_wheel_size(),
+                'value_type':'string',
+                'owner_resource':'product',
+                'owner_id':product_id,
+            })
+            """
             # print(new_wheel_product)
             new_wheel_product.variants.append(variant)
             # print("Variants: ", new_wheel_product.variants)
@@ -145,7 +163,7 @@ class ShopifyTools:
                                     <p>%s</p>
                                     """ % (wheel_variant.get_style_description(),
                                            wheel_variant.get_part_num_description())
-            variant = shopify.Variant({'price': float(wheel_variant.get_map_price()),
+            variant = shopify.Variant({'price': wheel_price1,
                                        'option1': wheel_variant.get_size(),
                                        'option2': wheel_variant.get_offset(),
                                        'quantity': 1,
@@ -166,11 +184,15 @@ class ShopifyTools:
                         %s,
                         %s,
                         %s,
+                        %s,
+                        %s,
                         %s""" % (wheel_variant.get_part_number(),
                                  wheel_variant.get_size(),
                                  wheel_variant.get_finish(),
                                  wheel_variant.get_offset(),
-                                 wheel_variant.get_upc())
+                                 wheel_variant.get_upc(),
+                                 wheel_variant.get_bolt_pattern_metric()[:-3],
+                                 wheel_variant.get_bolt_pattern_us()[:-3])
 
             image = shopify.Image()
             file_name = "%s" % (wheel_variant.get_wheel_image())
@@ -223,7 +245,7 @@ class ShopifyTools:
                 print("HTTP error has occured, restarting server in 5 seconds")
                 time.sleep(10)
 
-        print(bar)
+            print(bar)
 
     @staticmethod
     def add_new_wheels_in_chunks(wheels, total_wheels):
@@ -243,18 +265,19 @@ class ShopifyTools:
             total_in_section_done = 1
             for j in range(len(wheels[i])):
                 try:
-                    time.sleep(0.25)
-                    w = wheels[i][j]
-                    # print("adding: ", w.get_style_description())
-                    ShopifyTools.add_new_wheel(w)
-                    bar_graph_string = "Section: " + str(sections_done)
-                    bar_graph_string += " - Index: " + str(total_added)
-                    bar.update(item_id=bar_graph_string)
-                    total_added += 1
-                    total_in_section_done += 1
-                    # This worked!!! I don't know what happened, but it worked!
-                    # The error was caught, and then it continued. It happened
-                    # at 5221
+                    if i * j >= 10000:
+                        time.sleep(0.25)
+                        w = wheels[i][j]
+                        # print("adding: ", w.get_style_description())
+                        ShopifyTools.add_new_wheel(w)
+                        bar_graph_string = "Section: " + str(sections_done)
+                        bar_graph_string += " - Index: " + str(total_added)
+                        bar.update(item_id=bar_graph_string)
+                        total_added += 1
+                        total_in_section_done += 1
+                        # This worked!!! I don't know what happened, but it worked!
+                        # The error was caught, and then it continued. It happened
+                        # at 5221
 
                 except pyactiveresource.connection.Error:
                     print("Internet is out, restarting server in 5 seconds")
@@ -589,36 +612,31 @@ class ShopifyTools:
             yield l[i:i + n]
 
 
-# shop = ShopifyTools.start_shopify_api()
-# wheelTools.load_wheel_variants_from_file()
-# spread_sheet_name = "sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx"
-# wheelTools.set_wheel_variants_list(ExcelTools.read_product_technical_data_usd(spread_sheet_name))
+shop = ShopifyTools.start_shopify_api()
+wheelTools.load_wheel_variants_from_file()
+spread_sheet_name = "sheets/WheelPros/example_producttechdatausd.xlsx"
+wheelTools.set_wheel_variants_list(ExcelTools.read_product_technical_data_usd(spread_sheet_name))
 
 # This is all of the products, so we can
-# product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
 # Turn this into Wheels, and add them to WheelTools
 
 # This is used to build the wheels for WheelTools
-# ShopifyTools.build_wheels()
+ShopifyTools.build_wheels()
 
 
-# all_wheel_variants = ShopifyTools.get_all_wheel_variants_in_shopify()
+def add_wheels_shopify_tool():
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/example_producttechdatausd.xlsx')
+    # Need to split this up into 100 chunks
+    wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
+    ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
+    wheelTools.set_wheel_variants_list(wheels_info)
+    wheelTools.save_wheel_variants_to_file()
 
-# wheelTools.load_wheel_variants_from_file()
-# wheel_pro_wheels_list = ShopifyTools.get_all_wheel_variants_in_shopify()
-# for w in wheel_pro_wheels_list:
-#    print(w)
-#
-# # Makes a dictionary of product_ids to the actual resource
-# # great for checking if the certain Product makes the resource
-# wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx')
-# Need to split this up into 100 chunks
-# wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
-# ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
-# wheelTools.set_wheel_variants_list(wheels_info)
-# # wheelTools.save_wheel_variants_to_file()
-# # wheelTools.save_wheels_to_file()
-#
-# print(ShopifyTools.get_all_wheel_variants_in_shopify())
-# ShopifyTools.add_new_tires(ExcelTools.read_tire_data_usd(r'sheets/exp_10-21-2019_tireData.xlsx'))
-# ShopifyTools.delete_all_wheels()
+
+def delete_wheels_shopify_tool():
+    ShopifyTools.delete_all_wheels()
+    wheelTools.save_wheel_variants_to_file()
+
+
+delete_wheels_shopify_tool()
