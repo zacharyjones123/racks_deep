@@ -4,11 +4,72 @@ excel_tools.py: All of the tools needed to read price sheets
 """
 import pandas as pd
 import pyprind
+
+from data.SAndBFilters.Products.Filter import Filter
 from data.WheelPros.Wheels.WheelVariants import WheelVariants
 from data.WheelPros.Tires.TireVariants import TireVariants
 
 
 class ExcelTools:
+
+    @staticmethod
+    def read_generic_product_sheet(spreadshet_name):
+        """
+        Method that is used to take any product sheet
+        and turn the spreadsheet into products
+        :param spreadshet_name: Name of the spreadsheet
+        :return: array of objects
+        """
+
+    @staticmethod
+    def read_high_lifter(spreadsheet_name):
+        """
+        Method that is used to take the HighLifter
+        spreadsheet and turn spreadsheet into products
+        :param spreadsheet_name: Name of the spreadsheet
+        :return: array of objects
+        """
+        pass
+
+    @staticmethod
+    def read_super_atv(spread_sheet_name):
+        """
+        Method that is used to take the SuperATV
+        spreadsheet and turn spreadsheet into products
+        :param spread_sheet_name:  Name of the spreadsheet
+        :return: array of objects
+        """
+        pass
+
+    @staticmethod
+    def read_s_and_b_filters(spread_sheet_name):
+        """
+        Method that is used to take the S&B Filters
+        spreadsheet and turn spreadsheet into products
+        :param spread_sheet_name: Name of the spreadsheet
+        :return: array of objects
+        """
+        print("Reading S&B Filters products")
+        df = pd.read_excel(spread_sheet_name)
+        products = []
+        product = None
+        total = 1
+        all_total = 1
+        bar = pyprind.ProgBar(len(df.index), monitor=True)
+        for i in df.index:
+            if df["Price Type - Retail/ MAP"][i] != 0:
+                product = Filter(str(df['S&B Part #'][i]),
+                                      str(df['UPC'][i]),
+                                      str(df['Product Description'][i]),
+                                      str(df['Product Description / Fitment'][i]),
+                                      str(df['Type'][i]),
+                                      str(df['Price Type - Retail / MAP'][i]))
+            if product is not None:
+                products.append(product)
+            total += 1
+            all_total += 1
+            bar.update()
+        return products
 
     @staticmethod
     def find_tire_brand(tire_description):

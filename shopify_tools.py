@@ -248,6 +248,35 @@ class ShopifyTools:
             print(bar)
 
     @staticmethod
+    def update_wheel(wheel_variant):
+        """
+        Method used to update wheel with another wheel
+        :param wheel_variant: wheel to update with
+        :return: report of what happened
+        """
+        pass
+
+    @staticmethod
+    def update_wheels(wheels):
+        """
+        Uses helper method update_wheel to update
+        all of the wheels in the wheels array
+        :param wheels: array of wheels to udpate
+        :return: report of what happened
+        """
+        pass
+
+    @staticmethod
+    def update_wheels_in_chunks(wheels, total_wheels):
+        """
+        Way of updating wheels in chunks
+        :param wheels: wheels ot be added
+        :param total_wheels: total number of wheels to add
+        :return: report of what happened
+        """
+        pass
+
+    @staticmethod
     def add_new_wheels_in_chunks(wheels, total_wheels):
         """
         Method used to add Wheel Pros Wheels
