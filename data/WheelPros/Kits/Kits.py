@@ -7,9 +7,17 @@ class Kits(Products):
         Init method for the Kits class
         :param kit_variant: starting kit_variant
         """
-        super().__init__(kit_variant.get_upc(), kit_variant.get_map_price())
+        super().__init__(kit_variant.get_upc(), kit_variant.get_price())
         self.kit_variants = {kit_variant.get_upc(): kit_variant}
         self.product_id = None
+        self.kit_name = kit_variant.get_kit_name()
+
+    def get_kit_name(self):
+        return self.kit_name
+
+    # Done
+    def add_variant(self, variant_kit):
+        self.kit_variants[variant_kit.get_upc()] = variant_kit
 
     def get_kit_variants(self):
         """

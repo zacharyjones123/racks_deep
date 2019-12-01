@@ -8,11 +8,14 @@ import shopify
 from cred.cred import SHOP_URL
 import pyprind
 from urllib.error import HTTPError
+import urllib.request
 import time
 from data.WheelPros.Tires.TireTools import TireTools
 from data.WheelPros.Wheels.WheelTools import WheelTools
 from excel_tools import ExcelTools
 from data.WheelPros.Kits.KitTools import KitTools
+
+import mimetypes
 
 # Wheel Tools - Local Storage for Wheel Pros Wheels
 wheelTools = WheelTools()
@@ -23,6 +26,42 @@ kitTools = KitTools()
 
 
 class ShopifyTools:
+
+    @staticmethod
+    def is_url_image(url):
+        mimetype, encoding = mimetypes.guess_type(url)
+        return (mimetype and mimetype.startswith('image'))
+
+    @staticmethod
+    def check_url(url):
+        """Returns True if the url returns a response code between 200-300,
+           otherwise return False.
+        """
+        try:
+            headers = {
+                "Range": "bytes=0-10",
+                "User-Agent": "MyTestAgent",
+                "Accept": "*/*"
+            }
+
+            req = urllib.request.Request(url, headers=headers)
+            response = urllib.request.urlopen(req)
+            return response.code in range(200, 209)
+        except Exception:
+            return False
+
+    @staticmethod
+    def update_all_wheel_images():
+        """
+        This stems from a bug I found where the images exist
+        but the program for some reason is not adding them in?
+        # TODO: Add this to the list of bugs
+        :return:
+        """
+
+    @staticmethod
+    def is_image_and_ready(url):
+        return ShopifyTools.is_url_image(url) and ShopifyTools.check_url(url)
 
     @staticmethod
     def start_shopify_api():
@@ -117,6 +156,17 @@ class ShopifyTools:
             wheel_price1 = float(wheel_variant.get_map_price())
         else:
             wheel_price1 = 0
+
+        # Make the bolt pattern setup
+        lug_count = wheel_variant.get_lug_count()
+        dist1 = str(int(float(wheel_variant.get_bolt_pattern_mm1())))
+        bolt_pattern1 = lug_count + "x" + dist1
+        # print(bolt_pattern1)
+        dist2 = str(int(float(wheel_variant.get_bolt_pattern_mm2())))
+        bolt_pattern2 = ""
+        if int(dist2) != 0:
+            bolt_pattern2 = lug_count + "x" + dist2
+
         # 2 cases
         # 1) Is a variant
         if wheelTools.has_variants(wheel_variant):
@@ -124,7 +174,8 @@ class ShopifyTools:
             new_wheel_product = shopify.Product.find(product_id)
             variant = shopify.Variant({'price': wheel_price1,
                                        'option1': wheel_variant.get_size(),
-                                       'option2': wheel_variant.get_offset(),
+                                       'option2': bolt_pattern1,
+                                       'option3': wheel_variant.get_offset(),
                                        'quantity': 1,
                                        'sku': wheel_variant.get_upc(),
                                        'position': 1,
@@ -136,26 +187,46 @@ class ShopifyTools:
                                        'weight': float(wheel_variant.get_ship_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
-            """
-            size_metafield = shopify.Metafield.create({
-                'namespace':,
-                'key':'wheel_size',
-                'value':wheel_variant.get_wheel_size(),
-                'value_type':'string',
-                'owner_resource':'product',
-                'owner_id':product_id,
-            })
-            """
+
+            # TODO: Need to organize this code
+            # Below is all for when there is a second bolt pattern
+            variant2 = shopify.Variant({'price': wheel_price1,
+                                        'option1': wheel_variant.get_size(),
+                                        'option2': bolt_pattern2,
+                                        'option3': wheel_variant.get_offset(),
+                                        'quantity': 1,
+                                        'sku': wheel_variant.get_upc(),
+                                        'position': 1,
+                                        'inventory_policy': "continue",
+                                        'fulfillment_service': "manual",
+                                        'inventory_management': "shopify",
+                                        'inventory_quantity': 1,
+                                        'taxable': False,
+                                        'weight': float(wheel_variant.get_ship_weight()),
+                                        'weight_unit': "g",  # g, kg
+                                        'requires_shipping': True})
+
+            # print(type(new_wheel_product.variants))
+            if bolt_pattern1 not in new_wheel_product.tags:
+                new_wheel_product.tags += "," + bolt_pattern1
+            if bolt_pattern2 not in new_wheel_product.tags:
+                new_wheel_product.tags += "," + bolt_pattern2
             # print(new_wheel_product)
             new_wheel_product.variants.append(variant)
+            if bolt_pattern2 != "":
+                new_wheel_product.variants.append(variant2)
             # print("Variants: ", new_wheel_product.variants)
             new_wheel_product.save()
             wheelTools.add_wheel(product_id, wheel_variant)
+
+            # TODO: Need to organize this code
+            # Below is all for when there is a second bolt pattern
+
         # 2) Is not a variant
         else:
             # Update a product
             new_wheel_product = shopify.Product()
-            new_wheel_product.options = [{'name': 'Tire Size'}, {'name': 'Offset'}]
+            new_wheel_product.options = [{'name': 'Tire Size'}, {'name': 'Bolt Pattern'}, {'name': 'Offset'}]
             new_wheel_product.title = wheel_variant.get_style_description()
             new_wheel_product.vendor = "Wheel Pros"
             new_wheel_product.product_type = "Wheels"
@@ -165,7 +236,8 @@ class ShopifyTools:
                                            wheel_variant.get_part_num_description())
             variant = shopify.Variant({'price': wheel_price1,
                                        'option1': wheel_variant.get_size(),
-                                       'option2': wheel_variant.get_offset(),
+                                       'option2': bolt_pattern1,
+                                       'option3': wheel_variant.get_offset(),
                                        'quantity': 1,
                                        'sku': wheel_variant.get_upc(),
                                        'position': 1,
@@ -177,7 +249,28 @@ class ShopifyTools:
                                        'weight': float(wheel_variant.get_ship_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
+            # TODO: Need to organize this code
+            # Below is all for when there is a second bolt pattern
+            variant2 = shopify.Variant({'price': wheel_price1,
+                                       'option1': wheel_variant.get_size(),
+                                        'option2': bolt_pattern2,
+                                        'option3': wheel_variant.get_offset(),
+                                       'quantity': 1,
+                                       'sku': wheel_variant.get_upc(),
+                                       'position': 1,
+                                       'inventory_policy': "continue",
+                                       'fulfillment_service': "manual",
+                                       'inventory_management': "shopify",
+                                       'inventory_quantity': 1,
+                                       'taxable': False,
+                                       'weight': float(wheel_variant.get_ship_weight()),
+                                       'weight_unit': "g",  # g, kg
+                                       'requires_shipping': True})
+
             new_wheel_product.variants = [variant]
+            if bolt_pattern2 != "":
+                new_wheel_product.variants.append(variant2)
+
             new_wheel_product.tags = """WheelPros,
                         Wheels,
                         %s, 
@@ -191,12 +284,18 @@ class ShopifyTools:
                                  wheel_variant.get_finish(),
                                  wheel_variant.get_offset(),
                                  wheel_variant.get_upc(),
-                                 wheel_variant.get_bolt_pattern_metric()[:-3],
-                                 wheel_variant.get_bolt_pattern_us()[:-3])
+                                 bolt_pattern1,
+                                 bolt_pattern2)
 
             image = shopify.Image()
             file_name = "%s" % (wheel_variant.get_wheel_image())
-            image.src = file_name
+            if ShopifyTools.is_image_and_ready(file_name):
+                image.src = file_name
+            else:
+                print(wheel_variant.get_upc)
+                print(wheel_variant.get_style_description())
+                print("-----------------")
+
             new_wheel_product.images = [image]
             new_wheel_product.save()
 
@@ -294,10 +393,9 @@ class ShopifyTools:
             total_in_section_done = 1
             for j in range(len(wheels[i])):
                 try:
-                    if i * j >= 10000:
+                    if i * j >= -1:
                         time.sleep(0.25)
                         w = wheels[i][j]
-                        # print("adding: ", w.get_style_description())
                         ShopifyTools.add_new_wheel(w)
                         bar_graph_string = "Section: " + str(sections_done)
                         bar_graph_string += " - Index: " + str(total_added)
@@ -541,8 +639,7 @@ class ShopifyTools:
         for i in range(len(kits)):
             try:
                 w = kits[i]
-                # print("adding: ", w.get_style_description())
-                ShopifyTools.add_new_wheel(w)
+                ShopifyTools.add_new_kit(w)
                 bar.update(item_id=str(total_added))
                 total_added += 1
             # This worked!!! I don't know what happened, but it worked!
@@ -640,10 +737,88 @@ class ShopifyTools:
         for i in range(0, len(l), n):
             yield l[i:i + n]
 
+    @staticmethod
+    def add_new_kit(kit_variant):
+        # 2 cases
+        # 1) Is a variant
+        if kitTools.has_variants(kit_variant):
+            product_id = kitTools.find_product_id(kit_variant)
+            new_kit_product = shopify.Product.find(product_id)
+            variant = shopify.Variant({'price': kit_variant.get_price(),
+                                       'option1': kit_variant.get_wheel(),
+                                       'option2': kit_variant.get_tire(),
+                                       'quantity': 1,
+                                       'sku': "a",
+                                       'position': 1,
+                                       'inventory_policy': "continue",
+                                       'fulfillment_service': "manual",
+                                       'inventory_management': "shopify",
+                                       'inventory_quantity': 1,
+                                       'taxable': False,
+                                       'weight': 0,
+                                       'weight_unit': "g",  # g, kg
+                                       'requires_shipping': True})
+
+            new_kit_product.variants.append(variant)
+            new_kit_product.save()
+            kitTools.add_kit(product_id, kit_variant)
+
+            # TODO: Need to organize this code
+            # Below is all for when there is a second bolt pattern
+
+        # 2) Is not a variant
+        else:
+            # Update a product
+            new_kit_product = shopify.Product()
+            new_kit_product.options = [{'name': 'Wheel'}, {'name': 'Tire'}]
+            new_kit_product.title = kit_variant.get_kit_name()
+            new_kit_product.vendor = "Racks Deep Custom Performance"
+            new_kit_product.product_type = "Kits"
+            new_kit_product.body_html = """<b>%s</b>
+                                            """ % (kit_variant.get_kit_name())
+            variant = shopify.Variant({'price': kit_variant.get_price(),
+                                       'option1': kit_variant.get_wheel(),
+                                       'option2': kit_variant.get_tire(),
+                                       'quantity': 1,
+                                       'sku': "a",
+                                       'position': 1,
+                                       'inventory_policy': "continue",
+                                       'fulfillment_service': "manual",
+                                       'inventory_management': "shopify",
+                                       'inventory_quantity': 1,
+                                       'taxable': False,
+                                       'weight': 0,
+                                       'weight_unit': "g",  # g, kg
+                                       'requires_shipping': True})
+            new_kit_product.variants = [variant]
+            new_kit_product.tags = """WheelPros,
+                                      Kits,
+                                      %s,
+                                      %s
+                                   """ % (kit_variant.get_wheel(),
+                                         kit_variant.get_tire())
+
+            #image = shopify.Image()
+            #file_name = "%s" % (wheel_variant.get_wheel_image())
+            #if ShopifyTools.is_image_and_ready(file_name):
+            #    image.src = file_name
+           # else:
+            #    print(wheel_variant.get_upc)
+            #    print(wheel_variant.get_style_description())
+            #    print("-----------------")
+
+           # new_wheel_product.images = [image]
+            new_kit_product.save()
+
+            kitTools.add_kit(new_kit_product.id, kit_variant)
+            if new_kit_product.errors:
+                # something went wrong, see new_product.errors.full_messages() for example
+                print(new_kit_product.errors.full_messages())
+
 
 shop = ShopifyTools.start_shopify_api()
 wheelTools.load_wheel_variants_from_file()
-spread_sheet_name = "sheets/WheelPros/example_producttechdatausd.xlsx"
+spread_sheet_name = "sheets/WheelPros/bug_fix_producttechdatausd.xlsx"
 wheelTools.set_wheel_variants_list(ExcelTools.read_product_technical_data_usd(spread_sheet_name))
 
 # This is all of the products, so we can
@@ -655,7 +830,7 @@ ShopifyTools.build_wheels()
 
 
 def add_wheels_shopify_tool():
-    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/example_producttechdatausd.xlsx')
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/bug_fix_producttechdatausd.xlsx')
     # Need to split this up into 100 chunks
     wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
     ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
@@ -668,4 +843,9 @@ def delete_wheels_shopify_tool():
     wheelTools.save_wheel_variants_to_file()
 
 
-delete_wheels_shopify_tool()
+def add_kits_shopify_tool():
+    kits_info = ExcelTools.read_kit_data(r'sheets/WheelPros/wheel_pros_kits.xlsx')
+    ShopifyTools.add_new_kits(kits_info)
+
+
+add_kits_shopify_tool()

@@ -6,6 +6,7 @@ import pandas as pd
 import pyprind
 
 from data.SAndBFilters.Products.Filter import Filter
+from data.WheelPros.Kits.KitVariants import KitVariants
 from data.WheelPros.Wheels.WheelVariants import WheelVariants
 from data.WheelPros.Tires.TireVariants import TireVariants
 
@@ -154,13 +155,18 @@ class ExcelTools:
                                       str(df['wheelimage'][i]),
                                       str(df['Bolt Pattern Metric'][i]),
                                       str(df['Bolt Pattern US'][i]),
-                                      str(df['W.D. USD'][i]))
+                                      str(df['W.D. USD'][i]),
+                                      str(df['lugcount'][i]),
+                                      str(df['BoltPatternMm1'][i]),
+                                      str(df['BoltPatternMm2'][i]))
             if wheel is not None:
                 wheels.append(wheel)
             total += 1
             all_total += 1
             bar.update()
         return wheels
+
+
 
     @staticmethod
     def read_tire_data_usd(spread_sheet_name):
@@ -199,8 +205,25 @@ class ExcelTools:
 
     @staticmethod
     def read_kit_data(spread_sheet_name):
-        # TODO: Need to fill in this method
-        pass
+        print("Reading Kit Data")
+        df = pd.read_excel(spread_sheet_name)
+        kits = []
+        kit = None
+        total = 1
+        all_total = 1
+        bar = pyprind.ProgBar(len(df.index), monitor=True)
+        for i in df.index:
+            kit = KitVariants(str(df['upc'][i]),
+                              str(df['Name'][i]),
+                              str(df['Wheel'][i]),
+                              str(df['Tire'][i]),
+                              str(df['Price'][i]))
+            if kit is not None:
+                kits.append(kit)
+            total += 1
+            all_total += 1
+            bar.update()
+        return kits
 
     @staticmethod
     def compare_tire_data_usd(older_tires, newer_tires, map_only=True):

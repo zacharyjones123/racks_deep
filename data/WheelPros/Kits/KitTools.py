@@ -64,8 +64,8 @@ class KitTools:
             self.kits[product_id] = Kits(kit_variant)
             self.kits[product_id].set_product_id(product_id)
         else:
-            self.wheels[product_id].add_variant(kit_variant)
-            self.wheels[product_id].set_product_id(product_id)
+            self.kits[product_id].add_variant(kit_variant)
+            self.kits[product_id].set_product_id(product_id)
 
     def delete_kit(self, product_id):
         self.kits[product_id]
@@ -81,12 +81,14 @@ class KitTools:
 
     def find_product_id(self, kit_variant):
         for product_id in self.kits:
-            pass
-        # TODO: Need to figure out the style description part here
-        # This is how we deterine if the products are the same or not
+            if kit_variant.get_kit_name() == self.kits[product_id].get_kit_name():
+                return product_id
+        return False
 
     def has_variants(self, kit_variant):
         for product_id in self.kits:
-            pass
-        # TODO: Need to figure out the style description part here
-        # This is how we deterine if the products are the same or not
+            print(kit_variant)
+            print(self.kits[product_id])
+            if kit_variant.get_kit_name() == self.kits[product_id].get_kit_name():
+                return True
+        return False

@@ -1,16 +1,30 @@
 class KitVariants:
-    def __init__(self, wheel, tire, map_price, upc):
+    def __init__(self, upc, kit_name, wheel, tire, price):
         """
         Init method for Kits class
-        :param wheel: Wheels object for Kit
-        :param tire: Tires object for Kit
+        :param upc: upc
+        :param kit_name: Kit Name
+        :param wheel: wheel_name
+        :param tire: tire_name
         :param map_price: price of the kit
-        :param upc: upc of the kit
         """
+        self.upc = upc
+        self.kit_name = kit_name
         self.wheel = wheel
         self.tire = tire
-        self.map_price = map_price
-        self.upc = upc
+        self.price = price
+
+    def get_upc(self):
+        """
+        Getter method for upc variable
+        :return: upc
+        """
+    def get_kit_name(self):
+        """
+        Getter method for kit_name variable
+        :return: kit_name
+        """
+        return self.kit_name
 
     def get_wheel(self):
         """
@@ -26,51 +40,12 @@ class KitVariants:
         """
         return self.tire
 
-    def get_map_price(self):
+    def get_price(self):
         """
         Getter method for map_price variable
         :return: map_price
         """
-        return self.map_price
-
-    def get_upc(self):
-        """
-        Getter method for the upc variable
-        :return: upc
-        """
-        return self.upc
-
-    def set_wheel(self, wheel):
-        """
-        Setter method for wheel variable
-        :param wheel: new wheel
-        :return: Nothing
-        """
-        self.wheel = wheel
-
-    def set_tire(self, tire):
-        """
-        Setter method for tire variable
-        :param tire: new tire
-        :return: Nothing
-        """
-        self.tire = tire
-
-    def set_map_price(self, map_price):
-        """
-        Setter method for map_price variable
-        :param map_price: new map_price
-        :return: Nothing
-        """
-        self.map_price = map_price
-
-    def set_upc(self, upc):
-        """
-        Setter method for the upc variable
-        :param upc: new upc
-        :return: Nothing
-        """
-        self.upc = upc
+        return self.price
 
     def __str__(self):
         """
