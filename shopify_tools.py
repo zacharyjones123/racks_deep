@@ -747,7 +747,6 @@ class ShopifyTools:
             variant = shopify.Variant({'price': kit_variant.get_price(),
                                        'option1': kit_variant.get_wheel(),
                                        'option2': kit_variant.get_tire(),
-                                       'quantity': 1,
                                        'sku': "a",
                                        'position': 1,
                                        'inventory_policy': "continue",
@@ -758,6 +757,8 @@ class ShopifyTools:
                                        'weight': 0,
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
+
+            new_kit_product.tags += ","+kit_variant.get_tire()
 
             new_kit_product.variants.append(variant)
             new_kit_product.save()
@@ -779,7 +780,6 @@ class ShopifyTools:
             variant = shopify.Variant({'price': kit_variant.get_price(),
                                        'option1': kit_variant.get_wheel(),
                                        'option2': kit_variant.get_tire(),
-                                       'quantity': 1,
                                        'sku': "a",
                                        'position': 1,
                                        'inventory_policy': "continue",

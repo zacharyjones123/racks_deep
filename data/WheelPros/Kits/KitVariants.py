@@ -9,7 +9,7 @@ class KitVariants:
         :param map_price: price of the kit
         """
         self.upc = upc
-        self.kit_name = kit_name
+        self.kit_name = kit_name + " - " + wheel
         self.wheel = wheel
         self.tire = tire
         self.price = price
