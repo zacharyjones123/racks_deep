@@ -186,17 +186,47 @@ class ExcelTools:
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
             tire = None
-            if df['MAP'][i] != 0:
-                tire = TireVariants(str(df['PartNo'][i]),
-                                    str(df['TireSize'][i]),
-                                    str(df['TireDescription'][i]),
-                                    str(df['TireSizeDescription'][i]),
-                                    str(int(df['UPC'][i])),
-                                    str(df['PictureCd'][i]),
-                                    str(df['Weight'][i]),
-                                    str(df['MAP'][i]))
+            if df['PowerSports'][i] != 0:
+                tire = TireVariants(str(df['TireMfrCd'][i]),
+                                      str(df['PartNo'][i]),
+                                      str(df['TireSize'][i]),
+                                      str(df['TireDescription'][i]),
+                                      str(df['TireSizeDescription'][i]),
+                                      str(df['LoadIndex'][i]),
+                                      str(df['PSI'][i]),
+                                      str(df['SpeedRating'][i]),
+                                      str(df['Wd'][i]),
+                                      str(df['StgItemCd'][i]),
+                                      str(df['eMarked'][i]),
+                                      str(df['UPC'][i]),
+                                      str(df['SectionWidth'][i]),
+                                      str(df['Series'][i]),
+                                      str(df['RimDiameter'][i]),
+                                      str(df['TireDiameter'][i]),
+                                      str(df['PictureCd'][i]),
+                                      str(df['Weight'][i]),
+                                      str(df['TireDiameter2'][i]),
+                                    str(df['MinWidthIn'][i]),
+                                    str(df['MaxWidthIn'][i]),
+                                    str(df['MaxLoad'][i]),
+                                    str(df['PowerSports'][i]),
+                                    str(df['MAP'][i]),
+                                    str(df['Sts'][i]),
+                                    str(df['FullModelName'][i]),
+                                    str(df['TreadDepth'][i]),
+                                    str(df['Ply'][i]),
+                                    str(df['ConstructionType'][i]),
+                                    str(df['Terrain'][i]),
+                                    str(df['MaxLoadDual'][i]),
+                                    str(df['MaxPressure'][i]),
+                                    str(df['ApprovedRimWidth'][i]),
+                                    str(df['UTQG'][i]),
+                                    str(df['Treadwear'][i]),
+                                    str(df['Traction'][i]),
+                                    str(df['Temperature'][i]),
+                                    str(df['SourceCountry'][i]),
+                                    str(df['MileageWarranty'][i]))
             if tire is not None:
-                tire.set_comparison_var(ExcelTools.find_tire_brand(tire.get_tire_description()))
                 tires.append(tire)
             total += 1
             all_total += 1

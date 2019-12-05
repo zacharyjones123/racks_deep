@@ -23,7 +23,7 @@ class TireTools:
 
     def find_product_id(self, tire_variant):
         for product_id in self.tires:
-            if tire_variant.get_comparison_var() == self.tires[product_id].get_comparison_var():
+            if tire_variant.get_full_model_name() == self.tires[product_id].get_full_model_name():
                 return product_id
         return None
 
@@ -32,6 +32,6 @@ class TireTools:
             # print("--------------")
             # print(tire_variant.get_comparison_var())
             # print(self.tires[product_id].get_comparison_var())
-            if tire_variant.get_comparison_var() == self.tires[product_id].get_comparison_var():
+            if tire_variant.get_full_model_name() == self.tires[product_id].get_full_model_name():
                 return True
         return False

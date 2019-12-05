@@ -439,7 +439,7 @@ class ShopifyTools:
         if tireTools.has_variants(tire_variant):
             product_id = tireTools.find_product_id(tire_variant)
             new_tire_product = shopify.Product.find(product_id)
-            variant = shopify.Variant({'price': float(tire_variant.get_map_price()),
+            variant = shopify.Variant({'price': float(tire_variant.get_map()),
                                        'option1': tire_variant.get_tire_size(),
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
@@ -459,13 +459,16 @@ class ShopifyTools:
         else:
             new_tire_product = shopify.Product()
             new_tire_product.options = [{'name': 'Tire Size'}]
-            new_tire_product.title = tire_variant.get_tire_description()
+            #Built the tire name
+
+
+            new_tire_product.title = tire_variant.get_full_model_name()
             new_tire_product.vendor = 'Wheel Pros'
             new_tire_product.product_type = 'Tires'
             new_tire_product.body_html = """<b>%s</b>
                                    <p>%s</p>
                                    """ % (tire_variant.get_tire_description(), tire_variant.get_part_num())
-            variant = shopify.Variant({'price': float(tire_variant.get_map_price()),
+            variant = shopify.Variant({'price': float(tire_variant.get_map()),
                                        'option1': tire_variant.get_tire_size(),
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
@@ -679,6 +682,7 @@ class ShopifyTools:
         # Keeps track of total deleted
         total_deleted = 0
         # Go through all wheel product ids found
+        print(wheels_copy)
         for p in wheels_copy:
             # Try to delete, ,know that it might not exist
             # TODO: May need to add in more exceptions
@@ -838,6 +842,11 @@ def add_wheels_shopify_tool():
     wheelTools.save_wheel_variants_to_file()
 
 
+def add_tires_shopify_tool():
+    tires_info = ExcelTools.read_tire_data_usd(r'sheets/WheelPros/exp_12-05-2019_tireData.xlsx')
+    ShopifyTools.add_new_tires(tires_info)
+
+
 def delete_wheels_shopify_tool():
     ShopifyTools.delete_all_wheels()
     wheelTools.save_wheel_variants_to_file()
@@ -848,4 +857,5 @@ def add_kits_shopify_tool():
     ShopifyTools.add_new_kits(kits_info)
 
 
-add_kits_shopify_tool()
+# delete_wheels_shopify_tool()
+add_tires_shopify_tool()
