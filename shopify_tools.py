@@ -27,6 +27,17 @@ tireTools = TireTools()
 kitTools = KitTools()
 
 
+def check_wheel_brand(param):
+    brands = ["FUEL UTV",
+              "MSA OFFROAD WHEELS",
+              "XD ATV"]
+
+    if param in brands:
+        return True
+    else:
+        return False
+
+
 class ShopifyTools:
 
     @staticmethod
@@ -150,6 +161,22 @@ class ShopifyTools:
         # TODO: Need to find a way to stream line this
         # TODO: Comment out the method
 
+        if not check_wheel_brand(wheel_variant.get_whl_manufact_nm()):
+            return
+
+        # Make the tags that we want to add
+        tags_to_add = []
+        # Brand
+        tags_to_add.append("Brand_" + wheel_variant.get_whl_manufact_nm())
+        # Finish
+        tags_to_add.append("Finish_" + wheel_variant.get_finish())
+        # Bolt Pattern
+        tags_to_add.append("Bolt Pattern_" + wheel_variant.get_bolt_pattern_metric())
+        # Wheel Offset
+        tags_to_add.append("Wheel Offset_" + wheel_variant.get_offset())
+        # Wheel Size
+        tags_to_add.append("Wheel Size_" + wheel_variant.get_size())
+
         # Need to find wheel price
         wheel_price1 = 0
         if wheel_variant.get_msrp_price() != 0:
@@ -218,6 +245,14 @@ class ShopifyTools:
             if bolt_pattern2 != "":
                 new_wheel_product.variants.append(variant2)
             # print("Variants: ", new_wheel_product.variants)
+
+                # Get tags already put in
+                tags = Tags()
+                tags.string_to_tags(new_wheel_product.tags)
+                # Now, we can go through and add the tags we want
+                for t in tags_to_add:
+                    if not tags.is_a_tag(t) and "nan" not in t:
+                        tags.add_tag(t)
             new_wheel_product.save()
             wheelTools.add_wheel(product_id, wheel_variant)
 
@@ -288,6 +323,14 @@ class ShopifyTools:
                                  wheel_variant.get_upc(),
                                  bolt_pattern1,
                                  bolt_pattern2)
+
+            # Get tags already put in
+            tags = Tags()
+            tags.string_to_tags(new_wheel_product.tags)
+            # Now, we can go through and add the tags we want
+            for t in tags_to_add:
+                if not tags.is_a_tag(t) and "nan" not in t:
+                    tags.add_tag(t)
 
             image = shopify.Image()
             file_name = "%s" % (wheel_variant.get_wheel_image())
@@ -875,12 +918,12 @@ ShopifyTools.build_wheels()
 
 
 def add_wheels_shopify_tool():
-    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/bug_fix_producttechdatausd.xlsx')
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_11-28-2019_producttechdatausd.xlsx')
     # Need to split this up into 100 chunks
     wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
     ShopifyTools.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
     wheelTools.set_wheel_variants_list(wheels_info)
-    wheelTools.save_wheel_variants_to_file()
+    #wheelTools.save_wheel_variants_to_file()
 
 
 def add_tires_shopify_tool():
@@ -890,7 +933,7 @@ def add_tires_shopify_tool():
 
 def delete_wheels_shopify_tool():
     ShopifyTools.delete_all_wheels()
-    wheelTools.save_wheel_variants_to_file()
+    #wheelTools.save_wheel_variants_to_file()
 
 
 def add_kits_shopify_tool():
@@ -899,4 +942,4 @@ def add_kits_shopify_tool():
 
 
 # delete_wheels_shopify_tool()
-add_tires_shopify_tool()
+add_wheels_shopify_tool()

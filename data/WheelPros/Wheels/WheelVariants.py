@@ -43,7 +43,7 @@ class WheelVariants:
                  wheel_weight,
                  shipping_weight,
                  whl_manufact_cd,
-                 whl_manufact_num,
+                 whl_manufact_nm,
                  display_model_num,
                  sort_group,
                  whl_model_nm,
@@ -116,7 +116,7 @@ class WheelVariants:
         self.wheel_weight = wheel_weight
         self.shipping_weight = shipping_weight
         self.whl_manufact_cd = whl_manufact_cd
-        self.whl_manufact_num = whl_manufact_num
+        self.whl_manufact_nm = whl_manufact_nm
         self.display_model_num = display_model_num
         self.sort_group = sort_group
         self.whl_model_Nm = whl_model_nm
@@ -267,7 +267,110 @@ class WheelVariants:
     def get_whl_manufact_num(self):
         return self.whl_manufact_num
 
+    def get_display_model_num(self):
+        return self.display_model_num
 
+    def get_sort_group(self):
+        return self.sort_group
+
+    def get_whl_model_nm(self):
+        return self.whl_model_nm
+
+    def get_full_model_name(self):
+        return self.full_model_name
+
+    def get_country_of_origin(self):
+        return self.country_of_origin
+
+    def get_width_in(self):
+        return self.width_in
+
+    def get_abrv_finish_desc(self):
+        return self.abrv_finish_desc
+
+    def get_box_label_description(self):
+        return self.box_label_description
+
+    def get_finish_warranty(self):
+        return self.finish_warranty
+
+    def get_bolt_pattern_mm_1(self):
+        return self.bolt_pattern_mm_1
+
+    def get_bolt_pattern_mm_2(self):
+        return self.bolt_pattern_mm_2
+
+    def get_smallest_bolt_pattern_mm(self):
+        return self.smallest_bolt_pattern_mm
+
+    def get_largest_bolt_pattern_mm(self):
+        return self.largest_bolt_pattern_mm
+
+    def get_min_lug_count(self):
+        return self.min_lug_count
+
+    def get_max_lug_count(self):
+        return self.max_lug_count
+
+    def get_open_end_cap(self):
+        return self.open_end_cap
+
+    def get_rivet_part_num(self):
+        return self.rivet_part_num
+
+    def get_rivet_qty(self):
+        return self.rivet_qty
+
+    def get_pvd_finish(self):
+        return self.pvd_finish
+
+    def get_stainless_lip(self):
+        return self.stainless_lip
+
+    def get_flow_formed(self):
+        return self.flow_formed
+
+    def get_forged(self):
+        return self.forged
+
+    def get_two_piece(self):
+        return self.two_piece
+
+    def get_steel_wheel(self):
+        return self.steel_wheel
+
+    def get_true_beadlock(self):
+        return self.true_beadlock
+
+    def get_off_road_use_only(self):
+        return self.off_road_use_only
+
+    def get_patent(self):
+        return self.patent
+
+    def get_lip_depth(self):
+        return self.lip_depth
+
+    def get_construction(self):
+        return self.construction
+
+    def get_material(self):
+        return self.material
+
+    def get_fancy_finish_desc(self):
+        return self.fancy_finish_desc
+
+    def get_wheel_image(self):
+        return self.wheel_image
+
+    def get_prop65_chemical_1(self):
+        return self.prop65_chemical_1
+
+    def get_prop65_chemical_2(self):
+        return self.prop65_chemical_2
+
+    def get_prop65_chemical_3(self):
+        return self.prop65_chemical_3
 
     def __eq__(self, o) -> bool:
         """
