@@ -1,3 +1,6 @@
+from data.WheelPros.Tags import Tags
+
+
 class TireVariants:
     def __init__(self,
                  tire_mfr_cd,
