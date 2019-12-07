@@ -27,17 +27,6 @@ tireTools = TireTools()
 kitTools = KitTools()
 
 
-def check_wheel_brand(param):
-    brands = ["FUEL UTV",
-              "MSA OFFROAD WHEELS",
-              "XD ATV"]
-
-    if param in brands:
-        return True
-    else:
-        return False
-
-
 class ShopifyTools:
 
     @staticmethod
@@ -161,9 +150,6 @@ class ShopifyTools:
         # TODO: Need to find a way to stream line this
         # TODO: Comment out the method
 
-        if not check_wheel_brand(wheel_variant.get_whl_manufact_nm()):
-            return
-
         # Make the tags that we want to add
         tags_to_add = []
         # Brand
@@ -188,10 +174,10 @@ class ShopifyTools:
 
         # Make the bolt pattern setup
         lug_count = wheel_variant.get_lug_count()
-        dist1 = str(int(float(wheel_variant.get_bolt_pattern_mm1())))
+        dist1 = str(int(float(wheel_variant.get_bolt_pattern_mm_1())))
         bolt_pattern1 = lug_count + "x" + dist1
         # print(bolt_pattern1)
-        dist2 = str(int(float(wheel_variant.get_bolt_pattern_mm2())))
+        dist2 = str(int(float(wheel_variant.get_bolt_pattern_mm_2())))
         bolt_pattern2 = ""
         if int(dist2) != 0:
             bolt_pattern2 = lug_count + "x" + dist2
@@ -213,7 +199,7 @@ class ShopifyTools:
                                        'inventory_management': "shopify",
                                        'inventory_quantity': 1,
                                        'taxable': False,
-                                       'weight': float(wheel_variant.get_ship_weight()),
+                                       'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
 
@@ -231,7 +217,7 @@ class ShopifyTools:
                                         'inventory_management': "shopify",
                                         'inventory_quantity': 1,
                                         'taxable': False,
-                                        'weight': float(wheel_variant.get_ship_weight()),
+                                        'weight': float(wheel_variant.get_shipping_weight()),
                                         'weight_unit': "g",  # g, kg
                                         'requires_shipping': True})
 
@@ -246,13 +232,15 @@ class ShopifyTools:
                 new_wheel_product.variants.append(variant2)
             # print("Variants: ", new_wheel_product.variants)
 
-                # Get tags already put in
-                tags = Tags()
-                tags.string_to_tags(new_wheel_product.tags)
-                # Now, we can go through and add the tags we want
-                for t in tags_to_add:
-                    if not tags.is_a_tag(t) and "nan" not in t:
-                        tags.add_tag(t)
+            # Get tags already put in
+            tags = Tags()
+            tags.string_to_tags(new_wheel_product.tags)
+            # Now, we can go through and add the tags we want
+            for t in tags_to_add:
+                if not tags.is_a_tag(t) and "nan" not in t:
+                   tags.add_tag(t)
+
+            new_wheel_product.tags = tags.tags_to_string()
             new_wheel_product.save()
             wheelTools.add_wheel(product_id, wheel_variant)
 
@@ -283,7 +271,7 @@ class ShopifyTools:
                                        'inventory_management': "shopify",
                                        'inventory_quantity': 1,
                                        'taxable': False,
-                                       'weight': float(wheel_variant.get_ship_weight()),
+                                       'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
             # TODO: Need to organize this code
@@ -300,7 +288,7 @@ class ShopifyTools:
                                        'inventory_management': "shopify",
                                        'inventory_quantity': 1,
                                        'taxable': False,
-                                       'weight': float(wheel_variant.get_ship_weight()),
+                                       'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
 
@@ -309,20 +297,7 @@ class ShopifyTools:
                 new_wheel_product.variants.append(variant2)
 
             new_wheel_product.tags = """WheelPros,
-                        Wheels,
-                        %s, 
-                        %s,
-                        %s,
-                        %s,
-                        %s,
-                        %s,
-                        %s""" % (wheel_variant.get_part_number(),
-                                 wheel_variant.get_size(),
-                                 wheel_variant.get_finish(),
-                                 wheel_variant.get_offset(),
-                                 wheel_variant.get_upc(),
-                                 bolt_pattern1,
-                                 bolt_pattern2)
+                        Wheels"""
 
             # Get tags already put in
             tags = Tags()
@@ -331,6 +306,8 @@ class ShopifyTools:
             for t in tags_to_add:
                 if not tags.is_a_tag(t) and "nan" not in t:
                     tags.add_tag(t)
+
+            new_wheel_product.tags = tags.tags_to_string()
 
             image = shopify.Image()
             file_name = "%s" % (wheel_variant.get_wheel_image())
@@ -829,6 +806,18 @@ class ShopifyTools:
     def add_new_kit(kit_variant):
         # 2 cases
         # 1) Is a variant
+
+        # Tags
+        tags_to_append = []
+
+        # Size
+        tags_to_append.append("Size_"+kit_variant.get_wheel_size())
+        # Wheel Brand
+        tags_to_append.append("Wheel Brand_"+kit_variant.get_wheel_brand())
+        # Tire Brand
+        tags_to_append.append("Tire_Brand_"+kit_variant.get_tire_brand())
+
+
         if kitTools.has_variants(kit_variant):
             product_id = kitTools.find_product_id(kit_variant)
             new_kit_product = shopify.Product.find(product_id)
@@ -864,6 +853,7 @@ class ShopifyTools:
             new_kit_product.vendor = "Racks Deep Custom Performance"
             new_kit_product.product_type = "Kits"
             new_kit_product.body_html = """<b>%s</b>
+                                            <h1>All Kits come mounted with new lugnuts</h1>
                                             """ % (kit_variant.get_kit_name())
             variant = shopify.Variant({'price': kit_variant.get_price(),
                                        'option1': kit_variant.get_wheel(),

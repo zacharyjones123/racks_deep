@@ -11,8 +11,8 @@ class WheelVariants:
                  part_number_description,
                  size,
                  finish,
-                 msrp,
-                 map,
+                 msrp_price,
+                 map_price,
                  diameter,
                  width,
                  lug_count,
@@ -84,8 +84,8 @@ class WheelVariants:
         self.part_number_description = part_number_description
         self.size = size
         self.finish = finish
-        self.msrp = msrp
-        self.map = map
+        self.msrp_price = msrp_price
+        self.map_price = map_price
         self.diameter = diameter
         self.width = width
         self.lug_count = lug_count
@@ -119,7 +119,7 @@ class WheelVariants:
         self.whl_manufact_nm = whl_manufact_nm
         self.display_model_num = display_model_num
         self.sort_group = sort_group
-        self.whl_model_Nm = whl_model_nm
+        self.whl_model_nm = whl_model_nm
         self.full_model_name = full_model_name
         self.country_of_origin = county_of_origin
         self.width_in = width_in
@@ -159,7 +159,7 @@ class WheelVariants:
     def get_part_number(self):
         return self.part_number
 
-    def get_part_number_description(self):
+    def get_part_num_description(self):
         return self.part_number_description
 
     def get_size(self):
@@ -168,11 +168,11 @@ class WheelVariants:
     def get_finish(self):
         return self.finish
 
-    def get_msrp(self):
-        return self.msrp
+    def get_msrp_price(self):
+        return self.msrp_price
 
-    def get_map(self):
-        return self.map
+    def get_map_price(self):
+        return self.map_price
 
     def get_diameter(self):
         return self.diameter
@@ -264,8 +264,8 @@ class WheelVariants:
     def get_whl_manufact_cd(self):
         return self.whl_manufact_cd
 
-    def get_whl_manufact_num(self):
-        return self.whl_manufact_num
+    def get_whl_manufact_nm(self):
+        return self.whl_manufact_nm
 
     def get_display_model_num(self):
         return self.display_model_num

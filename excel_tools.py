@@ -122,6 +122,17 @@ class ExcelTools:
         return map_price_dict
 
     @staticmethod
+    def check_wheel_brand(param):
+        brands = ["FUEL UTV",
+                  "MSA OFFROAD WHEELS",
+                  "XD ATV"]
+
+        if param in brands:
+            return True
+        else:
+            return False
+
+    @staticmethod
     def read_product_technical_data_usd(spread_sheet_name):
         """
         Read in Wheel Proos - Read Product Technical Data USD
@@ -134,12 +145,13 @@ class ExcelTools:
         print("Reading Product Technical Data USD")
         df = pd.read_excel(spread_sheet_name)
         wheels = []
-        wheel = None
+
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            if df['W.D. USD'][i] != 0:
+            wheel = None
+            if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])):
                 upc_temp = ""
                 if str(df['upc'][i]) != "nan":
                     upc_temp = str(int(df['upc'][i]))
@@ -148,7 +160,7 @@ class ExcelTools:
                                       str(df['partnumberdescription'][i]),
                                       str(df['size'][i]),
                                       str(df['finish'][i]),
-                                      str(df['W.D. USD']),
+                                      str(df['W.D. USD'][i]),
                                       str(df['MapPrice'][i]),
                                       str(df['diameter'][i]),
                                       str(df['width'][i]),
@@ -163,7 +175,7 @@ class ExcelTools:
                                       str(df['Hub Ring Included'][i]),
                                       upc_temp,
                                       str(df['InvOrderType'][i]),
-                                      str(df['RearOnly']),
+                                      str(df['RearOnly'][i]),
                                       str(df['HubClearance'][i]),
                                       str(df['BarrelConfig'][i]),
                                       str(df['CapPartNo'][i]),
@@ -191,7 +203,7 @@ class ExcelTools:
                                       str(df['Box Label Description'][i]),
                                       str(df['Finish Warranty'][i]),
                                       str(df['BoltPatternMm1'][i]),
-                                      str(df['BoltPatternMm2']),
+                                      str(df['BoltPatternMm2'][i]),
                                       str(df['SmallestBoltPatternMm'][i]),
                                       str(df['LargestBoltPatternMm'][i]),
                                       str(df['MinLugCnt'][i]),
