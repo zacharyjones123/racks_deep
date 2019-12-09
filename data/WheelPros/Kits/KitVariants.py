@@ -1,5 +1,5 @@
 class KitVariants:
-    def __init__(self, upc, kit_name, wheel, tire, price):
+    def __init__(self, upc, kit_name, wheel, tire, msrp, size):
         """
         Init method for Kits class
         :param upc: upc
@@ -9,16 +9,19 @@ class KitVariants:
         :param map_price: price of the kit
         """
         self.upc = upc
-        self.kit_name = kit_name + " - " + wheel
+        self.kit_name = kit_name
+        self.kit_name_overflow = kit_name + " - " + wheel
         self.wheel = wheel
         self.tire = tire
-        self.price = price
+        self.msrp = msrp
+        self.size = size
 
     def get_upc(self):
         """
         Getter method for upc variable
         :return: upc
         """
+        return self.upc
     def get_kit_name(self):
         """
         Getter method for kit_name variable
@@ -40,12 +43,19 @@ class KitVariants:
         """
         return self.tire
 
-    def get_price(self):
+    def get_msrp(self):
         """
-        Getter method for map_price variable
-        :return: map_price
+        Getter method for msrp variable
+        :return: msrp
         """
-        return self.price
+        return self.msrp
+
+    def get_size(self):
+        """
+        Getter method for size variable
+        :return: size of wheel
+        """
+        return self.size
 
     def __str__(self):
         """

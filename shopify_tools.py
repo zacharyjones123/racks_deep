@@ -808,20 +808,17 @@ class ShopifyTools:
         # 1) Is a variant
 
         # Tags
-        tags_to_append = []
+        tags_to_add = []
 
         # Size
-        tags_to_append.append("Size_"+kit_variant.get_wheel_size())
-        # Wheel Brand
-        tags_to_append.append("Wheel Brand_"+kit_variant.get_wheel_brand())
-        # Tire Brand
-        tags_to_append.append("Tire_Brand_"+kit_variant.get_tire_brand())
-
+        tags_to_add.append("Size_"+kit_variant.get_size())
+        tags_to_add.append(kit_variant.get_tire())
+        tags_to_add.append(kit_variant.get_wheel())
 
         if kitTools.has_variants(kit_variant):
             product_id = kitTools.find_product_id(kit_variant)
             new_kit_product = shopify.Product.find(product_id)
-            variant = shopify.Variant({'price': kit_variant.get_price(),
+            variant = shopify.Variant({'price': kit_variant.get_msrp(),
                                        'option1': kit_variant.get_wheel(),
                                        'option2': kit_variant.get_tire(),
                                        'sku': "a",
@@ -835,7 +832,15 @@ class ShopifyTools:
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
 
-            new_kit_product.tags += ","+kit_variant.get_tire()
+            # Get tags already put in
+            tags = Tags()
+            tags.string_to_tags(new_kit_product.tags)
+            # Now, we can go through and add the tags we want
+            for t in tags_to_add:
+                if not tags.is_a_tag(t) and "nan" not in t:
+                    tags.add_tag(t)
+
+            new_kit_product.tags = tags.tags_to_string()
 
             new_kit_product.variants.append(variant)
             new_kit_product.save()
@@ -855,7 +860,7 @@ class ShopifyTools:
             new_kit_product.body_html = """<b>%s</b>
                                             <h1>All Kits come mounted with new lugnuts</h1>
                                             """ % (kit_variant.get_kit_name())
-            variant = shopify.Variant({'price': kit_variant.get_price(),
+            variant = shopify.Variant({'price': kit_variant.get_msrp(),
                                        'option1': kit_variant.get_wheel(),
                                        'option2': kit_variant.get_tire(),
                                        'sku': "a",
@@ -870,11 +875,18 @@ class ShopifyTools:
                                        'requires_shipping': True})
             new_kit_product.variants = [variant]
             new_kit_product.tags = """WheelPros,
-                                      Kits,
-                                      %s,
-                                      %s
-                                   """ % (kit_variant.get_wheel(),
-                                         kit_variant.get_tire())
+                                      Kits
+                                      """
+
+            # Get tags already put in
+            tags = Tags()
+            tags.string_to_tags(new_kit_product.tags)
+            # Now, we can go through and add the tags we want
+            for t in tags_to_add:
+                if not tags.is_a_tag(t) and "nan" not in t:
+                    tags.add_tag(t)
+
+            new_kit_product.tags = tags.tags_to_string()
 
             #image = shopify.Image()
             #file_name = "%s" % (wheel_variant.get_wheel_image())
@@ -932,4 +944,4 @@ def add_kits_shopify_tool():
 
 
 # delete_wheels_shopify_tool()
-add_wheels_shopify_tool()
+add_kits_shopify_tool()

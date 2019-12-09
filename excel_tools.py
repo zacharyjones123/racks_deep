@@ -317,7 +317,10 @@ class ExcelTools:
                               str(df['Name'][i]),
                               str(df['Wheel'][i]),
                               str(df['Tire'][i]),
-                              str(df['Price'][i]))
+                              str(df['MSRP'][i]),
+                              str(df['Size'][i]))
+            #print(str(df['upc'][i]))
+            #print(kit.get_upc())
             if kit is not None:
                 kits.append(kit)
             total += 1

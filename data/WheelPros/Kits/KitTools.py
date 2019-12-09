@@ -87,8 +87,6 @@ class KitTools:
 
     def has_variants(self, kit_variant):
         for product_id in self.kits:
-            print(kit_variant)
-            print(self.kits[product_id])
             if kit_variant.get_kit_name() == self.kits[product_id].get_kit_name():
                 return True
         return False
