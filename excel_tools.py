@@ -236,7 +236,66 @@ class ExcelTools:
             bar.update()
         return wheels
 
+    @staticmethod
+    def compare_product_technical_data_usd(old_sheet_name, new_sheet_name):
+        old_wheels = ExcelTools.read_product_technical_data_usd(old_sheet_name)
+        new_wheels = ExcelTools.read_product_technical_data_usd(new_sheet_name)
 
+        upc_to_add = []
+        upc_to_delete = []
+        upc_to_edit = []
+
+        df_temp = {'upc': [],
+                   'action': [],
+                   'name': []}
+
+        # There are three different scenerios of what could happen
+        # 1) New Wheel to add
+        for n in new_wheels:
+            found_wheel = False
+            for o in old_wheels:
+                if n.get_upc() == o.get_upc():
+                    found_wheel = True
+            if not found_wheel:
+                # TODO: 1) Wheel Needs to be added
+                df_temp['upc'].append(n.get_upc())
+                df_temp['action'].append("Add")
+                df_temp['name'].append(n.get_style_description())
+
+        # 2) Delete Wheel
+        for o in old_wheels:
+            found_wheel = False
+            for n in new_wheels:
+                if o.get_upc() == n.get_upc():
+                    found_wheel = True
+            if not found_wheel:
+                # TODO: 2) Wheel Needs to be deleted
+                df_temp['upc'].append(o.get_upc())
+                df_temp['action'].append("Remove")
+                df_temp['name'].append(n.get_style_description())
+
+        # 3) Need to edit the wheel
+        for o in old_wheels:
+            for n in new_wheels:
+                if o.get_upc() == n.get_upc():
+                    # We have 2 wheels, and need to check
+                    # if edits need to be made
+                    if o == n:
+                        # TODO: 3) Wheel Needs to be editted
+                        df_temp['upc'].append(o.get_upc())
+                        df_temp['action'].append("Edit")
+                        df_temp['name'].append(n.get_style_description())
+
+        df = pd.DataFrame(df_temp)
+
+        # Create a Pandas Excel writer using XlsxWriter as the engine.
+        writer = pd.ExcelWriter(r'sheets/save_files/wheel_changes.xlsx', engine='xlsxwriter')
+
+        # Convert the dataframe to an XlsxWriter Excel object.
+        df.to_excel(writer)
+
+        # Close the Pandas Excel writer and output the Excel file.
+        writer.save()
 
     @staticmethod
     def read_tire_data_usd(spread_sheet_name):
@@ -304,6 +363,9 @@ class ExcelTools:
         return tires
 
     @staticmethod
+    def compare_tire_data(old_sheet_name, new_sheet_name):
+        pass
+    @staticmethod
     def read_kit_data(spread_sheet_name):
         print("Reading Kit Data")
         df = pd.read_excel(spread_sheet_name)
@@ -328,6 +390,9 @@ class ExcelTools:
             bar.update()
         return kits
 
+    @staticmethod
+    def compare_kit_data(old_sheet_name, new_sheet_name):
+        pass
     @staticmethod
     def compare_tire_data_usd(older_tires, newer_tires, map_only=True):
         """
@@ -395,3 +460,5 @@ class ExcelTools:
         # Now we have all of the cases where changes need to be made
         # Otherwise, leave everything the same
         return upc_to_change
+
+ExcelTools.compare_product_technical_data_usd("exp_11-28-2019-producttechdatausd.xlsx","exp_12-11-2019-producttechdatausd.xlsx")

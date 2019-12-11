@@ -9,6 +9,10 @@ from tqdm import tqdm
 # from shopify_tools import ShopifyTools
 
 # TODO: Need to add more wrappers
+from excel_tools import ExcelTools
+from shopify_tools import ShopifyTools
+from shopify_tools_wheels import ShopifyToolsWheels
+
 
 
 def update_wheel_pros_wheels(spreadsheet_name):
