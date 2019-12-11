@@ -379,7 +379,7 @@ class ShopifyToolsWheels:
         # Method that will get all Shopify.Product from shopify
         product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
         # List to return
-        wheel_variants_skus = []
+        wheel_variants_skus = {}
         # Go through all Shopify.Product from shopify
         for p in product_dict:
             # Check if the information is correct for Wheel Pros, Wheels
@@ -387,7 +387,7 @@ class ShopifyToolsWheels:
                 # go through the variants
                 for v in product_dict[p].variants:
                     # Add the sku (or upc) for all the variants
-                    wheel_variants_skus.append(v.sku)
+                    wheel_variants_skus[v.sku] = p
         # Return all of the wheel variant's skus from shopify
         return wheel_variants_skus
 
@@ -404,14 +404,17 @@ class ShopifyToolsWheels:
         # Helper method to get the skus so the products can be found
         wheel_variants_skus = ShopifyToolsWheels.get_all_wheel_variants_skus_from_shopify()
         # List to be returned
-        wheel_variants_in_shopify = []
+        wheel_variants_in_shopify = {}
         # Loop through the wheel variants in currently in local
-        for wv in wheelTools.get_wheel_variants_list():
-            # Check if the upc local is the same as the shopify version
-            if wv.get_upc() in wheel_variants_skus:
-                # Add it into the list
-                wheel_variants_in_shopify.append(wv)
-        # Return the wheel variants in shopify
+
+        all_products = list(set(wheel_variants_skus.values()))
+        print(len(all_products))
+
+        for w in all_products:
+            temp_product = shopify.Product.find(w)
+            # Now, need to see if this is a Wheel
+            print(temp_product.title)
+            #print(w," - ", wheel_variants_skus[w])
         return wheel_variants_in_shopify
 
     @staticmethod
@@ -489,3 +492,6 @@ def add_wheels_shopify_tool():
 def delete_wheels_shopify_tool():
     ShopifyToolsWheels.delete_all_wheels()
     #wheelTools.save_wheel_variants_to_file()
+
+print("Testing skus")
+print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())

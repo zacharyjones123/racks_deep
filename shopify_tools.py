@@ -101,7 +101,7 @@ class ShopifyTools:
         product_dict = {}
         for r in resources:
             product_dict[r.id] = r
-        return product_dicte
+        return product_dict
 
     @staticmethod
     def chunks(l, n):

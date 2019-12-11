@@ -6,6 +6,7 @@ import pyprind
 
 from data.WheelPros.Tags import Tags
 from data.WheelPros.Tires.TireTools import TireTools
+from data.WheelPros.Tires.TireVariants import TireVariants
 from excel_tools import ExcelTools
 from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
@@ -167,6 +168,76 @@ class ShopifyToolsTires:
                 print("HTTP error has occured, restarting server in 5 seconds")
                 time.sleep(10)
 
+
+    @staticmethod
+    def update_new_tire(tire_variant):
+        #Need to get a dictionary of all variants
+        all_tire_variants = ShopifyToolsTires.get_all_tire_variants_in_shopify()
+        print(all_tire_variants)
+
+        #Now, need to get the right one
+        update_tire = shopify.Product.find(all_tire_variants[tire_variant.get_upc()])
+
+        #Now, find the variant that we want to change
+        for v in range(len(update_tire.variants)):
+            if update_tire.variants[v].sku == tire_variant.get_upc():
+                print("The price was changed")
+                update_tire.variants[v].price = 777
+
+        update_tire.save()
+        if update_tire.errors:
+            #something went, wrong, see new_product.errors.full_messages() for example
+            update_tire.errors.full_messages()
+
+    @staticmethod
+    def update_new_tires(tires):
+        pass
+    @staticmethod
+    def get_all_tire_variants_skus_from_shopify():
+        """
+        Method to return all wheel variants skus from shopify
+        :return: wheel variants skus from shopify
+        """
+        # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+
+        # Method that will get all Shopify.Product from shopify
+        product_dict = ShopifyTools.product_ids_to_products(ShopifyTools.get_all_product_ids(shopify.Product))
+        # List to return
+        tire_variants_skus = {}
+        # Go through all Shopify.Product from shopify
+        for p in product_dict:
+            # Check if the information is correct for Wheel Pros, Wheels
+            if product_dict[p].vendor == "Wheel Pros" and product_dict[p].product_type == "Tires":
+                # go through the variants
+                for v in product_dict[p].variants:
+                    # Add the sku (or upc) for all the variants
+                    tire_variants_skus[v.sku] = p
+        # Return all of the wheel variant's skus from shopify
+        return tire_variants_skus
+
+    @staticmethod
+    def get_all_tire_variants_in_shopify():
+        """
+        Method is used to get all of the wheel variants in shopify, so then it can
+        be compared to the local versions.
+        :return: Returns all wheel variants (List of WheelVariants)
+        """
+
+        # TODO: Need a way to make sure this is working correctly. Not sure how to set up test suite
+
+        # Helper method to get the skus so the products can be found
+        tire_variants_skus = ShopifyToolsTires.get_all_tire_variants_skus_from_shopify()
+        # List to be returned
+        # Loop through the wheel variants in currently in local
+
+        all_products = list(set(tire_variants_skus.values()))
+
+        for w in all_products:
+            temp_product = shopify.Product.find(w)
+            # Now, need to see if this is a Wheel
+            #print(w," - ", wheel_variants_skus[w])
+        return tire_variants_skus
+
 #---------------------------------
 #--Methods to run the program
 #---------------------------------
@@ -174,3 +245,49 @@ class ShopifyToolsTires:
 def add_tires_shopify_tool():
     tires_info = ExcelTools.read_tire_data_usd(r'sheets/WheelPros/exp_12-05-2019_tireData.xlsx')
     ShopifyToolsTires.add_new_tires(tires_info)
+
+def update_tires_shopify_tool():
+    tire_variant = TireVariants(None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None,
+                                None)
+    tire_variant.set_mrsp_price("777")
+    tire_variant.set_upc("806454490004.0")
+    ShopifyToolsTires.update_new_tire(tire_variant)
+
+update_tires_shopify_tool()

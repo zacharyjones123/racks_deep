@@ -11,7 +11,7 @@ class TireVariants:
                  load_index,
                  psi,
                  speed_rating,
-                 mrsp,
+                 mrsp_price,
                  stg_item_cd,
                  emarked,
                  upc,
@@ -26,7 +26,7 @@ class TireVariants:
                  max_width_in,
                  max_load,
                  power_sports,
-                 map,
+                 map_price,
                  sts,
                  full_model_name,
                  tread_depth,
@@ -51,7 +51,7 @@ class TireVariants:
         self.load_index = load_index
         self.psi = psi
         self.speed_rating = speed_rating
-        self.mrsp = mrsp
+        self.mrsp_price = mrsp_price
         self.stg_item_cd = stg_item_cd
         self.emarked = emarked
         self.upc = upc
@@ -66,7 +66,7 @@ class TireVariants:
         self.max_width_in = max_width_in
         self.max_load = max_load
         self.power_sports = power_sports
-        self.map = map
+        self.map_price = map_price
         self.sts = sts
         self.full_model_name = full_model_name
         self.tread_depth = tread_depth
@@ -82,6 +82,12 @@ class TireVariants:
         self.temperature = temperature
         self.source_country = source_country
         self.mileage_warranty = mileage_warranty
+
+    def set_mrsp_price(self, mrsp_price):
+        self.mrsp_price = mrsp_price
+
+    def set_upc(self, upc):
+        self.upc = upc
 
     def get_tire_mfr_cd(self):
         return self.tire_mfr_cd
@@ -107,8 +113,8 @@ class TireVariants:
     def get_speed_rating(self):
         return self.speed_rating
 
-    def get_mrsp(self):
-        return self.mrsp
+    def get_mrsp_price(self):
+        return self.mrsp_price
 
     def get_stg_item_cd(self):
         return self.stg_item_cd
@@ -152,8 +158,8 @@ class TireVariants:
     def get_power_sports(self):
         return self.power_sports
 
-    def get_map(self):
-        return self.map
+    def get_map_price(self):
+        return self.map_price
 
     def get_sts(self):
         return self.sts

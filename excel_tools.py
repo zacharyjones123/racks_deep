@@ -236,6 +236,8 @@ class ExcelTools:
             bar.update()
         return wheels
 
+
+
     @staticmethod
     def compare_product_technical_data_usd(old_sheet_name, new_sheet_name):
         old_wheels = ExcelTools.read_product_technical_data_usd(old_sheet_name)
@@ -461,4 +463,4 @@ class ExcelTools:
         # Otherwise, leave everything the same
         return upc_to_change
 
-ExcelTools.compare_product_technical_data_usd("exp_11-28-2019-producttechdatausd.xlsx","exp_12-11-2019-producttechdatausd.xlsx")
+#ExcelTools.compare_product_technical_data_usd("exp_11-28-2019-producttechdatausd.xlsx","exp_12-11-2019-producttechdatausd.xlsx")
