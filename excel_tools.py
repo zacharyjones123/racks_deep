@@ -312,12 +312,17 @@ class ExcelTools:
         df = pd.read_excel(spread_sheet_name)
         tires = []
 
+        excluded_tires = ["WILDPEAK A/T3W",
+                          "TRAIL GRAPPLER",
+                          "TERRA GRAPPLER G2",
+                          "RIDGE GRAPPLER"]
+
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
             tire = None
-            if df['PowerSports'][i] != 0:
+            if df['PowerSports'][i] != 0 and df['FullModelName'][i] not in excluded_tires:
                 tire = TireVariants(str(df['TireMfrCd'][i]),
                                       str(df['PartNo'][i]),
                                       str(df['TireSize'][i]),

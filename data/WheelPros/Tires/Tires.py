@@ -4,7 +4,7 @@ from data.WheelPros.Product import Products
 class Tires(Products):
     # Done
     def __init__(self, tire_variant):
-        super().__init__(tire_variant.get_upc(), tire_variant.get_map())
+        super().__init__(tire_variant.get_upc(), tire_variant.get_map_price())
         self.variants = {tire_variant.get_upc(): tire_variant}
         self.product_id = None
         self.full_model_name = tire_variant.get_full_model_name()

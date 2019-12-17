@@ -45,10 +45,10 @@ class ShopifyToolsTires:
         tags_to_add.append("Terrain_" + tire_variant.get_terrain())
 
         # Need to find out the correct price
-        if float(tire_variant.get_map()) == 0:
-            price_for_tire = tire_variant.get_mrsp()
+        if float(tire_variant.get_map_price()) == 0:
+            price_for_tire = tire_variant.get_mrsp_price()
         else:
-            price_for_tire = tire_variant.get_map()
+            price_for_tire = tire_variant.get_map_price()
 
         # 2 cases
         # 1) Is a variant
@@ -56,7 +56,7 @@ class ShopifyToolsTires:
             product_id = tireTools.find_product_id(tire_variant)
             new_tire_product = shopify.Product.find(product_id)
             variant = shopify.Variant({'price': float(price_for_tire),
-                                       'option1': tire_variant.get_tire_size(),
+                                       'option1': tire_variant.get_tire_size_description(),
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
@@ -92,7 +92,7 @@ class ShopifyToolsTires:
                                    <p>%s</p>
                                    """ % (tire_variant.get_tire_description(), tire_variant.get_part_num())
             variant = shopify.Variant({'price': float(price_for_tire),
-                                       'option1': tire_variant.get_tire_size(),
+                                       'option1': tire_variant.get_tire_size_description(),
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
@@ -290,4 +290,5 @@ def update_tires_shopify_tool():
     tire_variant.set_upc("806454490004.0")
     ShopifyToolsTires.update_new_tire(tire_variant)
 
-update_tires_shopify_tool()
+#update_tires_shopify_tool()
+add_tires_shopify_tool()
