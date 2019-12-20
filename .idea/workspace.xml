@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/DS18/Product.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18Products.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsTools.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsVariants.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopify_tools_ds18.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/racks_deep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/racks_deep.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/excel_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopify_tools_kits.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_kits.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_tires.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="racks_deep" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1SvdqHx8U9xIWSWqTfsxRicjCm6" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\tests\WheelPros" />
+      <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\doc\docs" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.shopify_tools_ds18">
+    <configuration name="conf" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/doc" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/doc/conf.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="control_center" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/control_center.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="shopify_tools_ds18" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_ds18.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="sphinx task in racks_deep" type="docs" factoryName="Sphinx task" temporary="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/.." />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="docutils_input_file" value="$PROJECT_DIR$" />
+      <option name="docutils_output_file" value="C:\Users\Zachary Jones\PycharmProjects\racks_deep/_build" />
+      <option name="docutils_params" value="" />
+      <option name="docutils_task" value="html" />
+      <option name="docutils_open_in_browser" value="false" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.conf" />
+      <item itemvalue="Python.control_center" />
+      <item itemvalue="Python.shopify_tools_ds18" />
+      <item itemvalue="Python docs.sphinx task in racks_deep" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.shopify_tools_ds18" />
+        <item itemvalue="Python.control_center" />
+        <item itemvalue="Python.conf" />
+        <item itemvalue="Python docs.sphinx task in racks_deep" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="" />
+      <created>1572448192575</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1572448192575</updated>
+    </task>
+    <task id="LOCAL-00001" summary="I edited the readme file just to make it work">
+      <created>1573253674799</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573253674799</updated>
+    </task>
+    <task id="LOCAL-00002" summary="I added all of the framework to add the Kits into the Shopify database">
+      <created>1573254326637</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1573254326637</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added all of the infrastructure for Kits. Needs to be tweaked a little bit but needed to get this started. Next step is figuring out how to turn the sheet into something useful">
+      <created>1573310874735</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1573310874735</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added the Vehicles Framework, but now need to figure out how to get all of the fitments for the website. This is the next big thing to do and will make the website amazing and great for the consumer">
+      <created>1573311651020</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1573311651020</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added in skeleton for support tools that can be implemented later. Just something to focus on at a later date">
+      <created>1573317982642</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1573317982642</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Lot of organization and documenting. I set up sphinx and put how I did it in the readme file. I'll work on documenting this at some other point.">
+      <created>1573333521502</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1573333521502</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Set up testing, added modules to readme. It is starting to look more professional">
+      <created>1573336286504</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1573336286504</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added in infrastructure for the different products that need to be added">
+      <created>1574804789362</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1574804789362</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="I edited the readme file just to make it work" />
+    <MESSAGE value="I added all of the framework to add the Kits into the Shopify database" />
+    <MESSAGE value="Added all of the infrastructure for Kits. Needs to be tweaked a little bit but needed to get this started. Next step is figuring out how to turn the sheet into something useful" />
+    <MESSAGE value="Added the Vehicles Framework, but now need to figure out how to get all of the fitments for the website. This is the next big thing to do and will make the website amazing and great for the consumer" />
+    <MESSAGE value="Added in skeleton for support tools that can be implemented later. Just something to focus on at a later date" />
+    <MESSAGE value="Lot of organization and documenting. I set up sphinx and put how I did it in the readme file. I'll work on documenting this at some other point." />
+    <MESSAGE value="Set up testing, added modules to readme. It is starting to look more professional" />
+    <MESSAGE value="Added in infrastructure for the different products that need to be added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added in infrastructure for the different products that need to be added" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="97" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576852757705">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="97" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1576852757705" />
+    <state x="322" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576608040193">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="322" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1576608040193" />
+    <state width="929" height="291" key="GridCell.Tab.0.bottom" timestamp="1576853474915">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="929" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
+    <state width="929" height="291" key="GridCell.Tab.0.center" timestamp="1576853474915">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="929" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
+    <state width="929" height="291" key="GridCell.Tab.0.left" timestamp="1576853474915">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="929" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
+    <state width="929" height="291" key="GridCell.Tab.0.right" timestamp="1576853474915">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state width="929" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
+    <state x="150" y="0" key="SettingsEditor" timestamp="1576608484008">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1576608484008" />
+    <state x="338" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1576849773795">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="338" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1576849773795" />
+    <state x="-6" y="0" width="651" height="686" key="dock-window-1" timestamp="1576851607248">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="-6" y="0" width="651" height="686" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1576851607248" />
+    <state x="-6" y="0" width="651" height="686" key="dock-window-2" timestamp="1576852243821">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="-6" y="0" width="651" height="686" key="dock-window-2/0.0.1280.680@0.0.1280.680" timestamp="1576852243821" />
+    <state x="-6" y="0" width="651" height="686" key="dock-window-3" timestamp="1576853499778">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="-6" y="0" width="651" height="686" key="dock-window-3/0.0.1280.680@0.0.1280.680" timestamp="1576853499778" />
+    <state x="341" y="132" key="git4idea.merge.GitPullDialog" timestamp="1576608449454">
+      <screen x="0" y="0" width="1280" height="680" />
+    </state>
+    <state x="341" y="132" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1576608449454" />
+  </component>
+</project>

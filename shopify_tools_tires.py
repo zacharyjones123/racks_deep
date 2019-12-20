@@ -1,4 +1,3 @@
-# Tire Tools - Local Storage for Wheel Pros Tires
 from datetime import time
 
 import pyactiveresource
@@ -12,6 +11,7 @@ from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 
+# Tire Tools - Local Storage for Wheel Pros Tires
 tireTools = TireTools()
 
 
@@ -168,7 +168,6 @@ class ShopifyToolsTires:
                 print("HTTP error has occured, restarting server in 5 seconds")
                 time.sleep(10)
 
-
     @staticmethod
     def update_new_tire(tire_variant):
         #Need to get a dictionary of all variants
@@ -192,6 +191,15 @@ class ShopifyToolsTires:
     @staticmethod
     def update_new_tires(tires):
         pass
+
+    @staticmethod
+    def delete_tire(tire_variant):
+        pass
+
+    @staticmethod
+    def delete_tires(tires):
+        pass
+
     @staticmethod
     def get_all_tire_variants_skus_from_shopify():
         """
@@ -289,6 +297,9 @@ def update_tires_shopify_tool():
     tire_variant.set_mrsp_price("777")
     tire_variant.set_upc("806454490004.0")
     ShopifyToolsTires.update_new_tire(tire_variant)
+
+def delete_tires_shopify_tool():
+    pass
 
 #update_tires_shopify_tool()
 add_tires_shopify_tool()

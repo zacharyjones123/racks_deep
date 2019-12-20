@@ -152,7 +152,21 @@ class ShopifyToolsKits:
                 # something went wrong, see new_product.errors.full_messages() for example
                 print(new_kit_product.errors.full_messages())
 
+    @staticmethod
+    def update_kit(kit_variant):
+        pass
 
+    @staticmethod
+    def update_kits(kits):
+        pass
+
+    @staticmethod
+    def delete_kit(kit_variant):
+        pass
+
+    @staticmethod
+    def delete_kits(kits):
+        pass
 #---------------------------------
 #--Methods to run the program
 #---------------------------------
@@ -160,3 +174,9 @@ class ShopifyToolsKits:
 def add_kits_shopify_tool():
     kits_info = ExcelTools.read_kit_data(r'sheets/WheelPros/wheel_pros_kits.xlsx')
     ShopifyToolsKits.add_new_kits(kits_info)
+
+def update_kits_shopify_tool():
+    pass
+
+def delete_kits_shopify_tool():
+    pass
