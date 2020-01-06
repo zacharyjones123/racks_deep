@@ -55,21 +55,33 @@ class ExcelTools:
         # TODO: Need to test the method
         # TODO: Make method more more versatile
         print('Reading DS18 Data Sheet')
-        df = pd.read_excel(spread_sheet_name)
-        ds18_products= []
+        df = pd.read_excel(spread_sheet_name, "product_sheets")
+        df_needed = pd.read_excel(spread_sheet_name, "for_store")
+        ds18_products = []
+
+        # ----------------------------
+        ds18_needed = {}
+        for i in df_needed.index:
+            #Go through and get all of the models we need
+            ds18_needed[(str(df_needed['Model'][i]).replace("-", ""))] = str(df_needed['Collection'][i])
+
+        #print(ds18_needed)
+
+        # ----------------------------
 
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
             ds18_product = None
-            if df['MSRP'][i] != 0:
+            if df['MSRP'][i] != 0 and (df['Model'][i].replace("-", "")) in ds18_needed:
                 ds18_product = DS18Variants(str(df['Model'][i]),
                                       str(df['Brand'][i]),
                                       str(df['Name'][i]),
                                       str(df['M/C'][i]),
                                       str(df['MSRP'][i]),
-                                      str(df['Dealer'][i]))
+                                      str(df['Dealer'][i]),
+                                      str(ds18_needed[df['Model'][i].replace("-", "")]))
             if ds18_product is not None:
                 ds18_products.append(ds18_product)
             total += 1

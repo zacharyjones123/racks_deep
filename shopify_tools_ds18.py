@@ -1,7 +1,8 @@
-from datetime import time
+import time
 
 import pyactiveresource
 import pyprind
+import os
 
 from data.DS18.Products.DS18ProductsTools import DS18ProductsTools
 from data.WheelPros.Tags import Tags
@@ -10,11 +11,23 @@ from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 
+from base64 import b64encode
+
 # DS18Tools - Local Storage for DS18 Products
 ds18Tools = DS18ProductsTools()
 
 
 class ShopifyToolsDS18:
+    @staticmethod
+    def get_picture(model_name):
+        directory = os.getcwd() + "\\images\\ds_18\\"
+        for file in os.listdir(directory):
+            if file.endswith(".jpg") and os.path.join(directory, file).replace('.','\\').split("\\")[-2].replace('-', '') in model_name.replace('-', ''):
+                return os.path.join(directory, file)
+
+        print("Did not find image for %s." % model_name)
+
+
     @staticmethod
     def add_new_product(ds18_variant):
         """
@@ -24,15 +37,17 @@ class ShopifyToolsDS18:
         """
         # TODO: Need to find a way to stream line this
         # TODO: Comment out the method
+        print(ds18_variant.get_model())
 
         # Make the tags that we want to add
         tags_to_add = []
         # Brand
-        tags_to_add.append("Brand_" + ds18_variant.get_brand())
+        tags_to_add.append("Brand_" + ds18_variant.get_collection())
 
         # 2 cases
         # 1) Is a variant
         if ds18Tools.has_variants(ds18_variant):
+            return
             product_id = ds18Tools.find_product_id(ds18_variant)
             new_ds18_product = shopify.Product.find(product_id)
             variant = shopify.Variant({'price': float(ds18_variant.get_msrp_price()),
@@ -53,6 +68,8 @@ class ShopifyToolsDS18:
             for t in tags_to_add:
                 if not tags.is_a_tag(t) and "nan" not in t:
                     tags.add_tag(t)
+
+            new_ds18_product.tags = tags.tags_to_string()
 
             new_ds18_product.tags = tags.tags_to_string()
             new_ds18_product.variants.append(variant)
@@ -92,11 +109,11 @@ class ShopifyToolsDS18:
                 if not tags.is_a_tag(t) and "nan" not in t:
                     tags.add_tag(t)
 
-            #image = shopify.Image()
-            #file_name = "https://images.wheelpros.com/h%s.png" % (tire_variant.get_picture_cd())
-            #image.src = file_name
-            #new_tire_product.images = [image]
-            new_ds18_product.save()
+            new_ds18_product.tags = tags.tags_to_string()
+
+            image = shopify.Image()
+            image.src = "https://ds18.s3.us-east-2.amazonaws.com/" + ds18_variant.get_model().replace("-", "").replace("/", "") + ".jpg"
+            new_ds18_product.images = [image]
 
             ds18Tools.add_product(new_ds18_product.id, ds18_variant)
             new_ds18_product.save()  # returns false if the record is invalid

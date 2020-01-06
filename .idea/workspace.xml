@@ -2,18 +2,104 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/DS18/Product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18Products.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsTools.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsVariants.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopify_tools_ds18.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/example.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/ATVCOMBO1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF10SUB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF62TD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF65.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF68TPBNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF6TPB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF6TPBNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF6TPBNS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF6UTV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF82TD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF8TPB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF8TPBNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF8TPBNS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CF8UTV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CFDT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/CLP3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/FLMB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/HM1.5A.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/HM2MAUX.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/HMRC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/HYDRO65.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/HYDRO65BK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/JSCOMBO1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/JSCOMBO2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/LEDBTC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/LEDBTCDRM.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MARINECOMBO2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MARINECOMBO3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MARINECOMBO4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MCC.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MDSP14LCD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC0GA25G.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC0GA25P.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC12GA150SW.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC16GA150SW.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC4GA50G.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC4GA50P.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC8GA100G.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/MOFC8GA100P.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL10.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL102TD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL10BK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL10SUB.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL10SUBLD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL200.2D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL400.4D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL600.1D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL62DT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL62TDBK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6BK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6TP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6TPBKNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6TPNS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6TPWNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6UTV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL6UTVBK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL800.5D.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL82TD.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL82TDBK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8BK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8TP.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8TPBKNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8TPNS.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8TPWNEO.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8UTV.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXL8UTVBK.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLDT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLN1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLN2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLN4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLPS6.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/NXLPS8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/PKGM1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SBAR25.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SBAR30BT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SBAR35.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SBAR35BT.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SS39K.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/SWLDC1.2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/TMBR.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/TS3.30.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/TSB3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/ds_18/waveskit8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/exp_12-05-2019_tireData.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/ds18/12-20-2019_ds18_products.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/ds18/racks_deep_model.mwb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/racks_deep.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/racks_deep.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/DS18/Products/DS18ProductsVariants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/excel_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_kits.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_kits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_tires.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sheets/ds18/12-20-2019_ds18_products.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/sheets/ds18/12-20-2019_ds18_products.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopify_tools_ds18.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_ds18.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +126,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
@@ -93,6 +180,27 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="example" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/example.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="shopify_tools_ds18" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -133,12 +241,14 @@
     <list>
       <item itemvalue="Python.conf" />
       <item itemvalue="Python.control_center" />
+      <item itemvalue="Python.example" />
       <item itemvalue="Python.shopify_tools_ds18" />
       <item itemvalue="Python docs.sphinx task in racks_deep" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.shopify_tools_ds18" />
+        <item itemvalue="Python.example" />
         <item itemvalue="Python.control_center" />
         <item itemvalue="Python.conf" />
         <item itemvalue="Python docs.sphinx task in racks_deep" />
@@ -260,29 +370,39 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="322" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1576608040193" />
-    <state width="929" height="291" key="GridCell.Tab.0.bottom" timestamp="1576853474915">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="936" height="276" key="GridCell.Tab.0.bottom" timestamp="1578280435180">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="398" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
+    <state width="936" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578280435180" />
     <state width="929" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="929" height="291" key="GridCell.Tab.0.center" timestamp="1576853474915">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="936" height="276" key="GridCell.Tab.0.center" timestamp="1578280435180">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="398" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
+    <state width="936" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578280435180" />
     <state width="929" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="929" height="291" key="GridCell.Tab.0.left" timestamp="1576853474915">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="936" height="276" key="GridCell.Tab.0.left" timestamp="1578280435180">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="398" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
+    <state width="936" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578280435180" />
     <state width="929" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="929" height="291" key="GridCell.Tab.0.right" timestamp="1576853474915">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state width="936" height="276" key="GridCell.Tab.0.right" timestamp="1578280435180">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state width="1899" height="398" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
+    <state width="936" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578280435180" />
     <state width="929" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state x="150" y="0" key="SettingsEditor" timestamp="1576608484008">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="225" y="0" key="SettingsEditor" timestamp="1577826579367">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="225" y="0" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1577826579367" />
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1576608484008" />
-    <state x="338" y="164" key="com.intellij.ide.util.TipDialog" timestamp="1576849773795">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1578272916066">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578272916066" />
     <state x="338" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1576849773795" />
     <state x="-6" y="0" width="651" height="686" key="dock-window-1" timestamp="1576851607248">
       <screen x="0" y="0" width="1280" height="680" />
@@ -296,9 +416,10 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="-6" y="0" width="651" height="686" key="dock-window-3/0.0.1280.680@0.0.1280.680" timestamp="1576853499778" />
-    <state x="341" y="132" key="git4idea.merge.GitPullDialog" timestamp="1576608449454">
-      <screen x="0" y="0" width="1280" height="680" />
+    <state x="512" y="202" key="git4idea.merge.GitPullDialog" timestamp="1577813618101">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="512" y="202" key="git4idea.merge.GitPullDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1577813618101" />
     <state x="341" y="132" key="git4idea.merge.GitPullDialog/0.0.1280.680@0.0.1280.680" timestamp="1576608449454" />
   </component>
 </project>

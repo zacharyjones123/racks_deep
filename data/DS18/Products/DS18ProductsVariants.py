@@ -5,13 +5,15 @@ class DS18Variants:
                  name,
                  m_c,
                  msrp_price,
-                 dealer_price):
+                 dealer_price,
+                 collection):
         self.model = model
         self.brand = brand
         self.name = name
         self.m_c = m_c
         self.msrp_price = msrp_price
         self.dealer_price = dealer_price
+        self.collection = collection
 
     def set_model(self, model):
         self.model = model
@@ -31,6 +33,9 @@ class DS18Variants:
     def set_dealer_price(self, dealer_price):
         self.dealer_price = dealer_price
 
+    def set_collection(self, collection):
+        self.collection = collection
+
     def get_model(self):
         return self.model
 
@@ -48,6 +53,9 @@ class DS18Variants:
 
     def get_dealer_price(self):
         return self.dealer_price
+
+    def get_collection(self):
+        return self.collection
 
     def __eq__(self, o) -> bool:
         pass
