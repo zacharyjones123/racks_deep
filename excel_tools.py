@@ -7,6 +7,7 @@ import pyprind
 
 from data.DS18.Products.DS18ProductsVariants import DS18Variants
 from data.SAndBFilters.Products.Filter import Filter
+from data.SAndBFilters.Products.FilterVariants import FilterVariant
 from data.WheelPros.Kits.KitVariants import KitVariants
 from data.WheelPros.Wheels.WheelVariants import WheelVariants
 from data.WheelPros.Tires.TireVariants import TireVariants
@@ -104,13 +105,13 @@ class ExcelTools:
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            if df["Price Type - Retail/ MAP"][i] != 0:
-                product = Filter(str(df['S&B Part #'][i]),
+            if df["Price"][i] != 0 and df['Type'][i] == 'UTV':
+                product = FilterVariant(str(df['S&B Part #'][i]),
                                       str(df['UPC'][i]),
                                       str(df['Product Description'][i]),
                                       str(df['Product Description / Fitment'][i]),
                                       str(df['Type'][i]),
-                                      str(df['Price Type - Retail / MAP'][i]))
+                                      str(df['Price'][i]))
             if product is not None:
                 products.append(product)
             total += 1
