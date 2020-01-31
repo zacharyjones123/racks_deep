@@ -1,7 +1,10 @@
 # Wheel Tools - Local Storage for Wheel Pros Wheels
+import urllib
 from datetime import time
+import time
 
 import pyactiveresource
+import pyactiveresource.connection
 import pyprind
 
 from data.WheelPros.Tags import Tags
@@ -12,6 +15,7 @@ from urllib.error import HTTPError
 import shopify
 
 wheelTools = WheelTools()
+
 
 class ShopifyToolsWheels:
     @staticmethod
@@ -433,7 +437,6 @@ class ShopifyToolsWheels:
         # Keeps track of total deleted
         total_deleted = 0
         # Go through all wheel product ids found
-        print(wheels_copy)
         for p in wheels_copy:
             # Try to delete, ,know that it might not exist
             # TODO: May need to add in more exceptions
@@ -448,6 +451,12 @@ class ShopifyToolsWheels:
                 total_deleted += 1
             except KeyError:
                 # Exception if it doesn't exist
+                print(p, " was not found!")
+            except urllib.error.URLError:
+                print(p, " was not found!")
+            except TimeoutError:
+                print(p, " was not found!")
+            except pyactiveresource.connection.Error:
                 print(p, " was not found!")
             bar.update(item_id=str(total_deleted))
         # Print out the statistics of the method
@@ -482,7 +491,7 @@ class ShopifyToolsWheels:
 #--Methods to run the program
 #---------------------------------
 def add_wheels_shopify_tool():
-    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_11-28-2019_producttechdatausd.xlsx')
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_01-30-2020_producttechdatausd.xlsx')
     # Need to split this up into 100 chunks
     wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
     ShopifyToolsWheels.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
@@ -490,8 +499,15 @@ def add_wheels_shopify_tool():
     #wheelTools.save_wheel_variants_to_file()
 
 def delete_wheels_shopify_tool():
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_11-28-2019_producttechdatausd.xlsx')
+    wheelTools.set_wheel_variants_list(wheels_info)
+    ShopifyToolsWheels.build_wheels()
     ShopifyToolsWheels.delete_all_wheels()
     #wheelTools.save_wheel_variants_to_file()
 
-print("Testing skus")
-print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())
+#print("Testing skus")
+#print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())
+
+
+add_wheels_shopify_tool()
+#delete_wheels_shopify_tool()
