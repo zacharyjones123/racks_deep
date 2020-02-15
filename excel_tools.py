@@ -5,6 +5,9 @@ excel_tools.py: All of the tools needed to read price sheets
 import pandas as pd
 import pyprind
 
+from ftp_wheel_test import get_wheel_update
+from ftp_tire_test import get_tire_update
+
 from data.DS18.Products.DS18ProductsVariants import DS18Variants
 from data.SAndBFilters.Products.Filter import Filter
 from data.SAndBFilters.Products.FilterVariants import FilterVariant
@@ -193,91 +196,97 @@ class ExcelTools:
         df = pd.read_excel(spread_sheet_name)
         wheels = []
 
+        # Date Feed
+        wheel_feed = get_wheel_update()
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            wheel = None
-            if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])):
-                upc_temp = ""
-                if str(df['upc'][i]) != "nan":
-                    upc_temp = str(int(df['upc'][i]))
-                wheel = WheelVariants(str(df['styledescription'][i]),
-                                      str(df['partnumber'][i]),
-                                      str(df['partnumberdescription'][i]),
-                                      str(df['size'][i]),
-                                      str(df['finish'][i]),
-                                      str(df['W.D. USD'][i]),
-                                      str(df['MapPrice'][i]),
-                                      str(df['diameter'][i]),
-                                      str(df['width'][i]),
-                                      str(df['lugcount'][i]),
-                                      str(df['Bolt Pattern Metric'][i]),
-                                      str(df['Bolt Pattern US'][i]),
-                                      str(df['offset'][i]),
-                                      str(df['backspacing'][i]),
-                                      str(df['centerbore'][i]),
-                                      str(df['Load Rating Lbs'][i]),
-                                      str(df['Load Rating Kgs'][i]),
-                                      str(df['Hub Ring Included'][i]),
-                                      upc_temp,
-                                      str(df['InvOrderType'][i]),
-                                      str(df['RearOnly'][i]),
-                                      str(df['HubClearance'][i]),
-                                      str(df['BarrelConfig'][i]),
-                                      str(df['CapPartNo'][i]),
-                                      str(df['CapHardware'][i]),
-                                      str(df['QtyOfCapScrews'][i]),
-                                      str(df['Cap Wrench'][i]),
-                                      str(df['Testing'][i]),
-                                      str(df['PictureCd']),
-                                      str(df['MaxOffset'][i]),
-                                      str(df['MinOffset'][i]),
-                                      str(df['Cap Style'][i]),
-                                      str(df['OtherAccessories'][i]),
-                                      str(df['TPMS Compatable'][i]),
-                                      str(df['Wheel Weight'][i]),
-                                      str(df['Shipping Weight'][i]),
-                                      str(df['WhlManufactCd'][i]),
-                                      str(df['WhlManufactNm'][i]),
-                                      str(df['DisplayModelNo']),
-                                      str(df['SortGroup'][i]),
-                                      str(df['WhlModelNm'][i]),
-                                      str(df['Full ModelName'][i]),
-                                      str(df['Country of Origin'][i]),
-                                      str(df['WidthIn'][i]),
-                                      str(df['AbrvFinishDesc'][i]),
-                                      str(df['Box Label Description'][i]),
-                                      str(df['Finish Warranty'][i]),
-                                      str(df['BoltPatternMm1'][i]),
-                                      str(df['BoltPatternMm2'][i]),
-                                      str(df['SmallestBoltPatternMm'][i]),
-                                      str(df['LargestBoltPatternMm'][i]),
-                                      str(df['MinLugCnt'][i]),
-                                      str(df['MaxLugCnt'][i]),
-                                      str(df['OpenEndCap'][i]),
-                                      str(df['RivetPartNo'][i]),
-                                      str(df['RivetQty'][i]),
-                                      str(df['PVDFinish'][i]),
-                                      str(df['StainlessLip'][i]),
-                                      str(df['FlowFormed'][i]),
-                                      str(df['Forged'][i]),
-                                      str(df['TwoPiece'][i]),
-                                      str(df['SteelWheel'][i]),
-                                      str(df['TrueBeadLock'][i]),
-                                      str(df['OffRoadUseOnly'][i]),
-                                      str(df['Patent'][i]),
-                                      str(df['Lip Depth'][i]),
-                                      str(df['Construction'][i]),
-                                      str(df['Material'][i]),
-                                      str(df['FancyFinishDesc'][i]),
-                                      str(df['wheelimage'][i]),
-                                      str(df['Prop65 Chemical 1'][i]),
-                                      str(df['Prop65 Chemical 2'][i]),
-                                      str(df['Prop65 Chemical 3'][i]))
+            try:
+                wheel = None
+                if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and int(wheel_feed[str(df['partnumber'][i])].total_qqh) != 0:
+                    upc_temp = ""
+                    if str(df['upc'][i]) != "nan":
+                        upc_temp = str(int(df['upc'][i]))
+                    wheel = WheelVariants(int(wheel_feed[str(df['partnumber'][i])].total_qqh),
+                                          str(df['styledescription'][i]),
+                                          str(df['partnumber'][i]),
+                                          str(df['partnumberdescription'][i]),
+                                          str(df['size'][i]),
+                                          str(df['finish'][i]),
+                                          str(wheel_feed[str(df['partnumber'][i])].msrp_price),
+                                          str(wheel_feed[str(df['partnumber'][i])].map_price),
+                                          str(df['diameter'][i]),
+                                          str(df['width'][i]),
+                                          str(df['lugcount'][i]),
+                                          str(df['Bolt Pattern Metric'][i]),
+                                          str(df['Bolt Pattern US'][i]),
+                                          str(df['offset'][i]),
+                                          str(df['backspacing'][i]),
+                                          str(df['centerbore'][i]),
+                                          str(df['Load Rating Lbs'][i]),
+                                          str(df['Load Rating Kgs'][i]),
+                                          str(df['Hub Ring Included'][i]),
+                                          upc_temp,
+                                          str(df['InvOrderType'][i]),
+                                          str(df['RearOnly'][i]),
+                                          str(df['HubClearance'][i]),
+                                          str(df['BarrelConfig'][i]),
+                                          str(df['CapPartNo'][i]),
+                                          str(df['CapHardware'][i]),
+                                          str(df['QtyOfCapScrews'][i]),
+                                          str(df['Cap Wrench'][i]),
+                                          str(df['Testing'][i]),
+                                          str(df['PictureCd']),
+                                          str(df['MaxOffset'][i]),
+                                          str(df['MinOffset'][i]),
+                                          str(df['Cap Style'][i]),
+                                          str(df['OtherAccessories'][i]),
+                                          str(df['TPMS Compatable'][i]),
+                                          str(df['Wheel Weight'][i]),
+                                          str(df['Shipping Weight'][i]),
+                                          str(df['WhlManufactCd'][i]),
+                                          str(df['WhlManufactNm'][i]),
+                                          str(df['DisplayModelNo']),
+                                          str(df['SortGroup'][i]),
+                                          str(df['WhlModelNm'][i]),
+                                          str(df['Full ModelName'][i]),
+                                          str(df['Country of Origin'][i]),
+                                          str(df['WidthIn'][i]),
+                                          str(df['AbrvFinishDesc'][i]),
+                                          str(df['Box Label Description'][i]),
+                                          str(df['Finish Warranty'][i]),
+                                          str(df['BoltPatternMm1'][i]),
+                                          str(df['BoltPatternMm2'][i]),
+                                          str(df['SmallestBoltPatternMm'][i]),
+                                          str(df['LargestBoltPatternMm'][i]),
+                                          str(df['MinLugCnt'][i]),
+                                          str(df['MaxLugCnt'][i]),
+                                          str(df['OpenEndCap'][i]),
+                                          str(df['RivetPartNo'][i]),
+                                          str(df['RivetQty'][i]),
+                                          str(df['PVDFinish'][i]),
+                                          str(df['StainlessLip'][i]),
+                                          str(df['FlowFormed'][i]),
+                                          str(df['Forged'][i]),
+                                          str(df['TwoPiece'][i]),
+                                          str(df['SteelWheel'][i]),
+                                          str(df['TrueBeadLock'][i]),
+                                          str(df['OffRoadUseOnly'][i]),
+                                          str(df['Patent'][i]),
+                                          str(df['Lip Depth'][i]),
+                                          str(df['Construction'][i]),
+                                          str(df['Material'][i]),
+                                          str(df['FancyFinishDesc'][i]),
+                                          str(wheel_feed[str(df['partnumber'][i])].image_src),
+                                          str(df['Prop65 Chemical 1'][i]),
+                                          str(df['Prop65 Chemical 2'][i]),
+                                          str(df['Prop65 Chemical 3'][i]))
 
-            if wheel is not None:
-                wheels.append(wheel)
+                if wheel is not None:
+                    wheels.append(wheel)
+            except KeyError:
+                print(df["partnumber"][i],"not found!")
             total += 1
             all_total += 1
             bar.update()
@@ -364,53 +373,60 @@ class ExcelTools:
                           "TERRA GRAPPLER G2",
                           "RIDGE GRAPPLER"]
 
+        # Date Feed
+        tire_feed = get_tire_update()
+
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(df.index), monitor=True)
         for i in df.index:
-            tire = None
-            if df['PowerSports'][i] != 0 and df['FullModelName'][i] not in excluded_tires:
-                tire = TireVariants(str(df['TireMfrCd'][i]),
-                                      str(df['PartNo'][i]),
-                                      str(df['TireSize'][i]),
-                                      str(df['TireDescription'][i]),
-                                      str(df['TireSizeDescription'][i]),
-                                      str(df['LoadIndex'][i]),
-                                      str(df['PSI'][i]),
-                                      str(df['SpeedRating'][i]),
-                                      str(df['Wd'][i]),
-                                      str(df['StgItemCd'][i]),
-                                      str(df['eMarked'][i]),
-                                      str(df['UPC'][i]),
-                                      str(df['SectionWidth'][i]),
-                                      str(df['Series'][i]),
-                                      str(df['RimDiameter'][i]),
-                                      str(df['TireDiameter'][i]),
-                                      str(df['PictureCd'][i]),
-                                      str(df['Weight'][i]),
-                                      str(df['TireDiameter2'][i]),
-                                    str(df['MinWidthIn'][i]),
-                                    str(df['MaxWidthIn'][i]),
-                                    str(df['MaxLoad'][i]),
-                                    str(df['PowerSports'][i]),
-                                    str(df['MAP'][i]),
-                                    str(df['Sts'][i]),
-                                    str(df['FullModelName'][i]),
-                                    str(df['TreadDepth'][i]),
-                                    str(df['Ply'][i]),
-                                    str(df['ConstructionType'][i]),
-                                    str(df['Terrain'][i]),
-                                    str(df['MaxLoadDual'][i]),
-                                    str(df['MaxPressure'][i]),
-                                    str(df['ApprovedRimWidth'][i]),
-                                    str(df['UTQG'][i]),
-                                    str(df['Treadwear'][i]),
-                                    str(df['Traction'][i]),
-                                    str(df['Temperature'][i]),
-                                    str(df['SourceCountry'][i]),
-                                    str(df['MileageWarranty'][i]))
-            if tire is not None:
-                tires.append(tire)
+            try:
+                tire = None
+                if df['PowerSports'][i] != 0 and df['FullModelName'][i] not in excluded_tires and int(tire_feed[str(df['PartNo'][i])].total_qqh) != 0:
+                    tire = TireVariants(int(tire_feed[str(df['PartNo'][i])].total_qqh),
+                                          str(df['TireMfrCd'][i]),
+                                          str(df['PartNo'][i]),
+                                          str(df['TireSize'][i]),
+                                          str(df['TireDescription'][i]),
+                                          str(df['TireSizeDescription'][i]),
+                                          str(df['LoadIndex'][i]),
+                                          str(df['PSI'][i]),
+                                          str(df['SpeedRating'][i]),
+                                          str(tire_feed[str(df['PartNo'][i])].usd),
+                                          str(df['StgItemCd'][i]),
+                                          str(df['eMarked'][i]),
+                                          str(df['UPC'][i]),
+                                          str(df['SectionWidth'][i]),
+                                          str(df['Series'][i]),
+                                          str(df['RimDiameter'][i]),
+                                          str(df['TireDiameter'][i]),
+                                          str(tire_feed[str(df['PartNo'][i])].image_url),
+                                          str(df['Weight'][i]),
+                                          str(df['TireDiameter2'][i]),
+                                        str(df['MinWidthIn'][i]),
+                                        str(df['MaxWidthIn'][i]),
+                                        str(df['MaxLoad'][i]),
+                                        str(df['PowerSports'][i]),
+                                        str(tire_feed[str(df['PartNo'][i])].us_map),
+                                        str(df['Sts'][i]),
+                                        str(df['FullModelName'][i]),
+                                        str(df['TreadDepth'][i]),
+                                        str(df['Ply'][i]),
+                                        str(df['ConstructionType'][i]),
+                                        str(df['Terrain'][i]),
+                                        str(df['MaxLoadDual'][i]),
+                                        str(df['MaxPressure'][i]),
+                                        str(df['ApprovedRimWidth'][i]),
+                                        str(df['UTQG'][i]),
+                                        str(df['Treadwear'][i]),
+                                        str(df['Traction'][i]),
+                                        str(df['Temperature'][i]),
+                                        str(df['SourceCountry'][i]),
+                                        str(df['MileageWarranty'][i]))
+                    if tire is not None:
+                        tires.append(tire)
+            except KeyError:
+                print(df["PartNo"][i], "not found!")
             total += 1
             all_total += 1
             bar.update()

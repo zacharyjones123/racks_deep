@@ -92,6 +92,7 @@ class ShopifyToolsWheels:
         if wheelTools.has_variants(wheel_variant):
             product_id = wheelTools.find_product_id(wheel_variant)
             new_wheel_product = shopify.Product.find(product_id)
+            print(type(new_wheel_product))
             variant = shopify.Variant({'price': wheel_price1,
                                        'option1': wheel_variant.get_size(),
                                        'option2': bolt_pattern1,
@@ -99,11 +100,11 @@ class ShopifyToolsWheels:
                                        'quantity': 1,
                                        'sku': wheel_variant.get_upc(),
                                        'position': 1,
-                                       'inventory_policy': "continue",
+                                       'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': 1,
-                                       'taxable': False,
+                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'taxable': True,
                                        'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
@@ -117,16 +118,17 @@ class ShopifyToolsWheels:
                                         'quantity': 1,
                                         'sku': wheel_variant.get_upc(),
                                         'position': 1,
-                                        'inventory_policy': "continue",
+                                        'inventory_policy': "deny",
                                         'fulfillment_service': "manual",
                                         'inventory_management': "shopify",
-                                        'inventory_quantity': 1,
-                                        'taxable': False,
+                                        'inventory_quantity': wheel_variant.get_curr_stock(),
+                                        'taxable': True,
                                         'weight': float(wheel_variant.get_shipping_weight()),
                                         'weight_unit': "g",  # g, kg
                                         'requires_shipping': True})
 
             # print(type(new_wheel_product.variants))
+            print(type(new_wheel_product))
             if bolt_pattern1 not in new_wheel_product.tags:
                 new_wheel_product.tags += "," + bolt_pattern1
             if bolt_pattern2 not in new_wheel_product.tags:
@@ -147,6 +149,12 @@ class ShopifyToolsWheels:
 
             new_wheel_product.tags = tags.tags_to_string()
             new_wheel_product.save()
+
+            if new_wheel_product.errors:
+                # something went wrong, see new_product.errors.full_messages() for example
+                raise Exception("New Wheel Product Error:\n",new_wheel_product.errors.full_messages())
+
+
             wheelTools.add_wheel(product_id, wheel_variant)
 
             # TODO: Need to organize this code
@@ -171,11 +179,11 @@ class ShopifyToolsWheels:
                                        'quantity': 1,
                                        'sku': wheel_variant.get_upc(),
                                        'position': 1,
-                                       'inventory_policy': "continue",
+                                       'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': 1,
-                                       'taxable': False,
+                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'taxable': True,
                                        'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
@@ -188,11 +196,11 @@ class ShopifyToolsWheels:
                                        'quantity': 1,
                                        'sku': wheel_variant.get_upc(),
                                        'position': 1,
-                                       'inventory_policy': "continue",
+                                       'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': 1,
-                                       'taxable': False,
+                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'taxable': True,
                                        'weight': float(wheel_variant.get_shipping_weight()),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
@@ -232,7 +240,7 @@ class ShopifyToolsWheels:
             new_wheel_product.save()  # returns false if the record is invalid
             if new_wheel_product.errors:
                 # something went wrong, see new_product.errors.full_messages() for example
-                print(new_wheel_product.errors.full_messages())
+                raise Exception("New Wheel Product Error:\n",new_wheel_product.errors.full_messages())
 
     @staticmethod
     def add_new_wheels(wheels):
@@ -491,7 +499,9 @@ class ShopifyToolsWheels:
 #--Methods to run the program
 #---------------------------------
 def add_wheels_shopify_tool():
-    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_01-30-2020_producttechdatausd.xlsx')
+    wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_02-14-2020_producttechdatausd.xlsx')
+    for w in wheels_info:
+        print(w)
     # Need to split this up into 100 chunks
     wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
     ShopifyToolsWheels.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))

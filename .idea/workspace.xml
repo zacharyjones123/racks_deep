@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/exp_01-30-2020_producttechdatausd.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/exp_01-30-2020_tireData.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ftp_wheel_test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/exp_02-14-2020_producttechdatausd.xlsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/excel_tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_tires.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopify_tools_wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_wheels.py" afterDir="false" />
     </list>
@@ -47,7 +51,7 @@
     </key>
   </component>
   <component name="RunManager" selected="Python.shopify_tools_tires">
-    <configuration name="interview" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ftp_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -59,7 +63,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/interview.py" />
+      <option name="SCRIPT_NAME" value="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\ftp_tire_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -68,7 +72,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="shopify_tools_ds18" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ftp_tire_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -80,16 +84,16 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_ds18.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ftp_tire_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="shopify_tools_sandbfilters" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="ftp_wheel_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -101,10 +105,10 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_sandbfilters.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ftp_wheel_test.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -153,19 +157,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.interview" />
-      <item itemvalue="Python.shopify_tools_ds18" />
-      <item itemvalue="Python.shopify_tools_sandbfilters" />
       <item itemvalue="Python.shopify_tools_wheels" />
       <item itemvalue="Python.shopify_tools_tires" />
+      <item itemvalue="Python.ftp_test" />
+      <item itemvalue="Python.ftp_wheel_test" />
+      <item itemvalue="Python.ftp_tire_test" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.shopify_tools_tires" />
+        <item itemvalue="Python.ftp_tire_test" />
         <item itemvalue="Python.shopify_tools_wheels" />
-        <item itemvalue="Python.interview" />
-        <item itemvalue="Python.shopify_tools_sandbfilters" />
-        <item itemvalue="Python.shopify_tools_ds18" />
+        <item itemvalue="Python.ftp_wheel_test" />
+        <item itemvalue="Python.ftp_test" />
       </list>
     </recent_temporary>
   </component>
@@ -276,8 +280,18 @@
       <option name="project" value="LOCAL" />
       <updated>1578513055656</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items.">
+      <created>1580447172645</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1580447172645</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
+  </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.csv" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -305,7 +319,8 @@
     <MESSAGE value="S And B Filters is complete, moving on to SuperATV" />
     <MESSAGE value="Playing with images and such" />
     <MESSAGE value="I made a package on Test Pypi" />
-    <option name="LAST_COMMIT_MESSAGE" value="I made a package on Test Pypi" />
+    <MESSAGE value="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items." />
+    <option name="LAST_COMMIT_MESSAGE" value="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items." />
   </component>
   <component name="WindowStateProjectService">
     <state x="2066" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580446145537">
@@ -319,93 +334,105 @@
       <screen x="0" y="0" width="1280" height="680" />
     </state>
     <state x="322" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1280.680@0.0.1280.680" timestamp="1576608040193" />
-    <state x="2470" y="114" key="CommitChangelistDialog2" timestamp="1578513043186">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1581437595601">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581437595601" />
+    <state x="550" y="114" key="CommitChangelistDialog2" timestamp="1580447156546">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="550" y="114" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281149598" />
     <state x="550" y="114" key="CommitChangelistDialog2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422247470" />
     <state x="2470" y="114" key="CommitChangelistDialog2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578513043185" />
+    <state x="550" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447156546" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1581717029317">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581717029317" />
     <state x="2660" y="274" key="FileChooserDialogImpl" timestamp="1579792792955">
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1579792792955" />
-    <state width="1899" height="398" key="GridCell.Tab.0.bottom" timestamp="1580446627612">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="346" key="GridCell.Tab.0.bottom" timestamp="1581728447934">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.bottom/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="398" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580446627612" />
-    <state width="936" height="398" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580446463633" />
-    <state width="1899" height="398" key="GridCell.Tab.0.center" timestamp="1580446627611">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="346" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856664" />
+    <state width="1899" height="346" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447934" />
+    <state width="1899" height="346" key="GridCell.Tab.0.center" timestamp="1581728447933">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.center/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="398" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580446627611" />
-    <state width="936" height="398" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580446463632" />
-    <state width="1899" height="398" key="GridCell.Tab.0.left" timestamp="1580446627611">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="346" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856663" />
+    <state width="1899" height="346" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447933" />
+    <state width="1899" height="346" key="GridCell.Tab.0.left" timestamp="1581728447933">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.left/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="398" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580446627611" />
-    <state width="936" height="398" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580446463632" />
-    <state width="1899" height="398" key="GridCell.Tab.0.right" timestamp="1580446627611">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="1899" height="346" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856663" />
+    <state width="1899" height="346" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447933" />
+    <state width="1899" height="346" key="GridCell.Tab.0.right" timestamp="1581728447934">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.right/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="398" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580446627611" />
-    <state width="936" height="398" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580446463632" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1580439336402">
+    <state width="1899" height="346" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856664" />
+    <state width="1899" height="346" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447934" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1580447464572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580439336402" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1580439336402">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464572" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1580447464571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580439336402" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1580439336402">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464571" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1580447464571">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580439336402" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1580439336402">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464571" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1580447464572">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580439336402" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464572" />
     <state x="225" y="0" key="SettingsEditor" timestamp="1577826579367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="225" y="0" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1577826579367" />
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1576608484008" />
-    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1578513059688">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1580447175016">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281167264" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422263045" />
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578513059688" />
-    <state x="2427" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1578582405160">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447175016" />
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1581713065429">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578326745581" />
     <state x="-1413" y="269" key="com.intellij.ide.util.TipDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@-1920.18.1920.1040" timestamp="1578328353133" />
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578429036176" />
     <state x="2427" y="251" key="com.intellij.ide.util.TipDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578582405160" />
     <state x="338" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1576849773795" />
-    <state x="-1918" y="197" width="1614" height="1028" key="dock-window-1" timestamp="1578329441678">
-      <screen x="-1920" y="18" width="1920" height="1040" />
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581713065429" />
+    <state x="964" y="0" width="972" height="1028" key="dock-window-1" timestamp="1581727152260">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="0" y="0" width="1614" height="1028" key="dock-window-1/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1578327192055" />
     <state x="-1918" y="197" width="1614" height="1028" key="dock-window-1/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578329441678" />
     <state x="-6" y="0" width="651" height="686" key="dock-window-1/0.0.1280.680@0.0.1280.680" timestamp="1576851607248" />
+    <state x="964" y="0" width="972" height="1028" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581727152260" />
     <state x="-1904" y="411" width="1614" height="724" key="dock-window-2" timestamp="1578333141772">
       <screen x="-1920" y="18" width="1920" height="1040" />
     </state>

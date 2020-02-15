@@ -1,5 +1,6 @@
 class TireVariants:
     def __init__(self,
+                 curr_stock,
                  tire_mfr_cd,
                  part_num,
                  tire_size,
@@ -40,6 +41,7 @@ class TireVariants:
                  source_country,
                  mileage_warranty,
                  ):
+        self.curr_stock = curr_stock
         self.tire_mfr_cd = tire_mfr_cd
         self.part_num = part_num
         self.tire_size = tire_size
@@ -85,6 +87,9 @@ class TireVariants:
 
     def set_upc(self, upc):
         self.upc = upc
+
+    def get_curr_stock(self):
+        return self.curr_stock
 
     def get_tire_mfr_cd(self):
         return self.tire_mfr_cd

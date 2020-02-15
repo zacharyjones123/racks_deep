@@ -6,6 +6,7 @@ WheelVariants class
 
 class WheelVariants:
     def __init__(self,
+                 curr_stock,
                  style_description,
                  part_number,
                  part_number_description,
@@ -79,6 +80,7 @@ class WheelVariants:
                  prop65_chemical_1,
                  prop65_chemical_2,
                  prop65_chemical_3):
+        self.curr_stock = curr_stock
         self.style_description = style_description
         self.part_number = part_number
         self.part_number_description = part_number_description
@@ -152,6 +154,9 @@ class WheelVariants:
         self.prop65_chemical_1 = prop65_chemical_1
         self.prop65_chemical_2 = prop65_chemical_2
         self.prop65_chemical_3 = prop65_chemical_3
+
+    def get_curr_stock(self):
+        return self.curr_stock
 
     def get_style_description(self):
         return self.style_description
@@ -390,9 +395,9 @@ class WheelVariants:
         :param o: Other WheelVariant
         :return: -1 -> self is more, 0 -> self is the same, 1 -> o is more
         """
-        if self.get_map() < o.get_map_price():
+        if self.get_map_price() < o.get_map_price():
             return -1
-        elif self.get_map() == o.get_map_price():
+        elif self.get_map_price() == o.get_map_price():
             return 0
         else:
             return 1
@@ -403,9 +408,9 @@ class WheelVariants:
         :param o: Other Wheel Variant
         :return: -1 -> self is more, 0 -> self is the same, 1 -> o is more
         """
-        if self.get_msrp() < o.get_msrp_price():
+        if self.get_msrp_price() < o.get_msrp_price():
             return -1
-        elif self.get_msrp() == o.get_msrp_price():
+        elif self.get_msrp_price() == o.get_msrp_price():
             return 0
         else:
             return 1
@@ -415,7 +420,7 @@ class WheelVariants:
         Str representation of the WheelVariant
         :return:
         """
-        return """%s,""" % (self.get_style_description())
+        return """%s, %s, %s""" % (self.get_style_description(), self.curr_stock, self.part_number)
 
     def __repr__(self):
         """

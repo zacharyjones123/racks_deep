@@ -63,10 +63,10 @@ class ShopifyToolsTires:
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
-                                       'inventory_policy': 'continue',
+                                       'inventory_policy': 'deny',
                                        'fulfillment_service': 'manual',
                                        'inventory_management': 'shopify',
-                                       'inventory_quantity': 1,
+                                       'inventory_quantity': tire_variant.get_curr_stock(),
                                        'taxable': False,
                                        'weight': float(tire_variant.get_weight()),
                                        'weight_unit': 'g',
@@ -99,10 +99,10 @@ class ShopifyToolsTires:
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
-                                       'inventory_policy': 'continue',
+                                       'inventory_policy': 'deny',
                                        'fulfillment_service': 'manual',
                                        'inventory_management': 'shopify',
-                                       'inventory_quantity': 1,
+                                       'inventory_quantity': tire_variant.get_curr_stock(),
                                        'taxable': False,
                                        'weight': float(tire_variant.get_weight()),
                                        'weight_unit': 'g',
@@ -128,7 +128,7 @@ class ShopifyToolsTires:
                     tags.add_tag(t)
 
             image = shopify.Image()
-            file_name = "https://images.wheelpros.com/h%s.png" % (tire_variant.get_picture_cd())
+            file_name = tire_variant.get_picture_cd()
             image.src = file_name
             new_tire_product.images = [image]
             new_tire_product.save()
