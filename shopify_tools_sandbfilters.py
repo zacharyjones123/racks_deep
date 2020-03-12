@@ -6,6 +6,7 @@ import os
 
 import urllib.request
 
+from sheets.SAndBFilters.read_s_and_b_filters_csv import get_filters_from_asap
 from data.SAndBFilters.Products.FilterTools import FilterTools
 from data.WheelPros.Tags import Tags
 from excel_tools import ExcelTools
@@ -50,14 +51,16 @@ class ShopifyToolsFilter:
         # Make the tags that we want to add
         tags_to_add = []
         # Brand
-        tags_to_add.append("Type_" + filter_variant.get_prod_description())
+        #print(filter_variant)
+        tags_to_add.append("Type_" + str(filter_variant.get_prod_description()))
 
         # 2 cases
         # 1) Is a variant
+        print(filter_variant)
         if filterTools.has_variants(filter_variant):
-            return
             product_id = filterTools.find_product_id(filter_variant)
-            new_filter_product = shopify.Product.find(product_id)
+            new_filter_product = shopify.Product.find(product_id)[0]
+            print("Type of new_filter_project: ", type(new_filter_product))
             variant = shopify.Variant({'price': float(filter_variant.get_map_price()),
                                        'quantity': 1,
                                        'sku': filter_variant.get_upc(),
@@ -71,7 +74,8 @@ class ShopifyToolsFilter:
                                        'requires_shipping': True})
             # Get tags already put in
             tags = Tags()
-            tags.string_to_tags(new_ds18_product.tags)
+            print("Type of new_filter_project: ",type(new_filter_product))
+            tags.string_to_tags(new_filter_product.tags)
             # Now, we can go through and add the tags we want
             for t in tags_to_add:
                 if not tags.is_a_tag(t) and "nan" not in t:
@@ -82,17 +86,20 @@ class ShopifyToolsFilter:
             new_filter_product.tags = tags.tags_to_string()
             new_filter_product.variants.append(variant)
             new_filter_product.save()
+            if new_filter_product.errors:
+                # something went wrong, see new_product.errors.full_messages() for example
+                new_filter_product.errors.full_messages()
             filterTools.add_product(product_id, filter_variant)
             # 2) Is not a variant
         else:
+            print(filter_variant)
             new_filter_product = shopify.Product()
             # Built the tire name
-            new_filter_product.title = filter_variant.get_prod_fit()
-            new_filter_product.vendor = 'DS 18'
-            new_filter_product.product_type = 'Sound'
-            new_filter_product.body_html = """<b>%s</b>
-                                   <p>%s</p>
-                                   """ % (filter_variant.get_prod_description(), filter_variant.get_part_num())
+            new_filter_product.title = filter_variant.get_prod_description()
+            new_filter_product.vendor = 'S&B Filters'
+            new_filter_product.product_type = 'Filters'
+            new_filter_product.body_html = """%s
+                                   """ % (filter_variant.get_prod_description())
             variant = shopify.Variant({'price': float(filter_variant.get_map_price()),
                                        'quantity': 1,
                                        'sku': filter_variant.get_upc(),
@@ -119,10 +126,11 @@ class ShopifyToolsFilter:
 
             new_filter_product.tags = tags.tags_to_string()
 
-            url_for_image = "https://sandbfilters.s3.us-east-2.amazonaws.com/" + filter_variant.get_part_num() + ".jpg"
+            url_for_image = filter_variant.get_image_url().split("|")[0]
+            print("The image: ",url_for_image)
 
-            if not ShopifyToolsFilter.url_is_alive(url_for_image):
-                url_for_image = "https://sandbfilters.s3.us-east-2.amazonaws.com/" + filter_variant.get_part_num() + ".png"
+           # if not ShopifyToolsFilter.url_is_alive(url_for_image):
+            #    url_for_image = "https://sandbfilters.s3.us-east-2.amazonaws.com/" + filter_variant.get_part_num() + ".png"
 
             image = shopify.Image()
             image.src = url_for_image
@@ -131,6 +139,7 @@ class ShopifyToolsFilter:
             filterTools.add_product(new_filter_product.id, filter_variant)
             new_filter_product.save()  # returns false if the record is invalid
             if new_filter_product.errors:
+                print("Hello")
                 # something went wrong, see new_product.errors.full_messages() for example
                 new_filter_product.errors.full_messages()
 
@@ -143,7 +152,8 @@ class ShopifyToolsFilter:
                 ShopifyToolsFilter.add_new_product(filter_products[t])
                 bar.update(item_id=str(total_added))
                 total_added += 1
-            except pyactiveresource.connection.Error:
+            except pyactiveresource.connection.Error as err:
+                print(err)
                 print("Internet is out, restarting server in 5 secodns")
                 total_added -= 1
                 t -= 1
@@ -188,13 +198,14 @@ class ShopifyToolsFilter:
 #---------------------------------
 
 def add_filter_products_shopify_tool():
-    filter_info = ExcelTools.read_s_and_b_filters(r'sheets/SAndBFilters/sAndBFilters_prices.xlsx')
+    #filter_info = ExcelTools.read_s_and_b_filters(r'sheets/SAndBFilters/sAndBFilters_prices.xlsx')
+    filter_info = get_filters_from_asap()
     ShopifyToolsFilter.add_new_products(filter_info)
 
-def update_ds18_products_shopify_tool():
+def update_s_and_b_filters_products_shopify_tool():
     pass
 
-def delete_ds18_products_shopify_tool():
+def delete_s_and_b_filters_products_shopify_tool():
     pass
 
 add_filter_products_shopify_tool()

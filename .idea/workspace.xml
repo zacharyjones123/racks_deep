@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ftp_wheel_test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/exp_02-14-2020_producttechdatausd.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/SAndBFilters/read_s_and_b_filters_csv.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sheets/SAndBFilters/sAndBFilters_prices.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Tires/TireVariants.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TireInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/TireInvPriceDataUS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WheelInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/WheelInvPriceDataUS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/SAndBFilters/Products/FilterVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/SAndBFilters/Products/FilterVariants.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/excel_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_tires.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftp_tire_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ftp_tire_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftp_wheel_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/ftp_wheel_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopify_tools_sandbfilters.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_sandbfilters.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopify_tools_wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_wheels.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -44,14 +46,15 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\sheets\SAndBFilters" />
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\sheets\WheelPros" />
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\images\WheelPros" />
       <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\tests\WheelPros" />
       <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\doc\docs" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.shopify_tools_tires">
-    <configuration name="ftp_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.shopify_tools_ds18">
+    <configuration name="read_s_and_b_filters_csv" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -59,11 +62,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sheets/SAndBFilters" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\ftp_tire_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sheets/SAndBFilters/read_s_and_b_filters_csv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -72,7 +75,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ftp_tire_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="shopify_tools_ds18" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -84,7 +87,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ftp_tire_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_ds18.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -93,7 +96,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ftp_wheel_test" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="shopify_tools_sandbfilters" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -105,10 +108,10 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ftp_wheel_test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_sandbfilters.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -135,7 +138,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="shopify_tools_wheels" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="shopify_tools_wheels" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -150,26 +153,26 @@
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_wheels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.shopify_tools_wheels" />
+      <item itemvalue="Python.read_s_and_b_filters_csv" />
+      <item itemvalue="Python.shopify_tools_ds18" />
+      <item itemvalue="Python.shopify_tools_sandbfilters" />
       <item itemvalue="Python.shopify_tools_tires" />
-      <item itemvalue="Python.ftp_test" />
-      <item itemvalue="Python.ftp_wheel_test" />
-      <item itemvalue="Python.ftp_tire_test" />
+      <item itemvalue="Python.shopify_tools_wheels" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.shopify_tools_ds18" />
+        <item itemvalue="Python.shopify_tools_sandbfilters" />
         <item itemvalue="Python.shopify_tools_tires" />
-        <item itemvalue="Python.ftp_tire_test" />
         <item itemvalue="Python.shopify_tools_wheels" />
-        <item itemvalue="Python.ftp_wheel_test" />
-        <item itemvalue="Python.ftp_test" />
+        <item itemvalue="Python.read_s_and_b_filters_csv" />
       </list>
     </recent_temporary>
   </component>
@@ -287,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1580447172645</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Data Feed is operational. Needs to be redone and organized, but it works for now. Lots of todos, but super excited!!!!">
+      <created>1581729680865</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1581729680865</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -320,16 +330,21 @@
     <MESSAGE value="Playing with images and such" />
     <MESSAGE value="I made a package on Test Pypi" />
     <MESSAGE value="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items." />
-    <option name="LAST_COMMIT_MESSAGE" value="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items." />
+    <MESSAGE value="Data Feed is operational. Needs to be redone and organized, but it works for now. Lots of todos, but super excited!!!!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Data Feed is operational. Needs to be redone and organized, but it works for now. Lots of todos, but super excited!!!!" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="2066" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1580446145537">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582769524740">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578331907167" />
     <state x="97" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1280.680@0.0.1280.680" timestamp="1576852757705" />
-    <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580438691893" />
+    <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582769524740" />
     <state x="2066" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1580446145537" />
+    <state x="503" y="422" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1583973781278">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="503" y="422" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583973781278" />
     <state x="322" y="68" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1576608040193">
       <screen x="0" y="0" width="1280" height="680" />
     </state>
@@ -338,13 +353,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581437595601" />
-    <state x="550" y="114" key="CommitChangelistDialog2" timestamp="1580447156546">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2470" y="114" key="CommitChangelistDialog2" timestamp="1581729668736">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="550" y="114" key="CommitChangelistDialog2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281149598" />
     <state x="550" y="114" key="CommitChangelistDialog2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422247470" />
     <state x="2470" y="114" key="CommitChangelistDialog2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578513043185" />
     <state x="550" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447156546" />
+    <state x="2470" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729668736" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1581717029317">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -353,71 +369,72 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2660" y="274" key="FileChooserDialogImpl/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1579792792955" />
-    <state width="1899" height="346" key="GridCell.Tab.0.bottom" timestamp="1581728447934">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="936" height="459" key="GridCell.Tab.0.bottom" timestamp="1583373885575">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.bottom/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.bottom/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.bottom/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="346" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856664" />
-    <state width="1899" height="346" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447934" />
-    <state width="1899" height="346" key="GridCell.Tab.0.center" timestamp="1581728447933">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="936" height="459" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583373885575" />
+    <state width="1899" height="346" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729709574" />
+    <state width="936" height="459" key="GridCell.Tab.0.center" timestamp="1583373885575">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.center/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.center/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.center/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="346" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856663" />
-    <state width="1899" height="346" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447933" />
-    <state width="1899" height="346" key="GridCell.Tab.0.left" timestamp="1581728447933">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="936" height="459" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583373885575" />
+    <state width="1899" height="346" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729709574" />
+    <state width="936" height="459" key="GridCell.Tab.0.left" timestamp="1583373885575">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.left/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.left/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.left/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="346" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856663" />
-    <state width="1899" height="346" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447933" />
-    <state width="1899" height="346" key="GridCell.Tab.0.right" timestamp="1581728447934">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="936" height="459" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583373885575" />
+    <state width="1899" height="346" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729709574" />
+    <state width="936" height="459" key="GridCell.Tab.0.right" timestamp="1583373885575">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="398" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1577909345639" />
     <state width="1899" height="276" key="GridCell.Tab.0.right/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281191832" />
     <state width="1899" height="276" key="GridCell.Tab.0.right/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422282322" />
     <state width="929" height="291" key="GridCell.Tab.0.right/0.0.1280.680@0.0.1280.680" timestamp="1576853474915" />
-    <state width="1899" height="346" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581721856664" />
-    <state width="1899" height="346" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581728447934" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1580447464572">
+    <state width="936" height="459" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583373885575" />
+    <state width="1899" height="346" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729709574" />
+    <state width="1899" height="364" key="GridCell.Tab.1.bottom" timestamp="1582774854582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464572" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1580447464571">
+    <state width="1899" height="364" key="GridCell.Tab.1.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
+    <state width="1899" height="364" key="GridCell.Tab.1.center" timestamp="1582774854582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464571" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1580447464571">
+    <state width="1899" height="364" key="GridCell.Tab.1.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
+    <state width="1899" height="364" key="GridCell.Tab.1.left" timestamp="1582774854582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464571" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1580447464572">
+    <state width="1899" height="364" key="GridCell.Tab.1.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
+    <state width="1899" height="364" key="GridCell.Tab.1.right" timestamp="1582774854582">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447464572" />
+    <state width="1899" height="364" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
     <state x="225" y="0" key="SettingsEditor" timestamp="1577826579367">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="225" y="0" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1577826579367" />
     <state x="150" y="0" key="SettingsEditor/0.0.1280.680@0.0.1280.680" timestamp="1576608484008" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1580447175016">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2" timestamp="1581729685079">
+      <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578281167264" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578422263045" />
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578513059688" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1580447175016" />
-    <state x="507" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1581713065429">
+    <state x="2472" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729685079" />
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1583973066875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1578326745581" />
@@ -425,7 +442,7 @@
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1578429036176" />
     <state x="2427" y="251" key="com.intellij.ide.util.TipDialog/-1920.18.1920.1040/0.0.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1578582405160" />
     <state x="338" y="164" key="com.intellij.ide.util.TipDialog/0.0.1280.680@0.0.1280.680" timestamp="1576849773795" />
-    <state x="507" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1581713065429" />
+    <state x="507" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583973066875" />
     <state x="964" y="0" width="972" height="1028" key="dock-window-1" timestamp="1581727152260">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

@@ -21,6 +21,10 @@ class InventoryFeedWheel:
 
 
 def get_wheel_update():
+    """
+    This method refreshes all files from the ftp for Wheel Pros
+    :return:
+    """
     ftp = FTP("ftp.wheelpros.com")
     ftp.login("ftp.wheelpros.com|1091543", "J5PU886qN2Qmhp5U")
 
@@ -39,7 +43,7 @@ def get_wheel_update():
         items = list(row.items())
         total_lines += 1
         #print(items)
-        inv_feed_wheel = InventoryFeedWheel(items[0][1], items[80][1], items[12][1], items[82][1], items[81][1])
+        inv_feed_wheel = InventoryFeedWheel(items[0][1], items[81][1], items[12][1], items[83][1], items[82][1])
         wheel_update.update({str(inv_feed_wheel.part_number):inv_feed_wheel})
     return wheel_update
 

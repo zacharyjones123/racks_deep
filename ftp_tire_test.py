@@ -2,7 +2,7 @@ from ftplib import FTP
 import csv
 
 class InventoryFeedTire:
-    def __init__(self, brand, part_number, description, image_url, inv_order_type, total_qqh, usd, us_map, run_date, division):
+    def __init__(self, brand, part_number, description, image_url, inv_order_type, total_qqh, usd, us_map, run_date):
         self.brand = brand
         self.part_number = part_number
         self.description = description
@@ -12,7 +12,6 @@ class InventoryFeedTire:
         self.usd = usd
         self.us_map = us_map
         self.run_date = run_date
-        self.division = division
     def __str__(self):
         s = ""
         s += "Brand: %s"% str(self.brand)
@@ -37,10 +36,14 @@ def get_tire_update():
     tire_update = {}
     for row in input_file:
         items = list(row.items())
-        print(items)
+        #print(items)
+        #print("total_qqh, usd, us_map, run_date, division")
+        #print(items[71][0], items[72][0], items[73][0], items[74][0])
         total_lines += 1
-        inv_feed_tire = InventoryFeedTire(items[0][1], items[1][1], items[2][1], items[3][1], items[4][1], items[70][1], items[71][1], items[72][1], items[73][1], items[74][1])
+        inv_feed_tire = InventoryFeedTire(items[0][1], items[1][1], items[2][1], items[3][1], items[4][1], items[71][1], items[72][1], items[73][1], items[74][1])
+        #print("----------------------")
+        #print(inv_feed_tire)
         tire_update.update({str(inv_feed_tire.part_number):inv_feed_tire})
     return tire_update
 
-#get_tire_update()
+get_tire_update()

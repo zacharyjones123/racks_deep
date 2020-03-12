@@ -500,6 +500,7 @@ class ShopifyToolsWheels:
 #---------------------------------
 def add_wheels_shopify_tool():
     wheels_info = ExcelTools.read_product_technical_data_usd(r'sheets/WheelPros/exp_02-14-2020_producttechdatausd.xlsx')
+    print("Wheels")
     for w in wheels_info:
         print(w)
     # Need to split this up into 100 chunks

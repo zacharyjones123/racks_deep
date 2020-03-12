@@ -204,7 +204,9 @@ class ExcelTools:
         for i in df.index:
             try:
                 wheel = None
+
                 if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and int(wheel_feed[str(df['partnumber'][i])].total_qqh) != 0:
+                    print(wheel_feed[str(df['partnumber'][i])])
                     upc_temp = ""
                     if str(df['upc'][i]) != "nan":
                         upc_temp = str(int(df['upc'][i]))
@@ -286,7 +288,8 @@ class ExcelTools:
                 if wheel is not None:
                     wheels.append(wheel)
             except KeyError:
-                print(df["partnumber"][i],"not found!")
+                pass
+                # print(df["partnumber"][i],"not found!")
             total += 1
             all_total += 1
             bar.update()
