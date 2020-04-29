@@ -2,19 +2,14 @@ import time
 
 import pyactiveresource
 import pyprind
-import os
 
 import urllib.request
 
 from sheets.SAndBFilters.read_s_and_b_filters_csv import get_filters_from_asap
 from data.SAndBFilters.Products.FilterTools import FilterTools
 from data.WheelPros.Tags import Tags
-from excel_tools import ExcelTools
-from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
-
-from base64 import b64encode
 
 # S&B Filter - Local Storage for S&B Filters
 filterTools = FilterTools()

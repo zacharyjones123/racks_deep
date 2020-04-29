@@ -6,12 +6,9 @@ import os
 
 from data.DS18.Products.DS18ProductsTools import DS18ProductsTools
 from data.WheelPros.Tags import Tags
-from excel_tools import ExcelTools
-from shopify_tools import ShopifyTools
+from utils.excel_tools import ExcelTools
 from urllib.error import HTTPError
 import shopify
-
-from base64 import b64encode
 
 # DS18Tools - Local Storage for DS18 Products
 ds18Tools = DS18ProductsTools()

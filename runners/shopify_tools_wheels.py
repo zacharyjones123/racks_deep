@@ -9,8 +9,8 @@ import pyprind
 
 from data.WheelPros.Tags import Tags
 from data.WheelPros.Wheels.WheelTools import WheelTools
-from excel_tools import ExcelTools
-from shopify_tools import ShopifyTools
+from utils.excel_tools import ExcelTools
+from runners.shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 

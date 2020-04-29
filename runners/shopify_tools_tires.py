@@ -9,8 +9,8 @@ import time
 from data.WheelPros.Tags import Tags
 from data.WheelPros.Tires.TireTools import TireTools
 from data.WheelPros.Tires.TireVariants import TireVariants
-from excel_tools import ExcelTools
-from shopify_tools import ShopifyTools
+from utils.excel_tools import ExcelTools
+from runners.shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 
