@@ -2,55 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/wheel_pros_data_feed.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TireInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TireInvPriceDataUS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WheelInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/WheelInvPriceDataUS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/cred/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/cred/cred.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/control_center.py" beforeDir="false" afterPath="$PROJECT_DIR$/control_center.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/example-pkg-zrjones123-0.0.1.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/example_pkg_zrjones123-0.0.1-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/Makefile" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/conf.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/KitTools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/KitVariants.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/Kits.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/Product.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/TireTools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/TireVariants.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/Tires.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/Vehicles.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/WheelTools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/WheelVariants.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/Wheels.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/control_center.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/excel_tools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/modules.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/shopify_tools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/docs/support_tools.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/index.rst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/doc/make.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_YOUR_USERNAME_HERE.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_YOUR_USERNAME_HERE.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_YOUR_USERNAME_HERE.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_YOUR_USERNAME_HERE.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_zrjones123.egg-info/PKG-INFO" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_zrjones123.egg-info/SOURCES.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_zrjones123.egg-info/dependency_links.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/example_pkg_zrjones123.egg-info/top_level.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/excel_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftp_tire_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftp_wheel_test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/interview.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_ds18.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools_ds18.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_kits.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools_kits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_sandbfilters.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools_sandbfilters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools_tires.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopify_tools_wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/runners/shopify_tools_wheels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/support_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/support_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/excel_tools.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,11 +37,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\utils" />
+      <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\runners" />
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\sheets\SAndBFilters" />
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\sheets\WheelPros" />
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\images\WheelPros" />
-      <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\tests\WheelPros" />
-      <recent name="C:\Users\Zachary Jones\PycharmProjects\racks_deep\doc\docs" />
     </key>
   </component>
   <component name="RunManager" selected="Python.wheel_pros_data_feed">
@@ -342,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583977401237</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Cleaning up this project and getting it ready to move to a Docker Container">
+      <created>1588132018179</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1588132018179</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -377,7 +337,8 @@
     <MESSAGE value="I updated the wheels, and tried with the tires but the tires sheet was corrupted.&#10;&#10;Need to work on the rest of the items." />
     <MESSAGE value="Data Feed is operational. Needs to be redone and organized, but it works for now. Lots of todos, but super excited!!!!" />
     <MESSAGE value="Setting everything up for Dockerfile" />
-    <option name="LAST_COMMIT_MESSAGE" value="Setting everything up for Dockerfile" />
+    <MESSAGE value="Cleaning up this project and getting it ready to move to a Docker Container" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cleaning up this project and getting it ready to move to a Docker Container" />
   </component>
   <component name="WindowStateProjectService">
     <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582769524740">
@@ -448,9 +409,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="364" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1583977405211">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="-1368" y="264" key="Vcs.Push.Dialog.v2" timestamp="1588132020425">
+      <screen x="-1920" y="12" width="1920" height="1040" />
     </state>
+    <state x="-1368" y="264" key="Vcs.Push.Dialog.v2/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588132020425" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583977405211" />
     <state x="2472" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1581729685079" />
     <state x="-1413" y="263" key="com.intellij.ide.util.TipDialog" timestamp="1588128540584">

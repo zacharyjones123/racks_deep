@@ -6,7 +6,7 @@ import pandas as pd
 import pyprind
 
 from utils.wheel_pros_data_feed import get_wheel_update
-from ftp_tire_test import get_tire_update
+from utils.wheel_pros_data_feed import get_tire_update
 
 from data.DS18.Products.DS18ProductsVariants import DS18Variants
 from data.SAndBFilters.Products.FilterVariants import FilterVariant
