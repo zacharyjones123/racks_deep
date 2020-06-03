@@ -192,19 +192,21 @@ class ExcelTools:
         # TODO: Make method more more versatile
 
         print("Reading Product Technical Data USD")
+        # Read Spreadsheet from wheel pros dealerline
         df = pd.read_excel(spread_sheet_name)
         wheels = []
-
         # Date Feed
+        # Read Data Feed
         wheel_feed = get_wheel_update()
         total = 1
         all_total = 1
-        bar = pyprind.ProgBar(len(df.index), monitor=True)
-        for i in df.index:
+        bar = pyprind.ProgBar(len(wheel_feed), monitor=True)
+        for i in wheel_feed:
             try:
                 wheel = None
-
+                print("Checking if wheel works")
                 if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and int(wheel_feed[str(df['partnumber'][i])].total_qqh) != 0:
+                    print("it worked!!!")
                     print(wheel_feed[str(df['partnumber'][i])])
                     upc_temp = ""
                     if str(df['upc'][i]) != "nan":
