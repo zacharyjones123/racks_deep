@@ -2,42 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="30301980-dc53-4807-adfe-880b846f1256" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/data/shopify_product.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/TireInvPriceDataUS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/WheelInvPriceDataUS.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/tires_exp_5-28-2020.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/sheets/WheelPros/wheels_exp_5-28-2020.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools_ds18.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_ds18.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools_kits.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_kits.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools_sandbfilters.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_sandbfilters.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools_tires.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_tires.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/runners/shopify_tools_wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_wheels.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/10-1-19_kit-pricing.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/11-25-19_kit_pricing.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/bug_fix_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/example_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_01-30-2020_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_01-30-2020_tireData.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/utils/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_02-14-2020_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_10-21-2019_mapPricing.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_10-21-2019_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_10-21-2019_tireData.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_11-19-2019_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_11-28-2019_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_12-05-2019_tireData.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/exp_12-05-2019_tireData.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/wheel_pros_kits.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/~$exp_11-19-2019_producttechdatausd.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/examples/map_Pricing_example.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/examples/producttechdatausd_example.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/sheets/examples/tireData_example.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/TireInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/TireInvPriceDataUS.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/WheelInvPriceDataUS.csv" beforeDir="false" afterPath="$PROJECT_DIR$/utils/WheelInvPriceDataUS.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelTools.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelTools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Wheels/WheelVariants.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/WheelPros/Wheels/Wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/data/WheelPros/Wheels/Wheels.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/tires_exp_5-28-2020.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/sheets/WheelPros/tires_exp_5-28-2020.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sheets/WheelPros/wheels_exp_5-28-2020.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/sheets/WheelPros/wheels_exp_5-28-2020.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopify_tools_wheels.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopify_tools_wheels.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/excel_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/excel_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/wheel_pros_data_feed.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/wheel_pros_data_feed.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +53,7 @@
       <recent name="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\sheets\WheelPros" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.shopify_tools_wheels (1)">
+  <component name="RunManager" selected="Python.shopify_tools_wheels">
     <configuration name="excel_tools" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="racks_deep" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -132,14 +104,35 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/runners" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="C:\Users\Zachary R. Jones\PycharmProjects\racks_deep\shopify_tools_wheels.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_wheels.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="shopify_tools_wheels" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="racks_deep" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/shopify_tools_wheels.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="true" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
       <option name="INPUT_FILE" value="" />
@@ -189,14 +182,13 @@
     </configuration>
     <list>
       <item itemvalue="Python.excel_tools" />
-      <item itemvalue="Python.shopify_tools_wheels (1)" />
       <item itemvalue="Python.shopify_tools_wheels" />
       <item itemvalue="Python.tester" />
       <item itemvalue="Python.wheel_pros_data_feed (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.shopify_tools_wheels (1)" />
+        <item itemvalue="Python.shopify_tools_wheels" />
         <item itemvalue="Python.excel_tools" />
         <item itemvalue="Python.shopify_tools_wheels" />
         <item itemvalue="Python.wheel_pros_data_feed (1)" />
@@ -346,7 +338,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588132241184</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Refresh before I keep going">
+      <created>1591225553882</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1591225553882</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -383,12 +382,14 @@
     <MESSAGE value="Setting everything up for Dockerfile" />
     <MESSAGE value="Cleaning up this project and getting it ready to move to a Docker Container" />
     <MESSAGE value="One more change" />
-    <option name="LAST_COMMIT_MESSAGE" value="One more change" />
+    <MESSAGE value="Refresh before I keep going" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refresh before I keep going" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1582769524740">
+    <state x="397" y="7" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1591227043913">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="397" y="7" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227043913" />
     <state x="146" y="0" key="#com.intellij.execution.impl.EditConfigurationsDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582769524740" />
     <state x="-1417" y="434" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1588201111609">
       <screen x="-1920" y="12" width="1920" height="1040" />
@@ -400,40 +401,45 @@
     </state>
     <state x="-1230" y="278" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588131763699" />
     <state x="2610" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590708968302" />
-    <state x="-1370" y="126" key="CommitChangelistDialog2" timestamp="1588132234648">
-      <screen x="-1920" y="12" width="1920" height="1040" />
+    <state x="550" y="114" key="CommitChangelistDialog2" timestamp="1591225545473">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1370" y="126" key="CommitChangelistDialog2/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588132234648" />
+    <state x="550" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591225545473" />
     <state x="550" y="114" key="CommitChangelistDialog2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583977394229" />
-    <state width="1899" height="328" key="GridCell.Tab.0.bottom" timestamp="1590757768989">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="381" key="GridCell.Tab.0.bottom" timestamp="1591227830618">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="391" key="GridCell.Tab.0.bottom/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590714321300" />
     <state width="1899" height="278" key="GridCell.Tab.0.bottom/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588206608642" />
+    <state width="1899" height="381" key="GridCell.Tab.0.bottom/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227830618" />
     <state width="1899" height="328" key="GridCell.Tab.0.bottom/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757768989" />
     <state width="1743" height="303" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590513702248" />
     <state width="1743" height="180" key="GridCell.Tab.0.bottom/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709311862" />
-    <state width="1899" height="328" key="GridCell.Tab.0.center" timestamp="1590757768988">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="381" key="GridCell.Tab.0.center" timestamp="1591227830618">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="391" key="GridCell.Tab.0.center/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590714321300" />
     <state width="1899" height="278" key="GridCell.Tab.0.center/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588206608642" />
+    <state width="1899" height="381" key="GridCell.Tab.0.center/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227830618" />
     <state width="1899" height="328" key="GridCell.Tab.0.center/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757768988" />
     <state width="1743" height="303" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590513702248" />
     <state width="1743" height="180" key="GridCell.Tab.0.center/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709311861" />
-    <state width="1899" height="328" key="GridCell.Tab.0.left" timestamp="1590757768988">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="381" key="GridCell.Tab.0.left" timestamp="1591227830618">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="391" key="GridCell.Tab.0.left/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590714321300" />
     <state width="1899" height="278" key="GridCell.Tab.0.left/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588206608642" />
+    <state width="1899" height="381" key="GridCell.Tab.0.left/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227830618" />
     <state width="1899" height="328" key="GridCell.Tab.0.left/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757768988" />
     <state width="1743" height="303" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590513702247" />
     <state width="1743" height="180" key="GridCell.Tab.0.left/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709311861" />
-    <state width="1899" height="328" key="GridCell.Tab.0.right" timestamp="1590757768988">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state width="1899" height="381" key="GridCell.Tab.0.right" timestamp="1591227830618">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="391" key="GridCell.Tab.0.right/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590714321300" />
     <state width="1899" height="278" key="GridCell.Tab.0.right/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588206608642" />
+    <state width="1899" height="381" key="GridCell.Tab.0.right/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227830618" />
     <state width="1899" height="328" key="GridCell.Tab.0.right/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757768988" />
     <state width="1743" height="303" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590513702248" />
     <state width="1743" height="180" key="GridCell.Tab.0.right/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709311861" />
@@ -453,10 +459,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1899" height="364" key="GridCell.Tab.1.right/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1582774854582" />
-    <state x="-1368" y="264" key="Vcs.Push.Dialog.v2" timestamp="1588132253440">
-      <screen x="-1920" y="12" width="1920" height="1040" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1591225556869">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1368" y="264" key="Vcs.Push.Dialog.v2/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588132253440" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591225556869" />
     <state x="552" y="252" key="Vcs.Push.Dialog.v2/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1583977405211" />
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog" timestamp="1591225514466">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -467,24 +474,27 @@
     <state x="2427" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757209263" />
     <state x="507" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1590513664947" />
     <state x="2427" y="251" key="com.intellij.ide.util.TipDialog/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590705065049" />
-    <state x="1913" y="0" width="974" height="1047" key="dock-window-1" timestamp="1590757237249">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="-853" y="12" width="869" height="1027" key="dock-window-1" timestamp="1591226261416">
+      <screen x="-1920" y="12" width="1920" height="1040" />
     </state>
     <state x="-7" y="0" width="974" height="1047" key="dock-window-1/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590710060777" />
     <state x="0" y="3" width="1093" height="1030" key="dock-window-1/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588205876851" />
+    <state x="-853" y="12" width="869" height="1027" key="dock-window-1/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591226261416" />
     <state x="1913" y="0" width="974" height="1047" key="dock-window-1/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757237249" />
     <state x="953" y="0" width="974" height="1047" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709802795" />
-    <state x="-955" y="12" width="962" height="1047" key="dock-window-2" timestamp="1590709955156">
+    <state x="-1639" y="12" width="1424" height="1027" key="dock-window-2" timestamp="1591226261416">
       <screen x="-1920" y="12" width="1920" height="1040" />
     </state>
     <state x="-955" y="12" width="962" height="1047" key="dock-window-2/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590709955156" />
     <state x="892" y="4" width="1028" height="1028" key="dock-window-2/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588203596627" />
+    <state x="-1639" y="12" width="1424" height="1027" key="dock-window-2/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591226261416" />
     <state x="1602" y="205" width="1463" height="936" key="dock-window-2/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590709802795" />
-    <state x="2873" y="0" width="974" height="1047" key="dock-window-3" timestamp="1590757237249">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="-1383" y="57" width="1424" height="733" key="dock-window-3" timestamp="1591227466880">
+      <screen x="-1920" y="12" width="1920" height="1040" />
     </state>
     <state x="953" y="0" width="974" height="1047" key="dock-window-3/0.0.1920.1040/-1920.12.1920.1040/1920.0.1920.1040@1920.0.1920.1040" timestamp="1590710190322" />
     <state x="1060" y="23" width="847" height="1028" key="dock-window-3/1920.-327.1920.1040/-1920.12.1920.1040/0.0.1920.1040@-1920.12.1920.1040" timestamp="1588205876851" />
+    <state x="-1383" y="57" width="1424" height="733" key="dock-window-3/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1591227466880" />
     <state x="2873" y="0" width="974" height="1047" key="dock-window-3/1920.0.1920.1040/-1920.12.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1590757237249" />
   </component>
 </project>

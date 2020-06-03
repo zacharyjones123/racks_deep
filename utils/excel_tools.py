@@ -65,10 +65,10 @@ class ExcelTools:
         # ----------------------------
         ds18_needed = {}
         for i in df_needed.index:
-            #Go through and get all of the models we need
+            # Go through and get all of the models we need
             ds18_needed[(str(df_needed['Model'][i]).replace("-", ""))] = str(df_needed['Collection'][i])
 
-        #print(ds18_needed)
+        # print(ds18_needed)
 
         # ----------------------------
 
@@ -79,18 +79,19 @@ class ExcelTools:
             ds18_product = None
             if df['MSRP'][i] != 0 and (df['Model'][i].replace("-", "")) in ds18_needed:
                 ds18_product = DS18Variants(str(df['Model'][i]),
-                                      str(df['Brand'][i]),
-                                      str(df['Name'][i]),
-                                      str(df['M/C'][i]),
-                                      str(df['MSRP'][i]),
-                                      str(df['Dealer'][i]),
-                                      str(ds18_needed[df['Model'][i].replace("-", "")]))
+                                            str(df['Brand'][i]),
+                                            str(df['Name'][i]),
+                                            str(df['M/C'][i]),
+                                            str(df['MSRP'][i]),
+                                            str(df['Dealer'][i]),
+                                            str(ds18_needed[df['Model'][i].replace("-", "")]))
             if ds18_product is not None:
                 ds18_products.append(ds18_product)
             total += 1
             all_total += 1
             bar.update()
         return ds18_products
+
     @staticmethod
     def read_s_and_b_filters(spread_sheet_name):
         """
@@ -109,11 +110,12 @@ class ExcelTools:
         for i in df.index:
             if df["Price"][i] != 0 and df['Type'][i] == 'UTV':
                 product = FilterVariant(str(df['S&B Part #'][i]),
-                                      str(df['UPC'][i]),
-                                      str(df['Product Description'][i]),
-                                      str(df['Product Description / Fitment'][i]),
-                                      str(df['Type'][i]),
-                                      str(df['Price'][i]))
+                                        str(df['UPC'][i]),
+                                        str(df['Product Description'][i]),
+                                        str(df['Product Description / Fitment'][i]),
+                                        str(df['Type'][i]),
+                                        str(df['Price'][i]),
+                                        "image_url")
             if product is not None:
                 products.append(product)
             total += 1
@@ -201,24 +203,23 @@ class ExcelTools:
         total = 1
         all_total = 1
         bar = pyprind.ProgBar(len(wheel_feed), monitor=True)
-        for i in wheel_feed:
+        for i in df.index:
             try:
                 wheel = None
-                print("Checking if wheel works")
-                if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and int(wheel_feed[str(df['partnumber'][i])].total_qqh) != 0:
-                    print("it worked!!!")
-                    print(wheel_feed[str(df['partnumber'][i])])
+                if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and\
+                        int(wheel_feed[str(df['partnumber'][i])].inventory_quantity) != 0:
                     upc_temp = ""
                     if str(df['upc'][i]) != "nan":
                         upc_temp = str(int(df['upc'][i]))
-                    wheel = WheelVariants(int(wheel_feed[str(df['partnumber'][i])].total_qqh),
+                    wheel = WheelVariants(wheel_feed[df['partnumber'][i]],
+                                          int(wheel_feed[str(df['partnumber'][i])].inventory_quantity),
                                           str(df['styledescription'][i]),
                                           str(df['partnumber'][i]),
                                           str(df['partnumberdescription'][i]),
                                           str(df['size'][i]),
                                           str(df['finish'][i]),
-                                          str(wheel_feed[str(df['partnumber'][i])].msrp_price),
-                                          str(wheel_feed[str(df['partnumber'][i])].map_price),
+                                          str(wheel_feed[str(df['partnumber'][i])].price),
+                                          str(wheel_feed[str(df['partnumber'][i])].price),
                                           str(df['diameter'][i]),
                                           str(df['width'][i]),
                                           str(df['lugcount'][i]),
@@ -281,7 +282,7 @@ class ExcelTools:
                                           str(df['Construction'][i]),
                                           str(df['Material'][i]),
                                           str(df['FancyFinishDesc'][i]),
-                                          str(wheel_feed[str(df['partnumber'][i])].image_src),
+                                          str(wheel_feed[str(df['partnumber'][i])].image_url),
                                           str(df['Prop65 Chemical 1'][i]),
                                           str(df['Prop65 Chemical 2'][i]),
                                           str(df['Prop65 Chemical 3'][i]))
@@ -289,8 +290,8 @@ class ExcelTools:
                 if wheel is not None:
                     wheels.append(wheel)
             except KeyError:
+                print(df["partnumber"][i],"not found!")
                 pass
-                # print(df["partnumber"][i],"not found!")
             total += 1
             all_total += 1
             bar.update()

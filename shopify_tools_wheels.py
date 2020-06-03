@@ -47,7 +47,6 @@ class ShopifyToolsWheels:
 
     @staticmethod
     def add_new_wheel(wheel_variant):
-        print(wheel_variant)
         """
         Method that adds a new Wheel ProsWheel to Shopify
         :param wheel_variant: Wheel to add
@@ -59,31 +58,31 @@ class ShopifyToolsWheels:
         # Make the tags that we want to add
         tags_to_add = []
         # Brand
-        tags_to_add.append("Brand_" + wheel_variant.get_whl_manufact_nm())
+        tags_to_add.append("Brand_" + wheel_variant.whl_manufact_nm)
         # Finish
-        tags_to_add.append("Finish_" + wheel_variant.get_finish())
+        tags_to_add.append("Finish_" + wheel_variant.finish)
         # Bolt Pattern
-        tags_to_add.append("Bolt Pattern_" + wheel_variant.get_bolt_pattern_metric())
+        tags_to_add.append("Bolt Pattern_" + wheel_variant.bolt_pattern_metric)
         # Wheel Offset
-        tags_to_add.append("Wheel Offset_" + wheel_variant.get_offset())
+        tags_to_add.append("Wheel Offset_" + wheel_variant.offset)
         # Wheel Size
-        tags_to_add.append("Wheel Size_" + wheel_variant.get_size())
+        tags_to_add.append("Wheel Size_" + wheel_variant.size)
 
         # Need to find wheel price
         wheel_price1 = 0
-        if wheel_variant.get_msrp_price() != 0:
-            wheel_price1 = float(wheel_variant.get_msrp_price())
-        elif wheel_variant.get_map_price() != 0:
-            wheel_price1 = float(wheel_variant.get_map_price())
+        if wheel_variant.msrp_price != 0:
+            wheel_price1 = float(wheel_variant.msrp_price)
+        elif wheel_variant.map_price != 0:
+            wheel_price1 = float(wheel_variant.map_price)
         else:
             wheel_price1 = 0
 
         # Make the bolt pattern setup
-        lug_count = wheel_variant.get_lug_count()
-        dist1 = str(int(float(wheel_variant.get_bolt_pattern_mm_1())))
+        lug_count = wheel_variant.lug_count
+        dist1 = str(int(float(wheel_variant.bolt_pattern_mm_1)))
         bolt_pattern1 = lug_count + "x" + dist1
         # print(bolt_pattern1)
-        dist2 = str(int(float(wheel_variant.get_bolt_pattern_mm_2())))
+        dist2 = str(int(float(wheel_variant.bolt_pattern_mm_2)))
         bolt_pattern2 = ""
         if int(dist2) != 0:
             bolt_pattern2 = lug_count + "x" + dist2
@@ -93,43 +92,41 @@ class ShopifyToolsWheels:
         if wheelTools.has_variants(wheel_variant):
             product_id = wheelTools.find_product_id(wheel_variant)
             new_wheel_product = shopify.Product.find(product_id)
-            print(type(new_wheel_product))
             variant = shopify.Variant({'price': wheel_price1,
-                                       'option1': wheel_variant.get_size(),
+                                       'option1': wheel_variant.size,
                                        'option2': bolt_pattern1,
-                                       'option3': wheel_variant.get_offset(),
+                                       'option3': wheel_variant.offset,
                                        'quantity': 1,
-                                       'sku': wheel_variant.get_upc(),
+                                       'sku': wheel_variant.upc,
                                        'position': 1,
                                        'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'inventory_quantity': wheel_variant.curr_stock,
                                        'taxable': True,
-                                       'weight': float(wheel_variant.get_shipping_weight()),
+                                       'weight': float(wheel_variant.shipping_weight),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
 
             # TODO: Need to organize this code
             # Below is all for when there is a second bolt pattern
             variant2 = shopify.Variant({'price': wheel_price1,
-                                        'option1': wheel_variant.get_size(),
+                                        'option1': wheel_variant.size,
                                         'option2': bolt_pattern2,
-                                        'option3': wheel_variant.get_offset(),
+                                        'option3': wheel_variant.offset,
                                         'quantity': 1,
-                                        'sku': wheel_variant.get_upc(),
+                                        'sku': wheel_variant.upc,
                                         'position': 1,
                                         'inventory_policy': "deny",
                                         'fulfillment_service': "manual",
                                         'inventory_management': "shopify",
-                                        'inventory_quantity': wheel_variant.get_curr_stock(),
+                                        'inventory_quantity': wheel_variant.curr_stock,
                                         'taxable': True,
-                                        'weight': float(wheel_variant.get_shipping_weight()),
+                                        'weight': float(wheel_variant.shipping_weight),
                                         'weight_unit': "g",  # g, kg
                                         'requires_shipping': True})
 
             # print(type(new_wheel_product.variants))
-            print(type(new_wheel_product))
             if bolt_pattern1 not in new_wheel_product.tags:
                 new_wheel_product.tags += "," + bolt_pattern1
             if bolt_pattern2 not in new_wheel_product.tags:
@@ -166,43 +163,43 @@ class ShopifyToolsWheels:
             # Update a product
             new_wheel_product = shopify.Product()
             new_wheel_product.options = [{'name': 'Tire Size'}, {'name': 'Bolt Pattern'}, {'name': 'Offset'}]
-            new_wheel_product.title = wheel_variant.get_style_description()
+            new_wheel_product.title = wheel_variant.style_description
             new_wheel_product.vendor = "Wheel Pros"
             new_wheel_product.product_type = "Wheels"
             new_wheel_product.body_html = """<b>%s</b>
                                     <p>%s</p>
-                                    """ % (wheel_variant.get_style_description(),
-                                           wheel_variant.get_part_num_description())
+                                    """ % (wheel_variant.style_description,
+                                           wheel_variant.part_number_description)
             variant = shopify.Variant({'price': wheel_price1,
-                                       'option1': wheel_variant.get_size(),
+                                       'option1': wheel_variant.size,
                                        'option2': bolt_pattern1,
-                                       'option3': wheel_variant.get_offset(),
+                                       'option3': wheel_variant.offset,
                                        'quantity': 1,
-                                       'sku': wheel_variant.get_upc(),
+                                       'sku': wheel_variant.upc,
                                        'position': 1,
                                        'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'inventory_quantity': wheel_variant.curr_stock,
                                        'taxable': True,
-                                       'weight': float(wheel_variant.get_shipping_weight()),
+                                       'weight': float(wheel_variant.shipping_weight),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
             # TODO: Need to organize this code
             # Below is all for when there is a second bolt pattern
             variant2 = shopify.Variant({'price': wheel_price1,
-                                       'option1': wheel_variant.get_size(),
+                                       'option1': wheel_variant.size,
                                         'option2': bolt_pattern2,
-                                        'option3': wheel_variant.get_offset(),
+                                        'option3': wheel_variant.offset,
                                        'quantity': 1,
-                                       'sku': wheel_variant.get_upc(),
+                                       'sku': wheel_variant.upc,
                                        'position': 1,
                                        'inventory_policy': "deny",
                                        'fulfillment_service': "manual",
                                        'inventory_management': "shopify",
-                                       'inventory_quantity': wheel_variant.get_curr_stock(),
+                                       'inventory_quantity': wheel_variant.curr_stock,
                                        'taxable': True,
-                                       'weight': float(wheel_variant.get_shipping_weight()),
+                                       'weight': float(wheel_variant.shipping_weight),
                                        'weight_unit': "g",  # g, kg
                                        'requires_shipping': True})
 
@@ -224,13 +221,15 @@ class ShopifyToolsWheels:
             new_wheel_product.tags = tags.tags_to_string()
 
             image = shopify.Image()
-            file_name = "%s" % (wheel_variant.get_wheel_image())
+            file_name = "%s" % wheel_variant.wheel_image
             if ShopifyTools.is_image_and_ready(file_name):
                 image.src = file_name
             else:
-                print(wheel_variant.get_upc)
-                print(wheel_variant.get_style_description())
-                print("-----------------")
+                pass
+                # Used to see when doesn't have an image
+                # print(wheel_variant.upc)
+                # print(wheel_variant.style_description)
+                # print("-----------------")
 
             new_wheel_product.images = [image]
             new_wheel_product.save()

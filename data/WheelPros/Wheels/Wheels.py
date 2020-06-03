@@ -4,11 +4,11 @@ from data.WheelPros.Product import Products
 class Wheels(Products):
     # Done
     def __init__(self, wheel_variant):
-        super().__init__(wheel_variant.get_upc(), wheel_variant.get_map_price())
-        self.variants = {wheel_variant.get_upc(): wheel_variant}
+        super().__init__(wheel_variant.upc, wheel_variant.map_price)
+        self.variants = {wheel_variant.upc: wheel_variant}
         self.product_id = None
 
-        self.style_description = wheel_variant.get_style_description()
+        self.style_description = wheel_variant.style_description
 
     # Done
     def get_style_description(self):
@@ -16,7 +16,7 @@ class Wheels(Products):
 
     # Done
     def add_variant(self, variant_wheel):
-        self.variants[variant_wheel.get_upc()] = variant_wheel
+        self.variants[variant_wheel.upc] = variant_wheel
 
     # Done
     def get_variants(self):

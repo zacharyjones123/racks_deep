@@ -244,7 +244,7 @@ class WheelTools:
         # Also need to delete wheel_variants also
         new_wheel_variants_list = []
         for w in self.wheel_variants_list:
-            if w.get_style_description() == wheel_copy.get_style_description():
+            if w.style_description == wheel_copy.style_description:
                 new_wheel_variants_list.append(w)
         self.wheel_variants_list = new_wheel_variants_list
 
@@ -260,12 +260,12 @@ class WheelTools:
 
     def find_product_id(self, wheel_variant):
         for product_id in self.wheels:
-            if wheel_variant.get_style_description() == self.wheels[product_id].get_style_description():
+            if wheel_variant.style_description == self.wheels[product_id].style_description:
                 return product_id
         return None
 
     def has_variants(self, wheel_variant):
         for product_id in self.wheels:
-            if wheel_variant.get_style_description() == self.wheels[product_id].get_style_description():
+            if wheel_variant.style_description == self.wheels[product_id].style_description:
                 return True
         return False
