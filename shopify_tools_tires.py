@@ -253,8 +253,8 @@ class ShopifyToolsTires:
 #--Methods to run the program
 #---------------------------------
 
-def add_tires_shopify_tool():
-    tires_info = ExcelTools.read_tire_data_usd(r'sheets/WheelPros/exp_12-05-2019_tireData.xlsx')
+def add_tires_shopify_tool(spread_sheet_name):
+    tires_info = ExcelTools.read_tire_data_usd(spread_sheet_name)
     ShopifyToolsTires.add_new_tires(tires_info)
 
 def update_tires_shopify_tool():
@@ -305,4 +305,4 @@ def delete_tires_shopify_tool():
     pass
 
 #update_tires_shopify_tool()
-add_tires_shopify_tool()
+add_tires_shopify_tool(r'sheets/WheelPros/tires_exp_5-28-2020.xlsx')

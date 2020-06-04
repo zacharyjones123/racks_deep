@@ -206,8 +206,7 @@ class ExcelTools:
         for i in df.index:
             try:
                 wheel = None
-                if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])) and\
-                        int(wheel_feed[str(df['partnumber'][i])].inventory_quantity) != 0:
+                if df['W.D. USD'][i] != 0 and ExcelTools.check_wheel_brand(str(df['WhlManufactNm'][i])):
                     upc_temp = ""
                     if str(df['upc'][i]) != "nan":
                         upc_temp = str(int(df['upc'][i]))
@@ -387,8 +386,8 @@ class ExcelTools:
         for i in df.index:
             try:
                 tire = None
-                if df['PowerSports'][i] != 0 and df['FullModelName'][i] not in excluded_tires and int(tire_feed[str(df['PartNo'][i])].total_qqh) != 0:
-                    tire = TireVariants(int(tire_feed[str(df['PartNo'][i])].total_qqh),
+                if df['PowerSports'][i] != 0 and df['FullModelName'][i] not in excluded_tires:
+                    tire = TireVariants(int(tire_feed[str(df['PartNo'][i])].inventory_quantity),
                                           str(df['TireMfrCd'][i]),
                                           str(df['PartNo'][i]),
                                           str(df['TireSize'][i]),
@@ -397,7 +396,7 @@ class ExcelTools:
                                           str(df['LoadIndex'][i]),
                                           str(df['PSI'][i]),
                                           str(df['SpeedRating'][i]),
-                                          str(tire_feed[str(df['PartNo'][i])].usd),
+                                          str(tire_feed[str(df['PartNo'][i])].price),
                                           str(df['StgItemCd'][i]),
                                           str(df['eMarked'][i]),
                                           str(df['UPC'][i]),
@@ -412,7 +411,7 @@ class ExcelTools:
                                         str(df['MaxWidthIn'][i]),
                                         str(df['MaxLoad'][i]),
                                         str(df['PowerSports'][i]),
-                                        str(tire_feed[str(df['PartNo'][i])].us_map),
+                                        str(tire_feed[str(df['PartNo'][i])].price),
                                         str(df['Sts'][i]),
                                         str(df['FullModelName'][i]),
                                         str(df['TreadDepth'][i]),

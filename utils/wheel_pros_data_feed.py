@@ -28,7 +28,7 @@ def ftp_method(file_name):
 
 def get_tire_update():
     logging.debug("Starting Tire Update")
-    df = pd.read_csv('TireInvPriceDataUS.csv', encoding="ISO-8859-1",
+    df = pd.read_csv('sheets/WheelPros/TireInvPriceDataUS.csv', encoding="ISO-8859-1",
                      usecols=['Brand', 'PartNumber', 'Description', 'ImageURL', 'TotalQOH', 'USD',
                               'USMAP'])
     result = df.to_dict(orient='records')

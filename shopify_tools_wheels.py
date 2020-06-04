@@ -507,18 +507,18 @@ def add_wheels_shopify_tool(spread_sheet_name):
     wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
     ShopifyToolsWheels.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
     wheelTools.set_wheel_variants_list(wheels_info)
-    #wheelTools.save_wheel_variants_to_file()
+    # wheelTools.save_wheel_variants_to_file()
 
 def delete_wheels_shopify_tool(spread_sheet_name):
     wheels_info = ExcelTools.read_product_technical_data_usd(spread_sheet_name)
     wheelTools.set_wheel_variants_list(wheels_info)
     ShopifyToolsWheels.build_wheels()
     ShopifyToolsWheels.delete_all_wheels()
-    #wheelTools.save_wheel_variants_to_file()
+    # wheelTools.save_wheel_variants_to_file()
 
-#print("Testing skus")
-#print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())
+# print("Testing skus")
+# print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())
 
 
 add_wheels_shopify_tool("sheets/WheelPros/wheels_exp_5-28-2020.xlsx")
-#delete_wheels_shopify_tool("./sheets/WheelPros/wheels_exp_5-28-2020.xlsx")
+# delete_wheels_shopify_tool("./sheets/WheelPros/wheels_exp_5-28-2020.xlsx")
