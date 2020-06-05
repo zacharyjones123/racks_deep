@@ -5,6 +5,10 @@ import logging
 from data.shopify_product import ShopifyProductVariant
 
 
+def listLineCallback(line):
+    msg = "** %s*"%line;
+    print(msg);
+
 def ftp_method(file_name):
     """
     This method refreshes all files from the ftp for Wheel Pros
@@ -15,15 +19,23 @@ def ftp_method(file_name):
     ftp = FTP(host="ftp.wheelpros.com")
     ftp.set_pasv(True)
     # J5PU886qN2Qmhp5U
-    ftp.login("ftp.wheelpros.com|1091543", "J5PU886qN2Qmhp5U")
+    login_message = ftp.login(user="ftp.wheelpros.com|1091543", passwd="J5PU886qN2Qmhp5U")
+    print(ftp.getwelcome())
+    print(login_message)
 
     ftp.cwd("WheelPros/US")
-    ftp.retrlines('LIST')
+
+    respMessage = ftp.retrlines("LIST", listLineCallback);
+    print(respMessage);
 
     with open(f'{file_name}', 'wb') as fp:
+        print(file_name)
+        print("Writing file")
         ftp.retrbinary(f'RETR {file_name}', fp.write)
     ftp.quit()
     logging.debug("Ending ftp method")
+
+ftp_method('WheelInvPriceDataUS.csv')
 
 
 def get_tire_update():

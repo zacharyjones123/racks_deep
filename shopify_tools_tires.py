@@ -173,14 +173,14 @@ class ShopifyToolsTires:
 
     @staticmethod
     def update_new_tire(tire_variant):
-        #Need to get a dictionary of all variants
+        # Need to get a dictionary of all variants
         all_tire_variants = ShopifyToolsTires.get_all_tire_variants_in_shopify()
         print(all_tire_variants)
 
-        #Now, need to get the right one
+        # Now, need to get the right one
         update_tire = shopify.Product.find(all_tire_variants[tire_variant.get_upc()])
 
-        #Now, find the variant that we want to change
+        # Now, find the variant that we want to change
         for v in range(len(update_tire.variants)):
             if update_tire.variants[v].sku == tire_variant.get_upc():
                 print("The price was changed")
