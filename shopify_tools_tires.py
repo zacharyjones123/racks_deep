@@ -14,13 +14,49 @@ from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 
+import psycopg2
+
 # Tire Tools - Local Storage for Wheel Pros Tires
 tireTools = TireTools()
 
 
 class ShopifyToolsTires:
     @staticmethod
-    def add_new_tire(tire_variant):
+    def make_connection():
+        connection = psycopg2.connect(user='root',
+                                      password='',
+                                      host='127.0.0.1',
+                                      port="26257",
+                                      database='racks_deep_cluster')
+        return connection
+
+    @staticmethod
+    def add_element(connection, table, elements):
+        with connection.cursor() as cur:
+            cur.execute(f"INSERT INTO {table} VALUES {elements};")
+        connection.commit()
+
+    @staticmethod
+    def get_add_shopify_ids(connection, table):
+        with connection.cursor() as cur:
+            cur.execute(f"SELECT shopify_id from {table}")
+            results = cur.fetchall()
+            return results
+
+    @staticmethod
+    def remove_element(connection, table, element):
+        with connection.cursor() as cur:
+            cur.execute(f"DELETE FROM {table} WHERE shopify_id = '{element}'")
+        connection.commit()
+
+    @staticmethod
+    def find_shopify_sku_sql(connection, table, sku):
+        with connection.cursor() as cur:
+            cur.execute(f"SELECT shopify_id from {table} WHERE sku = '{sku}'")
+            results = cur.fetchall()
+            return results
+    @staticmethod
+    def add_new_tire(connection, tire_variant):
         """
         Method that adds a new Wheel Pros Tire to Shopify
         :param tire_variant: Tire to add:
@@ -53,13 +89,19 @@ class ShopifyToolsTires:
         else:
             price_for_tire = tire_variant.get_map_price()
 
+        #Need to take out certain parts and change option1
+        option1 = tire_variant.get_tire_size_description()
+        option1 = option1.replace("R", "X")
+        option1 = option1.replace("LT", "")
+        option1 = option1.replace("-", "X")
+
         # 2 cases
         # 1) Is a variant
         if tireTools.has_variants(tire_variant):
             product_id = tireTools.find_product_id(tire_variant)
             new_tire_product = shopify.Product.find(product_id)
             variant = shopify.Variant({'price': float(price_for_tire),
-                                       'option1': tire_variant.get_tire_size_description(),
+                                       'option1': option1,
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
@@ -95,7 +137,7 @@ class ShopifyToolsTires:
                                    <p>%s</p>
                                    """ % (tire_variant.get_tire_description(), tire_variant.get_part_num())
             variant = shopify.Variant({'price': float(price_for_tire),
-                                       'option1': tire_variant.get_tire_size_description(),
+                                       'option1': option1,
                                        'quantity': 1,
                                        'sku': tire_variant.get_upc(),
                                        'position': 1,
@@ -138,9 +180,11 @@ class ShopifyToolsTires:
             if new_tire_product.errors:
                 # something went wrong, see new_product.errors.full_messages() for example
                 new_tire_product.errors.full_messages()
+            # Add to the database
+        ShopifyToolsTires.add_element(connection, "wheel_pros_tires", f"('{new_tire_product.id}', '{tire_variant.get_full_model_name()}', '{tire_variant.upc}', {tire_variant.map_price}, '{option1}', '', '', {tire_variant.curr_stock}, {float(tire_variant.weight)}, '{tire_variant.get_picture_cd()}', '{tags.tags_to_string()}')")
 
     @staticmethod
-    def add_new_tires(tires):
+    def add_new_tires(connection, tires):
         """
         Method used to add Wheel Pros Tires
         :param tires: Tires to be added
@@ -152,7 +196,7 @@ class ShopifyToolsTires:
         total_added = 1
         for t in range(len(tires)):
             try:
-                ShopifyToolsTires.add_new_tire(tires[t])
+                ShopifyToolsTires.add_new_tire(connection, tires[t])
                 bar.update(item_id=str(total_added))
                 total_added += 1
             except pyactiveresource.connection.Error:
@@ -172,19 +216,19 @@ class ShopifyToolsTires:
                 time.sleep(10)
 
     @staticmethod
-    def update_new_tire(tire_variant):
-        # Need to get a dictionary of all variants
-        all_tire_variants = ShopifyToolsTires.get_all_tire_variants_in_shopify()
-        print(all_tire_variants)
+    def update_tire_price(connection, table,  tire_sku, new_price):
 
         # Now, need to get the right one
-        update_tire = shopify.Product.find(all_tire_variants[tire_variant.get_upc()])
+        shopify_id = ShopifyToolsTires.find_shopify_sku_sql(connection, table, tire_sku)
+        update_tire = shopify.Product.find(shopify_id[0][0])
+        print(shopify_id[0][0])
 
         # Now, find the variant that we want to change
+        print(update_tire)
         for v in range(len(update_tire.variants)):
-            if update_tire.variants[v].sku == tire_variant.get_upc():
-                print("The price was changed")
-                update_tire.variants[v].price = 777
+            if update_tire.variants[v].sku == tire_sku:
+                print("new price")
+                update_tire.variants[v].price = new_price
 
         update_tire.save()
         if update_tire.errors:
@@ -254,55 +298,52 @@ class ShopifyToolsTires:
 #---------------------------------
 
 def add_tires_shopify_tool(spread_sheet_name):
-    tires_info = ExcelTools.read_tire_data_usd(spread_sheet_name)
-    ShopifyToolsTires.add_new_tires(tires_info)
-
-def update_tires_shopify_tool():
-    tire_variant = TireVariants(None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None,
-                                None)
-    tire_variant.set_mrsp_price("777")
-    tire_variant.set_upc("806454490004.0")
-    ShopifyToolsTires.update_new_tire(tire_variant)
+    connection = None
+    try:
+        # Make connection to database before starting
+        connection = ShopifyToolsTires.make_connection()
+        tires_info = ExcelTools.read_tire_data_usd(spread_sheet_name)
+        ShopifyToolsTires.add_new_tires(connection, tires_info)
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+         if(connection):
+            connection.close()
+            print("PostgreSQL connection is closed")
 
 def delete_tires_shopify_tool():
-    pass
+    connection = None
+    try:
+        # Make connection to database before starting
+        connection = ShopifyToolsTires.make_connection()
+        all_shopify_ids = ShopifyToolsTires.get_add_shopify_ids(connection, "wheel_pros_tires")
+        for i in all_shopify_ids:
+            ShopifyToolsTires.remove_element(connection, "wheel_pros_tires", i[0])
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+         if(connection):
+            connection.close()
+            print("PostgreSQL connection is closed")
 
-#update_tires_shopify_tool()
-add_tires_shopify_tool(r'sheets/WheelPros/tires_exp_5-28-2020.xlsx')
+def update_tires_shopify_tool(sku, new_price):
+    connection = None
+    try:
+        # Make connection to database before starting
+        connection = ShopifyToolsTires.make_connection()
+        ShopifyToolsTires.update_tire_price(connection, "wheel_pros_tires", sku, new_price)
+        #Now update in the database
+        with connection.cursor() as cur:
+            cur.execute(f"UPDATE wheel_pros_tires SET price={new_price} WHERE sku = '{sku}';")
+        connection.commit()
+
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+         if(connection):
+            connection.close()
+            print("PostgreSQL connection is closed")
+
+#delete_tires_shopify_tool()
+#add_tires_shopify_tool(r'sheets/WheelPros/tires_exp_5-28-2020.xlsx')
+update_tires_shopify_tool("4981910524083.0", 100000)

@@ -289,7 +289,7 @@ class ExcelTools:
                 if wheel is not None:
                     wheels.append(wheel)
             except KeyError:
-                print(df["partnumber"][i],"not found!")
+                #print(df["partnumber"][i],"not found!")
                 pass
             total += 1
             all_total += 1
@@ -316,37 +316,37 @@ class ExcelTools:
         for n in new_wheels:
             found_wheel = False
             for o in old_wheels:
-                if n.get_upc() == o.get_upc():
+                if n.upc == o.upc:
                     found_wheel = True
             if not found_wheel:
                 # TODO: 1) Wheel Needs to be added
-                df_temp['upc'].append(n.get_upc())
+                df_temp['upc'].append(n.upc)
                 df_temp['action'].append("Add")
-                df_temp['name'].append(n.get_style_description())
+                df_temp['name'].append(n.style_description)
 
         # 2) Delete Wheel
         for o in old_wheels:
             found_wheel = False
             for n in new_wheels:
-                if o.get_upc() == n.get_upc():
+                if o.upc == n.upc:
                     found_wheel = True
             if not found_wheel:
                 # TODO: 2) Wheel Needs to be deleted
-                df_temp['upc'].append(o.get_upc())
+                df_temp['upc'].append(o.upc)
                 df_temp['action'].append("Remove")
-                df_temp['name'].append(n.get_style_description())
+                df_temp['name'].append(n.style_description)
 
         # 3) Need to edit the wheel
         for o in old_wheels:
             for n in new_wheels:
-                if o.get_upc() == n.get_upc():
+                if o.upc == n.upc:
                     # We have 2 wheels, and need to check
                     # if edits need to be made
                     if o == n:
                         # TODO: 3) Wheel Needs to be editted
-                        df_temp['upc'].append(o.get_upc())
+                        df_temp['upc'].append(o.upc)
                         df_temp['action'].append("Edit")
-                        df_temp['name'].append(n.get_style_description())
+                        df_temp['name'].append(n.style_description)
 
         df = pd.DataFrame(df_temp)
 

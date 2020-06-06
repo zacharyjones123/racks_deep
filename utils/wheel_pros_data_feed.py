@@ -35,7 +35,7 @@ def ftp_method(file_name):
     ftp.quit()
     logging.debug("Ending ftp method")
 
-ftp_method('WheelInvPriceDataUS.csv')
+#ftp_method('WheelInvPriceDataUS.csv')
 
 
 def get_tire_update():
@@ -47,7 +47,7 @@ def get_tire_update():
 
     tire_update = {}
     for row in result:
-        inv_feed_tire = ShopifyProductVariant(row["USMAP"] if row["USMAP"] == 0 else row["USD"],
+        inv_feed_tire = ShopifyProductVariant(row["USMAP"] if row["USMAP"] != 0 else row["USD"],
                                               row['Brand'],
                                                'no',
                                                'no',
@@ -70,7 +70,7 @@ def get_wheel_update():
 
     wheel_update = {}
     for row in result:
-        inv_feed_wheel = ShopifyProductVariant(row["USMAP"] if row['USMAP'] == 0 else row["USD"],
+        inv_feed_wheel = ShopifyProductVariant(row["USMAP"] if row['USMAP'] != 0 else row["USD"],
                                                row['Size'],
                                                row['BoltPattern'],
                                                row['Offset'],

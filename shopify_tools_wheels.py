@@ -14,10 +14,40 @@ from shopify_tools import ShopifyTools
 from urllib.error import HTTPError
 import shopify
 
+import psycopg2
+
 wheelTools = WheelTools()
 
 
 class ShopifyToolsWheels:
+    @staticmethod
+    def make_connection():
+        connection = psycopg2.connect(user='root',
+                                      password='',
+                                      host='127.0.0.1',
+                                      port="26257",
+                                      database='racks_deep_cluster')
+        return connection
+
+    @staticmethod
+    def add_element(connection, table, elements):
+        with connection.cursor() as cur:
+            cur.execute(f"INSERT INTO {table} VALUES {elements};")
+        connection.commit()
+
+    @staticmethod
+    def get_add_shopify_ids(connection, table):
+        with connection.cursor() as cur:
+            cur.execute(f"SELECT shopify_id from {table}")
+            results = cur.fetchall()
+            return results
+
+    @staticmethod
+    def remove_element(connection, table, element):
+        with connection.cursor() as cur:
+            cur.execute(f"DELETE FROM {table} WHERE shopify_id = '{element}'")
+        connection.commit()
+
     @staticmethod
     def update_all_wheel_images():
         """
@@ -46,7 +76,7 @@ class ShopifyToolsWheels:
             update_product.errors.full_messages()
 
     @staticmethod
-    def add_new_wheel(wheel_variant):
+    def add_new_wheel(connection, wheel_variant):
         """
         Method that adds a new Wheel ProsWheel to Shopify
         :param wheel_variant: Wheel to add
@@ -68,15 +98,6 @@ class ShopifyToolsWheels:
         # Wheel Size
         tags_to_add.append("Wheel Size_" + wheel_variant.size)
 
-        # Need to find wheel price
-        wheel_price1 = 0
-        if wheel_variant.msrp_price != 0:
-            wheel_price1 = float(wheel_variant.msrp_price)
-        elif wheel_variant.map_price != 0:
-            wheel_price1 = float(wheel_variant.map_price)
-        else:
-            wheel_price1 = 0
-
         # Make the bolt pattern setup
         lug_count = wheel_variant.lug_count
         dist1 = str(int(float(wheel_variant.bolt_pattern_mm_1)))
@@ -92,7 +113,7 @@ class ShopifyToolsWheels:
         if wheelTools.has_variants(wheel_variant):
             product_id = wheelTools.find_product_id(wheel_variant)
             new_wheel_product = shopify.Product.find(product_id)
-            variant = shopify.Variant({'price': wheel_price1,
+            variant = shopify.Variant({'price': wheel_variant.map_price,
                                        'option1': wheel_variant.size,
                                        'option2': bolt_pattern1,
                                        'option3': wheel_variant.offset,
@@ -110,7 +131,7 @@ class ShopifyToolsWheels:
 
             # TODO: Need to organize this code
             # Below is all for when there is a second bolt pattern
-            variant2 = shopify.Variant({'price': wheel_price1,
+            variant2 = shopify.Variant({'price': wheel_variant.map_price,
                                         'option1': wheel_variant.size,
                                         'option2': bolt_pattern2,
                                         'option3': wheel_variant.offset,
@@ -170,7 +191,7 @@ class ShopifyToolsWheels:
                                     <p>%s</p>
                                     """ % (wheel_variant.style_description,
                                            wheel_variant.part_number_description)
-            variant = shopify.Variant({'price': wheel_price1,
+            variant = shopify.Variant({'price': wheel_variant.map_price,
                                        'option1': wheel_variant.size,
                                        'option2': bolt_pattern1,
                                        'option3': wheel_variant.offset,
@@ -187,7 +208,7 @@ class ShopifyToolsWheels:
                                        'requires_shipping': True})
             # TODO: Need to organize this code
             # Below is all for when there is a second bolt pattern
-            variant2 = shopify.Variant({'price': wheel_price1,
+            variant2 = shopify.Variant({'price': wheel_variant.map_price,
                                        'option1': wheel_variant.size,
                                         'option2': bolt_pattern2,
                                         'option3': wheel_variant.offset,
@@ -207,8 +228,7 @@ class ShopifyToolsWheels:
             if bolt_pattern2 != "":
                 new_wheel_product.variants.append(variant2)
 
-            new_wheel_product.tags = """WheelPros,
-                        Wheels"""
+            new_wheel_product.tags = """WheelPros,Wheels"""
 
             # Get tags already put in
             tags = Tags()
@@ -241,6 +261,9 @@ class ShopifyToolsWheels:
             if new_wheel_product.errors:
                 # something went wrong, see new_product.errors.full_messages() for example
                 raise Exception("New Wheel Product Error:\n",new_wheel_product.errors.full_messages())
+
+        # Add to the database
+        ShopifyToolsWheels.add_element(connection, "wheel_pros_wheels", f"('{new_wheel_product.id}', '{wheel_variant.style_description}', '{str(wheel_variant.upc)}', {wheel_variant.map_price}, '{wheel_variant.size}', '{bolt_pattern1}', '{wheel_variant.offset}', {wheel_variant.curr_stock}, {float(wheel_variant.shipping_weight)}, '{wheel_variant.wheel_image}', '{tags.tags_to_string()}')")
 
     @staticmethod
     def add_new_wheels(wheels):
@@ -311,7 +334,7 @@ class ShopifyToolsWheels:
         pass
 
     @staticmethod
-    def add_new_wheels_in_chunks(wheels, total_wheels):
+    def add_new_wheels_in_chunks(connection, wheels, total_wheels):
         """
         Method used to add Wheel Pros Wheels
         :param wheels: wheels added
@@ -331,7 +354,7 @@ class ShopifyToolsWheels:
                     if i * j >= -1:
                         time.sleep(0.25)
                         w = wheels[i][j]
-                        ShopifyToolsWheels.add_new_wheel(w)
+                        ShopifyToolsWheels.add_new_wheel(connection, w)
                         bar_graph_string = "Section: " + str(sections_done)
                         bar_graph_string += " - Index: " + str(total_added)
                         bar.update(item_id=bar_graph_string)
@@ -499,26 +522,40 @@ class ShopifyToolsWheels:
 #--Methods to run the program
 #---------------------------------
 def add_wheels_shopify_tool(spread_sheet_name):
-    wheels_info = ExcelTools.read_product_technical_data_usd(spread_sheet_name)
-    print("Wheels")
-    for w in wheels_info:
-        print(w)
-    # Need to split this up into 100 chunks
-    wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
-    ShopifyToolsWheels.add_new_wheels_in_chunks(wheel_info_chunks, len(wheels_info))
-    wheelTools.set_wheel_variants_list(wheels_info)
-    # wheelTools.save_wheel_variants_to_file()
+    connection = None
+    try:
+        # Make connection to database before starting
+        connection = ShopifyToolsWheels.make_connection()
+        wheels_info = ExcelTools.read_product_technical_data_usd(spread_sheet_name)
+        # Need to split this up into 100 chunks
+        wheel_info_chunks = list(ShopifyTools.chunks(wheels_info, 100))
+        ShopifyToolsWheels.add_new_wheels_in_chunks(connection, wheel_info_chunks, len(wheels_info))
+        wheelTools.set_wheel_variants_list(wheels_info)
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+         if(connection):
+            connection.close()
+            print("PostgreSQL connection is closed")
 
-def delete_wheels_shopify_tool(spread_sheet_name):
-    wheels_info = ExcelTools.read_product_technical_data_usd(spread_sheet_name)
-    wheelTools.set_wheel_variants_list(wheels_info)
-    ShopifyToolsWheels.build_wheels()
-    ShopifyToolsWheels.delete_all_wheels()
-    # wheelTools.save_wheel_variants_to_file()
+
+def delete_wheels_shopify_tool():
+    connection = None
+    try:
+        # Make connection to database before starting
+        connection = ShopifyToolsWheels.make_connection()
+        all_shopify_ids = ShopifyToolsWheels.get_add_shopify_ids(connection, "wheel_pros_wheels")
+        for i in all_shopify_ids:
+            ShopifyToolsWheels.remove_element(connection, "wheel_pros_wheels", i[0])
+    except (Exception, psycopg2.Error) as error:
+        print("Error while connecting to PostgreSQL", error)
+    finally:
+         if(connection):
+            connection.close()
+            print("PostgreSQL connection is closed")
 
 # print("Testing skus")
 # print(ShopifyToolsWheels.get_all_wheel_variants_in_shopify())
 
-
+#delete_wheels_shopify_tool()
 add_wheels_shopify_tool("sheets/WheelPros/wheels_exp_5-28-2020.xlsx")
-# delete_wheels_shopify_tool("./sheets/WheelPros/wheels_exp_5-28-2020.xlsx")

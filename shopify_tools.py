@@ -77,8 +77,9 @@ class ShopifyTools:
                         resources.extend(resource.find(**kwargs))
                         bar.update()
                 return resources
-            except pyactiveresource.connection.Error:
+            except pyactiveresource.connection.Error as error:
                 print("Internet is out, restarting server in 5 secodns")
+                print(error)
                 time.sleep(10)
             except TimeoutError:
                 print("Timeout error has occured, restarting server in 5 seconds")
