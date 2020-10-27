@@ -11,7 +11,7 @@ colorama==0.4.1
 conda==4.7.5
 conda-package-handling==1.3.10
 coverage==4.5.4
-cryptography==2.7
+cryptography==3.2
 docutils==0.15.2
 entrypoints==0.3
 flake8==3.7.9
