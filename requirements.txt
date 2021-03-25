@@ -46,7 +46,7 @@ python-dateutil==2.8.1
 python-utils==2.3.0
 pytz==2019.3
 pywin32==223
-PyYAML==5.1.2
+PyYAML==5.4
 requests==2.22.0
 ruamel-yaml==0.15.46
 ShopifyAPI==5.1.2
