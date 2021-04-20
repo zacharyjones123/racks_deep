@@ -29,7 +29,7 @@ packaging==19.2
 pandas==0.25.3
 pluggy==0.13.0
 progressbar2==3.47.0
-py==1.8.0
+py==1.10.0
 pyactiveresource==2.1.2
 pycodestyle==2.5.0
 pycosat==0.6.3
