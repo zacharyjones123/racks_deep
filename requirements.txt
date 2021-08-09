@@ -45,7 +45,7 @@ pytest-cov==2.8.1
 python-dateutil==2.8.1
 python-utils==2.3.0
 pytz==2019.3
-pywin32==223
+pywin32==301
 PyYAML==5.1.2
 requests==2.22.0
 ruamel-yaml==0.15.46
